@@ -10,11 +10,13 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import event.NavEvent;
+			import events.NavEvent;
+			import com.alfo.console;
 			
 			protected function touchtoplay1_clickHandler(event:MouseEvent):void
 			{
-				trace("click");
+				
+				console.log("click", this);
 				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"instructions");
 				dispatchEvent(navigation);
 			}

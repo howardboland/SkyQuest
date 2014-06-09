@@ -9,7 +9,7 @@
 			protected var timer:Timer;
 			protected var totalSec:Number=3;
 			protected var counter:Number;
-			import event.NavEvent;
+			import events.NavEvent;
 			
 			protected function bordercontainer1_addedToStageHandler(event:Event):void
 			{

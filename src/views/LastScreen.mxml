@@ -13,7 +13,7 @@
 			import com.alfo.DelayedExecution;
 			import com.alfo.XMLPrefs;
 			
-			import event.NavEvent;
+			import events.NavEvent;
 			
 			
 			protected function goHome(e:MouseEvent):void

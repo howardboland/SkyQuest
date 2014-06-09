@@ -11,8 +11,8 @@
 			
 			import components.QuizModal;
 			
-			import event.NavEvent;
-			import event.QuizEvent;
+			import events.NavEvent;
+			import events.QuizEvent;
 			
 			import mx.managers.PopUpManager;
 			

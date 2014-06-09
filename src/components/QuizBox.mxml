@@ -24,7 +24,7 @@
 	<fx:Script>
 		<![CDATA[
 			
-			import event.QuizEvent;
+			import events.QuizEvent;
 			
 			public var answer:Number=-1;
 			public var correctAnswer:Number;

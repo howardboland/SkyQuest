@@ -8,8 +8,8 @@
 		<![CDATA[
 			import components.pleaseWait;
 			
-			import event.NavEvent;
-			import event.UserDataEvent;
+			import events.NavEvent;
+			import events.UserDataEvent;
 			
 			import mx.managers.PopUpManager;
 			import mx.rpc.events.FaultEvent;
@@ -39,7 +39,7 @@
 
 
 			}
-			protected function onKeyboardLoad(Event):void
+			protected function onKeyboardLoad(event:Event):void
 			{
 				englishKeyboard.keyData = new XML(keyboardLoader.data);
 				this.parentApplication.virtualKey.addChild(englishKeyboard);

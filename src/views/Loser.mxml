@@ -10,7 +10,7 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import event.NavEvent;
+			import events.NavEvent;
 			import com.alfo.DelayedExecution;
 			import com.alfo.XMLPrefs;
 			

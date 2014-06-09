@@ -20,6 +20,8 @@ package com.alfo
 		public var splashPause:Number;
 		public var penalty:Number;
 		public var baseURL:String;
+		public var localURL:String;
+		public var ApplicationType:String;
 		
 		private var prefsXML:XML;
 		
@@ -40,6 +42,8 @@ package com.alfo
 				modalPause=Number(prefsXML.modalpause);
 				splashPause=Number(prefsXML.splashpause);
 				baseURL=prefsXML.baseurl;
+				localURL=prefsXML.localURL;
+				ApplicationType = prefsXML.applicationtype;
 				trace("timeout:"+timeOut);
 				trace("totalquestions:"+totalQuestions);
 				trace("penalty"+penalty);

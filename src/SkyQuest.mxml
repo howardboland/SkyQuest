@@ -8,28 +8,45 @@
 					   resize="onresize(event)"
 					   applicationComplete="windowedapplication2_applicationCompleteHandler(event)"
 					   addedToStage="windowedapplication2_addedToStageHandler(event)"
-					   horizontalCenter="center" showStatusBar="false" xmlns:components="components.*"
+					   horizontalCenter="center" showStatusBar="false" xmlns:components="components.*" xmlns:registration="registration.*" xmlns:debug="registration.debug.*"
 					   >
 	<fx:Script>
 		<![CDATA[
 			import com.alfo.XMLPrefs;
-			
-			import components.AdminWindow;
-			import components.ErrorAlert;
-			import components.tandcWindow;
-			
-			import event.NavEvent;
-			import event.QuizEvent;
-			import event.UserDataEvent;
+			import com.alfo.console;
 			
 			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.events.ResultEvent;
 			
+			import components.AdminWindow;
+			import components.ErrorAlert;
+			import components.tandcWindow;
+			
+			import events.NavEvent;
+			import events.QuizEvent;
+			import events.UserDataEvent;
+			import events.UserEvent;
+			
+			import model.Settings;
+			
+			import registration.debug.DebugEvent;
+			
 
 			[Bindable]
 			public var baseURL:String;
+			
+			[Bindable]
+			public var localURL:String ="";
+			
+			[Bindable]
+			public var ApplicationType:String ="REGISTRATION";
+			[Bindable]
+			public var barcode:String = null;
+			
+			[Bindable]
+			public var score:Number = 0;
 			
 			private var currentSlide:String;
 			
@@ -41,12 +58,34 @@
 			
 			protected var adminWindow:AdminWindow;
 			
+			
+			protected var debugKeySequence : Array = [71,85,66,69,68];
+			protected var runningKeySequence : Array = [];
+			
 			[Bindable]
-			private var prefs:XMLPrefs = XMLPrefs.getInstance();
+			public var isRegistered:String = "";
+			
+			[Bindable]
+			public var registrationIncomplete:Boolean=false;
+			
+			[Bindable]
+			public var lastIncompleteURN:String="";
+
+			
+			[Bindable]
+			public var prefs:XMLPrefs = XMLPrefs.getInstance();
+			
+			private var settings:Settings;
+			
+			
 			
 			protected function windowedapplication2_applicationCompleteHandler(event:FlexEvent):void
 			{
 				baseURL=prefs.baseURL;
+				localURL=prefs.localURL;
+				ApplicationType = prefs.ApplicationType;
+				//settings.localURL = localURL;
+				
 				fullscreen();
 				init();
 			}
@@ -58,29 +97,101 @@
 				//stage.scaleMode = StageScaleMode.NO_SCALE;
 				//stage.scaleMode=StageScaleMode.NO_BORDER;
 				this.reScaleMainContent();
-				Mouse.hide();
+//				Mouse.hide();
+			}
+			protected function setBarCode(e:UserEvent):void
+			{
+				barcode = e.urn;
+				trace("recorded barcode:"+barcode);
+			}
+			
+			protected function setScore(e:UserEvent):void
+			{
+				score = e.score;
+			}
+			protected function setIsRegistered(e:UserEvent):void
+			{
+//				this.isRegistered =  (e.userType)
+//				
+//				if (this.ApplicationType == APPLICATION_TYPE_REGISTRATION)
+//				{
+//					WelcomeBack.nextScreen = ViewEvent.LOCATION_RESTART;
+//					
+//				} else 
+//				{
+//					WelcomeBack.nextScreen = ViewEvent.LOCATION_GAME;
+//				}
+//				
+//				trace("recorded isRegistered: "+this.isRegistered.toString());
 			}
 			protected function init():void {
+				
+				
+
+
+				
+				
 				welcomeScreen.addEventListener(NavEvent.NAVIGATION,navigate);
-				registration.addEventListener(NavEvent.NAVIGATION,navigate);
-				registration.addEventListener(NavEvent.SHOWTERMS,showTerms);
+				RegisterView.addEventListener(NavEvent.NAVIGATION,navigate);
+				
+				this.addEventListener( UserEvent.URN, setBarCode );
+				this.addEventListener( UserEvent.REGISTERED, setIsRegistered);
+				
+				
+//				registration.addEventListener(NavEvent.NAVIGATION,navigate);
+//				registration.addEventListener(NavEvent.SHOWTERMS,showTerms);
 				instructionsScreen.addEventListener(NavEvent.NAVIGATION,navigate);
-				registration.addEventListener(UserDataEvent.SERVER_ERROR,handleRegError);
-				registration.addEventListener(UserDataEvent.SUBMIT_REGISTRATION,userRegistered);
+//				registration.addEventListener(UserDataEvent.SERVER_ERROR,handleRegError);
+//				registration.addEventListener(UserDataEvent.SUBMIT_REGISTRATION,userRegistered);
 				countdownScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				quizScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				quizScreen.addEventListener(QuizEvent.QUIZ_COMPLETE,quizComplete);
 				loserScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				congratScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				lastScreen.addEventListener(NavEvent.NAVIGATION,navigate);
+				
+				debugPanel.registrationModule = RegisterView.device;
 			}
+			
+			protected function debugEventHandler(event : DebugEvent):void
+			{
+				debugPanel.appendOutput(String(event.socketCode));
+				//debugPanel.debugOutput.text += "socket code : " + event.socketCode +  "\n";
+			}
+			
+			protected function typingHandler(event:KeyboardEvent):void
+			{
+				runningKeySequence.unshift(event.keyCode);
+				if(runningKeySequence.length > 10)
+				{
+					runningKeySequence.pop();
+				}
+				
+				var i : int;
+				var n : int = debugKeySequence.length;
+				var sequencesMatch : Boolean = true;
+				
+				for(i=0; i<n; i++)
+				{
+					if(runningKeySequence[i] != debugKeySequence[i])
+					{
+						sequencesMatch = false;
+						break;
+					}
+				}
+				if(sequencesMatch)
+				{
+					debugPanel.visible = true;
+				}
+			}
+			
 			protected function quizComplete(e:QuizEvent):void {
-				trace("quiz completed with score:"+e.score);
+				console.log("quiz completed with score:"+e.score, this);
 				currentScore=e.score;
 				saveScore.send({	id:currentUserID, score:currentScore });
 			}
 			protected function showTerms(e:NavEvent):void {
-				trace("show terms and cond");
+				console.log("show terms and cond", this);
 				tcWindow = new tandcWindow();
 				tcWindow.exitFunction = null;
 				
@@ -88,18 +199,18 @@
 				PopUpManager.centerPopUp(tcWindow);
 			}
 			protected function handleRegError(e:UserDataEvent):void {
-				trace("error:"+e.result);
-					alertbox = new ErrorAlert();
-					alertbox.message = e.result;
-					alertbox.windowTitle = "Server Error";
-					alertbox.exitFunction = restart;
-					
-					PopUpManager.addPopUp(alertbox, this, true);
-					PopUpManager.centerPopUp(alertbox);
+				console.log("error:"+e.result, this);
+				alertbox = new ErrorAlert();
+				alertbox.message = e.result;
+				alertbox.windowTitle = "Server Error";
+				alertbox.exitFunction = restart;
+				
+				PopUpManager.addPopUp(alertbox, this, true);
+				PopUpManager.centerPopUp(alertbox);
 				
 			}
 			protected function userRegistered(e:UserDataEvent):void {
-				trace("user has registered"+e.result);
+				console.log("user has registered"+e.result, this);
 				currentUserID=e.result;
 				
 			}
@@ -108,7 +219,7 @@
 				stack.selectedIndex=0;
 			}
 			protected function navigate(e:NavEvent):void {
-				trace("going to"+e.page);
+				console.log("going to"+e.page, this);
 				currentSlide=e.page;
 				switch(e.page)
 				{
@@ -138,7 +249,9 @@
 					case "register":
 					{
 						trace("registrazzzz");
-						registration.clearForm();
+						//TODO: HB - CONSOLIDATE HANDOVER APPLICATION
+						//registration.clearForm();
+						RegisterView.init();
 						stack.selectedChild=reg;
 						break;
 					}
@@ -344,6 +457,7 @@
 <s:BorderContainer width="100%" height="100%" top="80" id="contentHolder">
 	
 	
+	
 		
 	<mx:ViewStack id="stack" height="100%" width="100%" creationPolicy="all"   >
 		<s:NavigatorContent width="100%" height="100%"   id="home"  hideEffect="{hideFX}"  showEffect="{showFX}">
@@ -366,7 +480,8 @@
 		</s:NavigatorContent>
 		<s:NavigatorContent width="100%" height="100%" hideEffect="{hideFX}" id="reg"  showEffect="{showFX}" >
 			<s:VGroup verticalAlign="middle" id="grappo"  width="100%" height="100%" horizontalAlign="center">
-			<views:Registration id="registration" />
+				<registration:RegistrationScan id="RegisterView" debug="debugEventHandler(event)" />
+			<!-- views:Registration id="registration" / -->
 				</s:VGroup>
 		</s:NavigatorContent>
 		<s:NavigatorContent width="100%" height="100%" hideEffect="{hideFX}" id="quiz" showEffect="{showFX}" >
@@ -395,4 +510,5 @@
 		</s:Group>
 		</s:VGroup>
 	<s:SpriteVisualElement id="virtualKey"/>
+	<debug:DebugPanel left="0" top="0" id="debugPanel" visible="false"/>
 </s:WindowedApplication>
