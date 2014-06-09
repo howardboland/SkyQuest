@@ -55,7 +55,7 @@ package be.aboutme.airserver.messages.serialization
 						messages.push(message);
 					} catch (e:Error)
 					{
-						var message:Message = new Message();
+						message = new Message();
 						message.data = e.message;
 						messages.push(message);
 					}

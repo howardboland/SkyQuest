@@ -40,7 +40,7 @@
 				if (exitFunction!=null)
 					exitFunction();
 			}
-			protected function closeMe() {
+			protected function closeMe():void {
 				PopUpManager.removePopUp(this);
 			}
 		]]>

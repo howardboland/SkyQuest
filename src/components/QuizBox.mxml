@@ -73,32 +73,32 @@
 				}
 				dispatchEvent(evento);
 			}
-			public function makeQuestion(question:XML):void {
-				trace("got the question:"+question.toString());
-				trace("value for 0:"+question.option[0]);
-				correctAnswer=Number(question.@answer);
-				if(question.@type=="digit") {
+			public function makeQuestion(question:Object):void {
+				
+				
+				correctAnswer=Number(question.answer);
+				if(question.type=="digit") {
 					this.currentState="Calculator";
 					answerbut.visible=false;
 					numericAnswer.text="";
 				} else {
-					trace("setting up radio buttons"+question.option[1].toString());
+					trace("setting up radio buttons"+question.options[1].toString());
 					answerRadio.visible=false;
 					this.currentState="MultipleChoice";
-					answer0.label=question.option[0];
-					answer1.label=question.option[1];
-					answer2.label=question.option[2];
-					answer3.label=question.option[3];
+					answer0.label=question.options["1"];
+					answer1.label=question.options["2"];
+					answer2.label=question.options["3"];
+					answer3.label=question.options["4"];
 					
 					answer0.selected=false;
 					answer1.selected=false;
 					answer2.selected=false;
 					answer3.selected=false;
 				}
-				trace("question:"+question.@type);
-				trace("question:"+question.@answer);
-				trace("option:"+question.option.length());
-				trace("option 1:"+question.option[1]);
+//				trace("question:"+question.@type);
+//				trace("question:"+question.@answer);
+//				trace("option:"+question.option.length());
+//				trace("option 1:"+question.option[1]);
 			}
 			
 		]]>

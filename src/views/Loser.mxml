@@ -16,7 +16,7 @@
 			
 			private var prefs:XMLPrefs = XMLPrefs.getInstance();
 			
-			public function start() {
+			public function start():void {
 				var tempo:DelayedExecution=new DelayedExecution(prefs.splashPause*1000,this,restart);
 			}
 			

@@ -13,7 +13,7 @@
 	<fx:Script>
 		<![CDATA[
 			import com.alfo.XMLPrefs;
-			import com.alfo.console;
+			import com.utils.Console;
 			
 			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
@@ -185,13 +185,13 @@
 				}
 			}
 			
-			protected function quizComplete(e:QuizEvent):void {
-				console.log("quiz completed with score:"+e.score, this);
+			protected function quizComplete(e:QuizEvent):void { 
+				Console.log("quiz completed with score:"+e.score, this);
 				currentScore=e.score;
 				saveScore.send({	id:currentUserID, score:currentScore });
 			}
 			protected function showTerms(e:NavEvent):void {
-				console.log("show terms and cond", this);
+				Console.log("show terms and cond", this);
 				tcWindow = new tandcWindow();
 				tcWindow.exitFunction = null;
 				
@@ -199,7 +199,7 @@
 				PopUpManager.centerPopUp(tcWindow);
 			}
 			protected function handleRegError(e:UserDataEvent):void {
-				console.log("error:"+e.result, this);
+				Console.log("error:"+e.result, this);
 				alertbox = new ErrorAlert();
 				alertbox.message = e.result;
 				alertbox.windowTitle = "Server Error";
@@ -210,7 +210,7 @@
 				
 			}
 			protected function userRegistered(e:UserDataEvent):void {
-				console.log("user has registered"+e.result, this);
+				Console.log("user has registered"+e.result, this);
 				currentUserID=e.result;
 				
 			}
@@ -219,7 +219,7 @@
 				stack.selectedIndex=0;
 			}
 			protected function navigate(e:NavEvent):void {
-				console.log("going to"+e.page, this);
+				Console.log("going to"+e.page, this);
 				currentSlide=e.page;
 				switch(e.page)
 				{
