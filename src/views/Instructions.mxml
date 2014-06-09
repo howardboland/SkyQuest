@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				   xmlns:s="library://ns.adobe.com/flex/spark" 
+				   xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" addedToStage="bordercontainer1_addedToStageHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import event.NavEvent;
+			
+			import flashx.textLayout.conversion.TextConverter;
+			import flashx.textLayout.events.StatusChangeEvent;
+			
+			protected function gameButt_clickHandler(event:MouseEvent):void
+			{
+				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"register");
+				dispatchEvent(navigation);
+				
+			}
+			
+			protected function bordercontainer1_addedToStageHandler(event:Event):void
+			{
+				trace("text is high:"+editor.scroller.viewport.contentHeight);
+				editor.height=editor.scroller.viewport.contentHeight;
+				
+			}
+
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		
+	</fx:Declarations>
+	<s:HGroup width="100%" height="100%">
+		<s:VGroup verticalAlign="bottom" height="100%" width="50%" horizontalAlign="left">
+			<s:Image source="assets/images/Sky_Week_2_1635_Ross.jpg" smooth="true" smoothingQuality="high" click="gameButt_clickHandler(event)"  />
+		</s:VGroup>
+		<s:VGroup paddingRight="25" verticalAlign="middle" horizontalAlign="right" height="100%" width="50%">
+			<s:TextArea id="editor" lineHeight="100%" width="500" verticalScrollPolicy="off"
+						horizontalCenter="0" verticalCenter="0" verticalAlign="middle" borderVisible="false" editable="false">
+				<s:textFlow>
+					<s:TextFlow id="_tf" >
+						<s:p textAlign="right" fontFamily="Sky" fontSize="65">Press <s:img verticalAlign="bottom" source="/assets/images/loghetto.swf" /> on the Sky remote control in front of you and watch the short clip.
+						Once you’ve finished, follow the on-screen instructions.</s:p>
+					</s:TextFlow>
+				</s:textFlow>
+			</s:TextArea>
+			<s:BitmapImage source="assets/images/instructions.fw.png" visible="false" includeInLayout="false" />
+			<s:Button label="GAME" id="gameButt" click="gameButt_clickHandler(event)" />
+		</s:VGroup>
+	</s:HGroup>
+</s:BorderContainer>

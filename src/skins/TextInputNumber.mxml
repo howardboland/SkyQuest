@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:fx="http://ns.adobe.com/mxml/2009"
+		width="175" height="62">
+	<fx:Metadata>[HostComponent("spark.components.TextInput")]</fx:Metadata>
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="disabled"/>
+		<s:State name="normalWithPrompt"/>
+		<s:State name="disabledWithPrompt"/>
+	</s:states>
+	<s:Group x="0" y="0">
+		<s:Rect x="0.5" y="0.5" width="174" height="61" radiusX="10.7773" radiusY="10.7773">
+			<s:fill>
+				<s:SolidColor color="#FFFFFF"/>
+			</s:fill>
+			<s:stroke>
+				<s:SolidColorStroke weight="1" caps="none" joints="miter" miterLimit="4"/>
+			</s:stroke>
+		</s:Rect>
+	</s:Group>
+	<s:RichText id="promptDisplay" includeIn="disabledWithPrompt,normalWithPrompt" x="11" y="11"
+				width="155" height="40" color="#464646" fontFamily="Sky Text" fontSize="48"
+				tabStops="S0 S50 S100 S150" textAlign="end"/>
+	<s:RichEditableText id="textDisplay" x="11" y="11" width="155" fontFamily="Sky Text"
+						fontSize="48" heightInLines="1"/>
+</s:Skin>

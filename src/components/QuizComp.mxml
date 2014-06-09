@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 addedToStage="group1_addedToStageHandler(event)" currentState="MultipleChoice">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			
+			public var answer:Number=-1;
+			public var correctAnswer:Number;
+			
+			protected function group1_addedToStageHandler(event:Event):void
+			{
+				//init();
+				
+			}
+			public function init():void {
+				answer=0;
+				answer0.selected=false;
+				answer1.selected=false;
+				answer2.selected=false;
+				answer3.selected=false;
+				numericAnswer.text="";
+			}
+			public function pushKeypad(num:Number):void {
+				var lungo:Number=numericAnswer.text.length;
+				if(lungo<4) {
+					numericAnswer.text+=String(num);
+				}
+			}
+			public function backKeypad():void {
+				numericAnswer.text=numericAnswer.text.slice(0,-1);
+			}
+			
+			public function answerRadioBut(gino:Number):void {
+				trace("pushed answer"+gino);
+				answer=gino;
+			}
+			
+			protected function answerRadio_clickHandler(event:MouseEvent):void
+			{
+				trace("answer radio");
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<s:HGroup includeIn="Calculator">
+		<s:TileGroup requestedColumnCount="3" horizontalGap="27" verticalGap="19">
+			<s:Button skinClass="skins.NumericKeypadButton" label="1" click="pushKeypad(1)" />
+			<s:Button skinClass="skins.NumericKeypadButton" label="2" click="pushKeypad(2)"  />
+			<s:Button skinClass="skins.NumericKeypadButton" label="3" click="pushKeypad(3)"  />
+			<s:Button skinClass="skins.NumericKeypadButton" label="4" click="pushKeypad(4)"  />
+			<s:Button skinClass="skins.NumericKeypadButton" label="5" click="pushKeypad(5)"  />
+			<s:Button skinClass="skins.NumericKeypadButton" label="6" click="pushKeypad(6)"  />
+			<s:Button skinClass="skins.NumericKeypadButton" label="7" click="pushKeypad(7)"  />
+			<s:Button skinClass="skins.NumericKeypadButton" label="8" click="pushKeypad(8)"  />
+			<s:Button skinClass="skins.NumericKeypadButton" label="9" click="pushKeypad(9)"  />
+			<s:Button skinClass="skins.NumericKeypadButton" label="0" click="pushKeypad(0)"  />
+			<s:Spacer width="86" height="76"/>
+			<s:Button skinClass="skins.ButtonNumericBack" click="backKeypad()" />
+		</s:TileGroup>
+		<s:Spacer width="70" height="100">
+			
+		</s:Spacer>
+		<s:VGroup>
+			<s:TextInput skinClass="skins.TextInputNumber" id="numericAnswer" />
+			<s:Spacer width="70" height="76"/>
+			<s:Button skinClass="skins.ButtonSky" id="answerbut" label="ANSWER"/>
+		</s:VGroup>
+	</s:HGroup>
+	<s:VGroup includeIn="MultipleChoice" gap="40">
+		<s:RadioButton skinClass="skins.RadioButtonSky" value="1" groupName="sky" id="answer0" selected="false" click="answerRadioBut(1)" />
+		<s:RadioButton skinClass="skins.RadioButtonSky" value="2" groupName="sky" id="answer1" selected="false" click="answerRadioBut(2)"  />
+		<s:RadioButton skinClass="skins.RadioButtonSky" value="3" groupName="sky" id="answer2" selected="false" click="answerRadioBut(3)"  />
+		<s:RadioButton skinClass="skins.RadioButtonSky" value="3" groupName="sky" id="answer3" selected="false" click="answerRadioBut(4)"  />
+		<s:Spacer width="70" height="30"/>
+		<s:Button skinClass="skins.ButtonSky" id="answerRadio" label="ANSWER" click="answerRadio_clickHandler(event)"/>
+	</s:VGroup>
+</s:Group>

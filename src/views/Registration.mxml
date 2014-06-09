@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 addedToStage="group1_addedToStageHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import components.pleaseWait;
+			
+			import event.NavEvent;
+			import event.UserDataEvent;
+			
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import mx.validators.Validator;
+			
+			protected var keyboardRequest:URLRequest;
+			protected var keyboardLoader:URLLoader = new URLLoader();
+			
+			import uk.co.huydinh.app.champion.keyboard.OnScreenKeyboard;
+			public var englishKeyboard:OnScreenKeyboard = new OnScreenKeyboard();
+
+			
+			[Bindable]
+			protected var validatorArr:Array;
+			
+			protected var popupWait:components.pleaseWait;
+			
+			protected function group1_addedToStageHandler(event:Event):void
+			{
+				
+				keyboardRequest = new URLRequest("languages/english.kb.xml");
+				keyboardLoader.addEventListener(Event.COMPLETE, onKeyboardLoad);
+				keyboardLoader.load(keyboardRequest);
+				
+				trace("BASE URL:"+this.parentApplication.baseURL);
+
+
+			}
+			protected function onKeyboardLoad(Event):void
+			{
+				englishKeyboard.keyData = new XML(keyboardLoader.data);
+				this.parentApplication.virtualKey.addChild(englishKeyboard);
+				configureInputField(userFirstName);
+				configureInputField(userLastName);
+				configureInputField(userEmail);
+				//englishKeyboard.show();
+				//englishKeyboard.focus=userFirstName;
+				englishKeyboard.alpha=0;
+				englishKeyboard.visible=false;
+			}
+			protected function save(e:ResultEvent=null):void
+			{
+				PopUpManager.removePopUp(popupWait);
+				englishKeyboard.hide();
+				// -> Do we need to send an isRegistered? We should divide Facebook and Direct registration perhaps
+				if (e.result.result=="OK")
+				{
+					trace("user id:"+e.result.id);
+					var resulto:UserDataEvent = new UserDataEvent(UserDataEvent.SUBMIT_REGISTRATION,e.result.id);
+					dispatchEvent(resulto);
+					var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"countdown");
+					dispatchEvent(navigation);
+					//this.parentApplication.dispatchEvent( new UserEvent(UserEvent.REGISTERED, "classic"));
+					//this.parentApplication.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_REGISTRATION_COMPLETE ) );
+				} else
+				{
+					var errore:UserDataEvent = new UserDataEvent(UserDataEvent.SERVER_ERROR,e.result.message.toString());
+					dispatchEvent(errore);
+					
+				}
+			}
+			protected function error(e:FaultEvent):void
+			{
+				PopUpManager.removePopUp(popupWait);
+				englishKeyboard.hide();
+				trace("server error"+e.fault.message.toString());
+				var errore:UserDataEvent = new UserDataEvent(UserDataEvent.SERVER_ERROR,e.fault.message.toString());
+				dispatchEvent(errore);
+				//this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, e.fault.message.toString(), "COMMUNICATION ERROR"));
+				
+			}
+			
+			public function clearForm():void
+			{
+				userEmail.text="";
+				userEmail.errorString="";
+				userFirstName.text="";
+				userFirstName.errorString="";
+				userLastName.text="";
+				userLastName.errorString="";
+				termsCheck.selected = false;
+				termsCheck.errorString = "";
+				englishKeyboard.hide();
+			}
+			
+			protected function submit():void 
+			{
+				englishKeyboard.hide();
+				validatorArr = new Array();
+				validatorArr.push(validateName);
+				validatorArr.push(validateSurname);
+				validatorArr.push(validateEmail);
+				validatorArr.push(validateTerms);
+				var validatorErrorArray:Array = Validator.validateAll(validatorArr);
+				var isValidForm:Boolean = validatorErrorArray.length == 0;
+				if (isValidForm) 
+				{
+					popupWait = new pleaseWait();
+					PopUpManager.addPopUp(popupWait, this, true) ;
+					PopUpManager.centerPopUp(popupWait);
+					popupWait.y-=100;
+					popupWait.x=(1024-popupWait.width)/2;
+					//send data
+					saveData.send({	firstname:userFirstName.text, lastname: userLastName.text, email: userEmail.text });
+					//	save();
+				} 
+			}
+			
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+			protected function cancel_clickHandler(event:MouseEvent):void
+			{
+				englishKeyboard.hide();
+				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"home");
+				dispatchEvent(navigation);
+				
+			}
+			
+			protected function label1_clickHandler(event:MouseEvent):void
+			{
+				englishKeyboard.hide();
+				var navigation:NavEvent=new NavEvent(NavEvent.SHOWTERMS,"");
+				dispatchEvent(navigation);
+				
+			}
+			
+			protected function configureInputField(tf:TextInput):void
+			{
+				
+				tf.addEventListener(FocusEvent.FOCUS_IN, handleFocusIn);
+				tf.addEventListener(MouseEvent.CLICK, handleInputClick);
+				tf.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyboardDown);
+			}
+			protected function handleFocusIn(e:FocusEvent):void {
+				trace("focus in:"+e.target);
+				var activeField:TextInput = e.currentTarget as TextInput;
+				englishKeyboard.focus=activeField;
+				//activeField.backgroundColor = INPUT_FIELD_COLOUR;
+				
+				
+			}
+			protected function handleInputClick(e:MouseEvent):void {
+				trace("input click"+e.target);
+				englishKeyboard.show();
+			}
+			protected function handleKeyboardDown(e:KeyboardEvent):void {
+				trace("keyboard event"+e.target);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<mx:StringValidator id="validateName"  property="text" source="{userFirstName}">
+		</mx:StringValidator>
+		<mx:StringValidator id="validateSurname"  property="text"
+							source="{userLastName}">
+		</mx:StringValidator>
+		<mx:EmailValidator id="validateEmail" property="text" source="{userEmail}" triggerEvent="">
+		</mx:EmailValidator>
+		<mx:StringValidator id="validateTerms"
+							source="{termsCheck}"
+							required="true"
+							property="selected" maxLength="4" requiredFieldError="You must agree the terms of use" tooLongError="You must agree to the Terms of Use.">
+		</mx:StringValidator>
+		
+		<s:HTTPService id="saveData" fault="error(event)" method="POST" result="save(event)"
+					   resultFormat="flashvars"
+					   url="{(this.parentApplication).baseURL+'insertuser.php'}"/>
+		
+	</fx:Declarations>
+	
+	
+	
+	<s:Form id="userform" >
+
+
+		<s:FormHeading label="PLEASE ENTER YOUR DETAILS" color="#91278E" skinClass="skins.SkyFormHeading" fontSize="78"
+					   fontWeight="bold"/>
+		
+		<s:FormItem label="FIRST NAME:" skinClass="skins.SkyFormItem"  >
+			<s:TextInput id="userFirstName" height="50" width="400"  skinClass="skins.SkyTextInput"/>
+		</s:FormItem>
+		
+		<s:FormItem label="LAST NAME:"  top="20">
+			<s:TextInput id="userLastName" height="50" color="0x000000" 
+						 skinClass="skins.SkyTextInput" width="400"/>
+		</s:FormItem>
+		
+		<s:FormItem  label="EMAIL:"  >
+			<s:TextInput id="userEmail" height="50" width="400"  skinClass="skins.SkyTextInput"/>
+		</s:FormItem>
+		<s:FormItem label="">
+			<s:CheckBox id="termsCheck" skinClass="skins.SkyCheck2" label="I agree to the T&amp;Cs" width="400" />
+		</s:FormItem>
+		<s:Spacer height="20"/>
+		<s:VGroup horizontalAlign="left">
+				<s:VGroup >
+					<s:HGroup >
+						<s:Spacer width="10"/>
+						<s:Label fontSize="28" styleName="smallprint" text="BY PRESSING SUBMIT YOU AGREE TO THE"/>
+						<s:Label fontSize="28" styleName="smallprintLink" color="#91278E" fontWeight="bold" text="TERMS AND CONDITIONS" click="label1_clickHandler(event)" />
+					</s:HGroup>
+				</s:VGroup>
+			</s:VGroup>	
+		<s:Spacer height="20"/>
+		<s:HGroup horizontalAlign="center" top="50">
+			
+			<s:Button label="CANCEL" id="cancel" click="cancel_clickHandler(event)"/>
+			<s:Spacer x="179" width="748" height="30"/>
+			
+			<s:Button label="SUBMIT" click="submit()"/>
+		</s:HGroup>
+	</s:Form>
+	
+</s:Group>

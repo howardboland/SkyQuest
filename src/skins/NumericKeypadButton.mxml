@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:ai="http://ns.adobe.com/ai/2009"
+		width="90" height="78">
+	<fx:Metadata>[HostComponent("spark.components.Button")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:Group y="0" transformX="44.5" transformY="39"
+			 x.disabled="1"
+			 x.down="-0.878" y.down="-0.66" rotation.down="-180" transformX.down="45.126"
+			 transformY.down="39.22"
+			 x.over="1"
+			 x.up="1">
+		<s:Group x="1" y="1"
+				 x.down="0.374" y.down="0.78" transformX.down="0.626" transformY.down="0.22">
+			<s:mask>
+				<s:Group x="0.37" y="-0.036" ai:spare="1">
+					<s:Path winding="nonZero" data="M13.4731 0C6.03662 0 0 6.0293 0 13.4668L0 62.6768C0 70.1201 6.03662 76.1504 13.4731 76.1504L73.1216 76.1504C80.5615 76.1504 86.5889 70.1201 86.5889 62.6768L86.5889 13.4668C86.5889 6.0293 80.5615 0 73.1216 0L13.4731 0Z">
+						<s:fill>
+							<s:SolidColor color="#FFFFFF"/>
+						</s:fill>
+					</s:Path>
+				</s:Group>
+			</s:mask>
+			<s:Rect x="0" y="0" width="87" height="76">
+				<s:fill>
+					<s:LinearGradient x="43.2858" y="-4.24634" scaleX="84.0591" rotation="90">
+						<s:GradientEntry ratio="0" color="#D4D4D4"/>
+						<s:GradientEntry ratio="1" color="#FFFFFF"/>
+					</s:LinearGradient>
+				</s:fill>
+			</s:Rect>
+		</s:Group>
+		<s:Path x="0.626" y="0.22"
+				data="M 87.336 63.421 C 87.336 70.864 81.305 76.891 73.865 76.891 L 14.217 76.891 C 6.78 76.891 0.744 70.864 0.744 63.421 L 0.744 14.211 C 0.744 6.773 6.78 0.744 14.217 0.744 L 73.865 0.744 C 81.305 0.744 87.336 6.773 87.336 14.211 L 87.336 63.421 Z"
+				winding="nonZero"
+				x.down="0" y.down="0">
+			<s:stroke>
+				<s:SolidColorStroke weight="1.4875" caps="none" joints="miter" miterLimit="4" color="#91278E"/>
+			</s:stroke>
+		</s:Path>
+	</s:Group>
+	<s:RichText id="labelDisplay" x="2" y="24" width="87" height="37" color="#000000"
+				fontFamily="Sky Text" fontSize="42" fontWeight="bold" tabStops="S0 S50"
+				textAlign="center"/>
+</s:Skin>

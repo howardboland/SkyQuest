@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language textdirection="rtl">
+	<question><![CDATA[Mother's maiden name?]]></question>
+	<question><![CDATA[Name of your first pet?]]></question>
+	<question><![CDATA[Your favourite colour?]]></question>
+	<text id="ok"><![CDATA[OK]]></text>
+	<text id="back"><![CDATA[BACK]]></text>
+	<text id="submit"><![CDATA[SUBMIT]]></text>
+	<text id="cancel"><![CDATA[CANCEL]]></text>
+	<text id="continue"><![CDATA[CONTINUE]]></text>
+	<text id="registered-with-receipt"><![CDATA[I pre-booked on the website - I have the confirmation email - TOUCH HERE]]></text>
+	<text id="registered-without-receipt"><![CDATA[I did NOT pre-booked on the website - I do NOT have a confirmation email - TOUCH HERE]]></text>
+	<text id="not-registered"><![CDATA[I did NOT pre-booked on the website - I do NOT have a confirmation email - TOUCH HERE]]></text>
+	<text id="scan-barcode-instruction"><![CDATA[Please scan the barcode on your confirmation email, using the scanner below]]></text>
+	<text id="error"><![CDATA[ERROR]]></text>
+	<text id="attention"><![CDATA[ATTENTION]]></text>
+	<text id="barcode-not-found"><![CDATA[Your registration details could not be found, please check it carefully and try again]]></text>
+	<text id="barcode-invalid"><![CDATA[The barcode you have entered is invalid, please check it carefully and try again]]></text>
+	<text id="wristband-invalid"><![CDATA[Your wristband number is invalid, please scan it again or type it in carefully]]></text>
+	<text id="type-reference-instruction"><![CDATA[If you are having problems, please type in your booking reference number below:]]></text>
+	<text id="recover-intro"><![CDATA[PLEASE ENTER YOUR DETAILS TO RECOVER YOUR REGISTRATION]]></text>
+	<text id="first-name"><![CDATA[FIRST NAME]]></text>
+	<text id="first-name-invalid"><![CDATA[Your first name is required]]></text>
+	<text id="last-name"><![CDATA[LAST NAME]]></text>
+	<text id="last-name-invalid"><![CDATA[Your last name is required]]></text>
+	<text id="security"><![CDATA[SECURITY QUESTION]]></text>
+	<text id="security-instruction"><![CDATA[Please choose a security question from the dropdown menu below. This is necessary to retrieve your photo online later:]]></text>
+	<text id="security-default-question"><![CDATA[Security question...]]></text>
+	<text id="security-question-invalid"><![CDATA[Please choose a security question from the dropdown menu below. This is necessary to retrieve your photo online later:]]></text>
+	<text id="security-answer-invalid"><![CDATA[Please answer your chosen security question]]></text>
+	<text id="default-text"><![CDATA[enter text...]]></text>
+	<text id="register-intro"><![CDATA[PLEASE ENTER YOUR DETAILS BELOW]]></text>
+	<text id="tc-statement"><![CDATA[by pressing CONTINUE<br/>I agree to the <font color="#ffff00">Terms and Conditions</font>]]></text>
+	<text id="scan-wristband-instruction"><![CDATA[Please scan your wristband using the scanner below]]></text>
+	<text id="type-wristband-instruction"><![CDATA[If your wristband wont scan, click below to enter this manually:]]></text>
+	<text id="select-team-instruction"><![CDATA[PLEASE SELECT YOUR TEAM]]></text>
+	<text id="take-photo"><![CDATA[TAKE PHOTO]]></text>
+	<text id="thank-you"><![CDATA[Thank you]]></text>
+	<text id="prepare-instruction"><![CDATA[You are now ready to have your photo taken, once you press the button below you have 5 seconds to get in position]]></text>
+	<text id="get-ready"><![CDATA[GET READY]]></text>
+	<text id="look-at-camera"><![CDATA[LOOK AT THE CAMERA]]></text>
+	<text id="please-wait"><![CDATA[PLEASE WAIT]]></text>
+	<text id="take-photo-again"><![CDATA[TAKE YOUR PHOTO AGAIN]]></text>
+	<text id="next-customer"><![CDATA[PRESS HERE TO RETURN TO THE START]]></text>
+	<text id="finish"><![CDATA[FINISH]]></text>
+	<text id="instruction-text"><![CDATA[Please pose like you are holding the trophy above your head.]]></text>	
+	<text id="terms-title"><![CDATA[Terms and Conditions]]></text>
+	<text id="close"><![CDATA[Close]]></text>
+</language>

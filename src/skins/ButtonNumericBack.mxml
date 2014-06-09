@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:ai="http://ns.adobe.com/ai/2009"
+		width="90" height="79">
+	<fx:Metadata>[HostComponent("spark.components.Button")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:Group y="0" transformX="44.5" transformY="39.5"
+			 x.disabled="1"
+			 x.down="-1.376" y.down="-2.535" rotation.down="-180" transformX.down="45.292"
+			 transformY.down="40.345"
+			 x.over="1"
+			 x.up="1">
+		<s:Group x="2" y="2"
+				 x.down="1.208" y.down="1.155" transformX.down="0.792" transformY.down="0.845">
+			<s:mask>
+				<s:Group x="-0.464" y="-0.411" ai:spare="1">
+					<s:Path winding="nonZero" data="M13.4736 0C6.03613 0 0 6.0293 0 13.4668L0 62.6768C0 70.1201 6.03613 76.1504 13.4736 76.1504L73.1211 76.1504C80.5615 76.1504 86.5889 70.1201 86.5889 62.6768L86.5889 13.4668C86.5889 6.0293 80.5615 0 73.1211 0L13.4736 0Z">
+						<s:fill>
+							<s:SolidColor color="#FFFFFF"/>
+						</s:fill>
+					</s:Path>
+				</s:Group>
+			</s:mask>
+			<s:Rect x="0" y="0" width="86" height="76">
+				<s:fill>
+					<s:LinearGradient x="43.2888" y="-4.25732" scaleX="84.0769" rotation="90">
+						<s:GradientEntry ratio="0" color="#D4D4D4"/>
+						<s:GradientEntry ratio="1" color="#FFFFFF"/>
+					</s:LinearGradient>
+				</s:fill>
+			</s:Rect>
+		</s:Group>
+		<s:Path x="0.792" y="0.845"
+				data="M 87.336 63.421 C 87.336 70.864 81.305 76.891 73.865 76.891 L 14.217 76.891 C 6.78 76.891 0.744 70.864 0.744 63.421 L 0.744 14.211 C 0.744 6.773 6.78 0.744 14.217 0.744 L 73.865 0.744 C 81.305 0.744 87.336 6.773 87.336 14.211 L 87.336 63.421 Z"
+				winding="nonZero"
+				x.down="0" y.down="0">
+			<s:stroke>
+				<s:SolidColorStroke weight="1.4875" caps="none" joints="miter" miterLimit="4" color="#91278E"/>
+			</s:stroke>
+		</s:Path>
+	</s:Group>
+	<s:Group x="23" y="24">
+		<s:Line x="2.5" y="15.5" xTo="41">
+			<s:stroke>
+				<s:SolidColorStroke weight="5" miterLimit="10" color="#231F20"/>
+			</s:stroke>
+		</s:Line>
+		<s:Path x="-0.014" y="0.063" winding="nonZero" data="M 15.602 28.859 L 2.344 15.602 L 15.602 2.344">
+			<s:stroke>
+				<s:SolidColorStroke weight="4.6875" miterLimit="10" color="#231F20"/>
+			</s:stroke>
+		</s:Path>
+	</s:Group>
+</s:Skin>

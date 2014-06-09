@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Graphic xmlns:ai="http://ns.adobe.com/ai/2009" xmlns:fc="http://ns.adobe.com/flashcatalyst/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns="http://ns.adobe.com/fxg/2008" version="2.0">
+	<Group>
+		<Group x="1" y="1">
+			<mask>
+				<Group x="0.05" y="0.1" ai:spare="1">
+					<Path winding="nonZero" data="M10.7793 0C4.8291 0 0 4.82422 0 10.7734L0 50.1406C0 56.0957 4.8291 60.9199 10.7793 60.9199L163.747 60.9199C169.699 60.9199 174.521 56.0957 174.521 50.1406L174.521 10.7734C174.521 4.82422 169.699 0 163.747 0L10.7793 0Z">
+						<fill>
+							<SolidColor color="#FFFFFF"/>
+						</fill>
+					</Path>
+				</Group>
+			</mask>
+			<Rect width="175" height="61">
+				<fill>
+					<LinearGradient rotation="270.014" scaleX="67.2851" x="87.2693" y="64.3523">
+						<GradientEntry color="#91278E" ratio="0"/>
+						<GradientEntry color="#881988" ratio="1"/>
+					</LinearGradient>
+				</fill>
+			</Rect>
+		</Group>
+		<Path winding="nonZero" x="0.481" y="0.542" data="M 175.118 50.736 C 175.118 56.691 170.294 61.513 164.342 61.513 L 11.374 61.513 C 5.424 61.513 0.595 56.691 0.595 50.736 L 0.595 11.368 C 0.595 5.419 5.424 0.595 11.374 0.595 L 164.342 0.595 C 170.294 0.595 175.118 5.419 175.118 11.368 L 175.118 50.736 Z">
+			<stroke>
+				<SolidColorStroke caps="none" color="#91278E" joints="miter" miterLimit="4" weight="1.19"/>
+			</stroke>
+		</Path>
+	</Group>
+</Graphic>

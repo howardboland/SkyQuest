@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:local="*"
+		 borderVisible="false" backgroundAlpha="0" addedToStage="quizBox_addedToStageHandler(event)" activate="bordercontainer1_activateHandler(event)" deactivate="bordercontainer1_deactivateHandler(event)" xmlns:components="components.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.XMLPrefs;
+			
+			import components.QuizModal;
+			
+			import event.NavEvent;
+			import event.QuizEvent;
+			
+			import mx.managers.PopUpManager;
+			
+			import org.osmf.events.TimeEvent;
+			
+			private var questionsXML:XML;
+			private var shuffledQuestions:Array;
+			
+			private var timo:Timer=new Timer(1000);
+			private var conta:Number=1;
+			
+			private var currentQuestion:Number=0;
+			
+			private var quizModal:QuizModal;
+			
+			private var prefs:XMLPrefs = XMLPrefs.getInstance();
+			
+			var minNum:Number=0;
+			var maxNum:Number;
+			var randomQuestion:Number;
+			
+			protected function quizBox_addedToStageHandler(event:Event):void
+			{
+				trace("path:"+File.applicationDirectory.nativePath);
+				var file:File = File.applicationDirectory.resolvePath("assets/xml/questions.xml");
+				var fileStream:FileStream = new FileStream();
+				fileStream.open(file, FileMode.READ);
+				questionsXML = XML(fileStream.readUTFBytes(fileStream.bytesAvailable));
+				fileStream.close();
+				shuffleQuestions();
+				trace("lunghezza"+questionsXML.clip.length());
+				trace("lunghezza"+questionsXML.clip[0].@title);
+				trace("lunghezza"+questionsXML.clip[0].@title);
+				trace("lunghezza"+questionsXML.clip[0].question[0].@type);
+				trace("lunghezza"+questionsXML.clip[0].question[0].option[0]);
+				timo.addEventListener(TimerEvent.TIMER,contatore);
+				
+				conto.timeLimit=prefs.timeOut;
+				quizBox.addEventListener(QuizEvent.CORRECT_ANSWER,correctAnswer);
+				quizBox.addEventListener(QuizEvent.WRONG_ANSWER,wrongAnswer);
+				
+			}
+			protected function secondsToMinutesSeconds(secs:Number):String {
+				var s:Number = secs % 60;
+				var m:Number = Math.floor((secs % 3600 ) /60);
+				var h:Number = Math.floor(secs / (60*60));
+				
+				var minutestring:String = m<10 ? "0"+String(m)+":" : String(m)+":";
+				var secstring:String = s<10 ? "0"+String(s) : String(s);
+				return minutestring+secstring;
+			}
+			public function startGame():void {
+				conta=0;
+				//shuffleQuestions();
+				conto.timo=0;
+				timo.start();
+				currentQuestion=0;
+				
+				minNum=0;
+				maxNum=questionsXML.clip[currentQuestion].question.length()-1;
+				randomQuestion=Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+				
+				pullQuestion();
+			}
+			protected function pullQuestion():void {
+
+				
+				questionNum.text=questionsXML.clip[currentQuestion].@title;
+				questionText.text=questionsXML.clip[currentQuestion].question[randomQuestion].@text;
+				quizBox.makeQuestion(questionsXML.clip[currentQuestion].question[randomQuestion]);
+				
+			}
+			public function correctAnswer(e:QuizEvent):void {
+				randomQuestion=Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+				currentQuestion++;
+				trace("dispatched correct");
+				showMessage("Correct answer!");
+			}
+			protected function checkComplete():void {
+				if(currentQuestion<(prefs.totalQuestions)) {
+					
+					pullQuestion();
+				} else {
+					timo.stop();
+					var evento:QuizEvent=new QuizEvent(QuizEvent.QUIZ_COMPLETE,conta);
+					dispatchEvent(evento);
+					var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"congrat");
+					dispatchEvent(navigation);
+				}
+			}
+			public function wrongAnswer(e:QuizEvent):void {
+				trace("dispatched wrong");
+				showMessage("Wrong answer!","You have "+String(prefs.penalty)+" sec penalty");
+				conta+=prefs.penalty;
+				conto.timo=conta;
+			}
+			public function showMessage(line1:String,line2:String=null):void {
+				timo.stop();
+				quizModal = new QuizModal();
+				quizModal.setMessage(line1,line2);
+				quizModal.exitFunction = resumeTimer;
+				PopUpManager.addPopUp(quizModal, this, true);
+				PopUpManager.centerPopUp(quizModal);
+				quizModal.y-=100;
+				quizModal.x=(1024-quizModal.width)/2;
+			}
+			function resumeTimer():void {
+				trace("resume timer");
+				timo.start();
+				checkComplete();
+			}
+			protected function shuffleQuestions():void {
+				var tempQuestions:Array=new Array();
+				shuffledQuestions=new Array();
+				for (var i:Number=0;i<questionsXML.question.length();i++) {
+					tempQuestions[i]=i;
+				}
+				while (tempQuestions.length > 0) {
+					shuffledQuestions.push(tempQuestions.splice(Math.round(Math.random() * (tempQuestions.length - 1)), 1)[0]);
+				}
+				for (i=0;i<shuffledQuestions.length;i++) {
+					trace("question"+shuffledQuestions[i]);
+				}
+				
+			}
+			protected function contatore(e:Event):void {
+				checkTimeOut();
+				conta++;
+				conto.timo=conta;
+			}
+			protected function checkTimeOut():void {
+				
+				if(conta>=prefs.timeOut) {
+					trace("time out!");
+					timo.stop();
+					var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"loser");
+					dispatchEvent(navigation);
+				} else {
+					var rimasto:Number=prefs.timeOut-conta;
+					timeLeft.text="Time left: "+secondsToMinutesSeconds(rimasto);
+				}
+			}
+			protected function bordercontainer1_activateHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+			protected function bordercontainer1_deactivateHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:VGroup width="95%" horizontalAlign="left">
+		<s:Spacer height="20"/>
+		<s:HGroup width="100%" verticalAlign="bottom">
+			<s:VGroup width="50%" horizontalAlign="left">
+				<s:Label id="questionNum" width="1000" text="Question X" fontSize="64" fontWeight="bold" color="#91278E" />
+			</s:VGroup>
+			<s:VGroup width="50%" horizontalAlign="right">
+				<local:Contatore id="conto"/>
+			</s:VGroup>
+		</s:HGroup>
+		<s:Spacer height="10"/>
+		<s:Label lineHeight="90%" width="1200" fontSize="45" fontWeight="normal" id="questionText" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
+		<s:Spacer height="10"/>
+		<components:QuizBox id="quizBox" />
+		<s:Spacer height="10"/>
+		<s:Label id="timeLeft" text="Time left: "
+					color="#91278E" fontFamily="Sky"
+					fontSize="26.25" fontWeight="bold" kerning="on"
+					 />
+	</s:VGroup>
+	
+	
+</s:BorderContainer>

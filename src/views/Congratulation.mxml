@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:components="components.*" borderVisible="false" backgroundAlpha="0" xmlns:views="views.*">
+	
+	<fx:Metadata>
+		[Event(name="navigation", type="events.NavEvent")]
+		
+	</fx:Metadata>
+	
+	<fx:Script>
+		<![CDATA[
+			import event.NavEvent;
+			import com.alfo.DelayedExecution;
+			import com.alfo.XMLPrefs;
+			
+			private var prefs:XMLPrefs = XMLPrefs.getInstance();
+			
+			public function start():void {
+				var tempo:DelayedExecution=new DelayedExecution(prefs.splashPause*1000,this,restart);
+			}
+			
+			protected function restart():void
+			{
+				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"home");
+				dispatchEvent(navigation);
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:VGroup horizontalAlign="center">
+		<components:Congratulations  />
+		<s:Spacer height="20"/>
+		<s:HGroup>
+			<s:Label fontSize="111" text="Your time was" fontWeight="normal" />
+			<s:Spacer width="15"/>
+			<s:Label fontSize="111" text="00:00" fontWeight="bold" id="time"/>
+				
+		</s:HGroup>
+	</s:VGroup>
+	
+	
+	
+
+</s:BorderContainer>

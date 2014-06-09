@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preferences>
+	<timeout>240</timeout>
+	<totalquestions>6</totalquestions>
+	<penalty>5</penalty>
+	<modalpause>3</modalpause>
+	<splashpause>5</splashpause>
+	<baseurl>http://www.ignitesocial.co.uk/sky/</baseurl>
+</preferences>

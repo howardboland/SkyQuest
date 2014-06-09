@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<questions>
+<clip title="My Week with Marilyn">
+	<question type="multi" answer="2" text="How many pilots are standing behind Marilyn Monroe?">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+	 </question>
+	 <question type="multi" answer="1" text="Which airline does Marilyn Monroe fly with?">
+		<option>TWA</option>
+		<option>British Airways</option>
+		<option>KLM</option>
+		<option>American Airlines</option>
+	 </question>
+	 <question type="multi" answer="3" text="What colour are the flowers that Marilyn Monroe is holding?">
+		<option>Purple</option>
+		<option>Red</option>
+		<option>White</option>
+		<option>Pink</option>
+	 </question>
+	 <question type="multi" answer="2" text="What colour are the ribbons on Marilyn Monroe's flowers?">
+		<option>Yellow</option>
+		<option>Blue</option>
+		<option>Pink</option>
+		<option>White</option>
+	 </question>
+</clip>
+<clip title="UEFA Champions League">
+	<question type="multi" answer="1" text="What number shirt is the goal scorer wearing?">
+		<option>11</option>
+		<option>9</option>
+		<option>2</option>
+		<option>8</option>
+	 </question>
+	 <question type="multi" answer="4" text="What is the name of the player who first congratulates him?">
+		<option>Luiz</option>
+		<option>Mikel</option>
+		<option>Torres</option>
+		<option>Mata</option>
+	 </question>
+	 <question type="multi" answer="2" text="Which part of the net did the ball go into?">
+		<option>Top left</option>
+		<option>Top right</option>
+		<option>Bottom right</option>
+		<option>Bottom left</option>
+	 </question>
+	 <question type="multi" answer="1" text="Which part of his body did the goalkeeper touch the ball with?">
+		<option>Left hand</option>
+		<option>Right hand</option>
+		<option>Left foot</option>
+		<option>Right foot</option>
+	 </question>
+</clip>
+<clip title="Elementary">
+	<question type="multi" answer="1" text="Who is calling on the mobile phone?">
+		<option>Mom &amp; Dad</option>
+		<option>Grandma</option>
+		<option>Grandpa</option>
+		<option>Husband</option>
+	 </question>
+	 <question type="multi" answer="3" text="What colour scarf is Sherlock Holmes wearing?">
+		<option>Blue and green</option>
+		<option>Black and white</option>
+		<option>Blue and red</option>
+		<option>Brown and green</option>
+	 </question>
+	 <question type="multi" answer="4" text="What track number are they on?">
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>1</option>
+	 </question>
+	 <question type="multi" answer="1" text="What colour is Mom's lipstick?">
+		<option>Red</option>
+		<option>Deep Purple</option>
+		<option>Black</option>
+		<option>Pink</option>
+	 </question>
+</clip>
+<clip title="Gravity Falls">
+	<question type="multi" answer="4" text="How many trees fall?">
+		<option>1</option>
+		<option>3</option>
+		<option>0</option>
+		<option>2</option>
+	 </question>
+	 <question type="multi" answer="1" text="What shape are her earrings?">
+		<option>Star</option>
+		<option>Circle</option>
+		<option>Heart</option>
+		<option>Square</option>
+	 </question>
+	 <question type="multi" answer="1" text="What symbol is on the front of the car?">
+		<option>?</option>
+		<option>!</option>
+		<option>X</option>
+		<option>$</option>
+	 </question>
+	 <question type="multi" answer="2" text="What colour is the flag on the car?">
+		<option>Blue</option>
+		<option>Red</option>
+		<option>Green</option>
+		<option>Yellow</option>
+	 </question>
+</clip>
+<clip title="Moone Boy">
+	<question type="multi" answer="2" text="What colour ties are they wearing?">
+		<option>Black</option>
+		<option>Red</option>
+		<option>Grey</option>
+		<option>Purple</option>
+	 </question>
+	 <question type="multi" answer="3" text="What kind of advice should a terrific imaginary friend always give?">
+		<option>Helpful</option>
+		<option>Useful</option>
+		<option>Good</option>
+		<option>Great</option>
+	 </question>
+	 <question type="multi" answer="1" text="What colour high heels is the man wearing?">
+		<option>Red</option>
+		<option>Black</option>
+		<option>Purple</option>
+		<option>White</option>
+	 </question>
+	 <question type="multi" answer="4" text="What colour is the pom pom on Moone Boy's hat?">
+		<option>Brown</option>
+		<option>Red</option>
+		<option>Black</option>
+		<option>Cream</option>
+	 </question>
+</clip>
+<clip title="Untamed Americas">
+	<question type="multi" answer="2" text="Who must provoke the fight?">
+		<option>The Leader</option>
+		<option>The Challenger</option>
+		<option>The Youngest</option>
+		<option>The Elder</option>
+	 </question>
+	 <question type="multi" answer="1" text="How do they provoke the fight?">
+		<option>Body kicks</option>
+		<option>Screaming</option>
+		<option>Scratching</option>
+		<option>Pushing</option>
+	 </question>
+	 <question type="multi" answer="2" text="What colour is the ram's rear?">
+		<option>Grey</option>
+		<option>White</option>
+		<option>Black</option>
+		<option>Brown</option>
+	 </question>
+	 <question type="multi" answer="4" text="With which leg does he kick his opponent?">
+		<option>Front right</option>
+		<option>Back left</option>
+		<option>Back right</option>
+		<option>Front left</option>
+	 </question>
+</clip>
+
+</questions>

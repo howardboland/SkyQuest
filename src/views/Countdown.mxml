@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				   xmlns:s="library://ns.adobe.com/flex/spark" 
+				   xmlns:mx="library://ns.adobe.com/flex/mx" backgroundAlpha="0" borderVisible="false" addedToStage="bordercontainer1_addedToStageHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.DelayedExecution;
+			protected var timer:Timer;
+			protected var totalSec:Number=3;
+			protected var counter:Number;
+			import event.NavEvent;
+			
+			protected function bordercontainer1_addedToStageHandler(event:Event):void
+			{
+
+				
+			}
+			public function start():void {
+				countDownLabel.text="3";
+				var tempo:DelayedExecution=new DelayedExecution(1000,this,startCounter);
+			}
+			protected function startCounter():void {
+				timer=new Timer(1000,totalSec);
+				timer.addEventListener(TimerEvent.TIMER,countDown);
+				timer.addEventListener(TimerEvent.TIMER_COMPLETE,startGame);
+				counter=totalSec;
+				
+				timer.start();
+			}
+			protected function countDown(e:TimerEvent):void {
+				counter--;
+				countDownLabel.text=String(counter);
+				
+				
+			}
+			protected function startGame(e:TimerEvent):void {
+				timer.stop();
+				timer.removeEventListener(TimerEvent.TIMER,countDown);
+				timer.removeEventListener(TimerEvent.TIMER_COMPLETE,startGame);
+				trace("end of counter!");
+				var tempo:DelayedExecution=new DelayedExecution(1000,this,exitScreen)
+
+			}
+			protected function exitScreen():void {
+				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"quiz");
+				dispatchEvent(navigation);
+				
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:VGroup horizontalAlign="center" verticalAlign="middle">
+		
+		
+		<s:Label text="Get ready to start" fontWeight="bold" fontSize="78" color="#91278E" />
+		<s:Spacer height="20"/>
+		<s:Label text="99" id="countDownLabel" fontSize="448" fontWeight="bold"/>
+	</s:VGroup>
+</s:BorderContainer>

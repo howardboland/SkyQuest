@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				   xmlns:s="library://ns.adobe.com/flex/spark" 
+				   xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:components="components.*" borderVisible="false" backgroundAlpha="0" xmlns:views="views.*">
+	
+	<fx:Metadata>
+		[Event(name="navigation", type="events.NavEvent")]
+		
+	</fx:Metadata>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.DelayedExecution;
+			import com.alfo.XMLPrefs;
+			
+			import event.NavEvent;
+			
+			
+			protected function goHome(e:MouseEvent):void
+			{
+				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"home");
+				dispatchEvent(navigation);
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:VGroup horizontalAlign="center">
+		<s:Label text="Please press pause on the remote control then press the game button on the touchscreen." color="#000000" fontSize="60" textAlign="center" width="1000" />
+	<s:Spacer height="20">
+		
+	</s:Spacer>
+		<s:Button label="GAME" click="goHome(event)" />
+	</s:VGroup>
+	
+	
+	
+	
+</s:BorderContainer>
