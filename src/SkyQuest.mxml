@@ -390,7 +390,7 @@
 				Console.log( e.result, this );
 				var result:Object = JSON.parse( e.result as String ) as Object;
 				Console.log( result, this);
-				if (!result.success)
+				if (result.result!="OK")
 				{
 					alertbox = new ErrorAlert();
 					alertbox.message = result.message;
