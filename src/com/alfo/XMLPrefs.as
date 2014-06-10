@@ -22,6 +22,9 @@ package com.alfo
 		public var baseURL:String;
 		public var localURL:String;
 		public var ApplicationType:String;
+		public var mode:String;
+		public var location_id:String;
+		public var game_id:String;
 		
 		private var prefsXML:XML;
 		
@@ -43,6 +46,9 @@ package com.alfo
 				splashPause=Number(prefsXML.splashpause);
 				baseURL=prefsXML.baseurl;
 				localURL=prefsXML.localURL;
+				mode=prefsXML.mode;
+				game_id=prefsXML.game_id;
+				location_id=prefsXML.location_id;
 				ApplicationType = prefsXML.applicationtype;
 				trace("timeout:"+timeOut);
 				trace("totalquestions:"+totalQuestions);
@@ -51,7 +57,10 @@ package com.alfo
 				trace("baseURL"+baseURL);
 			}
 		}
-		
+		public function isAuto():Boolean
+		{
+			return mode=="auto";
+		}
 		public static function getInstance():XMLPrefs
 		{
 			return instance;

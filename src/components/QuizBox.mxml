@@ -20,11 +20,18 @@
 	</s:transitions>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
+			<s:RadioButtonGroup id="answergroup" change="select_answer(event)" />
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
+			import com.utils.Console;
+			
+			import mx.utils.object_proxy;
 			
 			import events.QuizEvent;
+			
+			[Bindable]
+			public var options:Array = [];
 			
 			public var answer:Number=-1;
 			public var correctAnswer:Number;
@@ -35,11 +42,11 @@
 				
 			}
 			public function init():void {
-				answer=0;
-				answer0.selected=false;
-				answer1.selected=false;
-				answer2.selected=false;
-				answer3.selected=false;
+//				answer=0;
+//				answer0.selected=false;
+//				answer1.selected=false;
+//				answer2.selected=false;
+//				answer3.selected=false;
 				numericAnswer.text="";
 			}
 			public function pushKeypad(num:Number):void {
@@ -54,24 +61,33 @@
 				numericAnswer.text=numericAnswer.text.slice(0,-1);
 				answer=Number(numericAnswer.text);
 			}
-			
+			public function select_answer(event:Event=null):void {
+				Console.log("SELECT ANSWER "+answergroup.selectedValue, this);
+				answerRadio.visible=true;
+				answer = Number( answergroup.selectedValue );				
+			}
 			public function answerRadioBut(gino:Number):void {
 				trace("pushed answer"+gino);
 				answerRadio.visible=true;
 				answer=gino;
 			}
-			
-			protected function answerQuestion(event:MouseEvent):void
+			public function randomAnswer():void
 			{
-				var evento:QuizEvent
-				if (answer==correctAnswer) {
-					evento=new QuizEvent(QuizEvent.CORRECT_ANSWER);
-					trace("CORRECT");
+				answergroup.selectedIndex = Math.round(Math.random() * options.length);
+				select_answer();
+				answerQuestion();
+				
+			}
+			protected function answerQuestion(event:MouseEvent=null):void
+			{				
+				if (Number(answer)==Number(correctAnswer)) {
+					dispatchEvent( new QuizEvent(QuizEvent.CORRECT_ANSWER) );
+					Console.log("CORRECT", this);
 				} else {
-					evento=new QuizEvent(QuizEvent.WRONG_ANSWER);
-					trace("WRONG");
+					dispatchEvent( new QuizEvent(QuizEvent.WRONG_ANSWER) );
+					Console.log("WRONG", this);
 				}
-				dispatchEvent(evento);
+				
 			}
 			public function makeQuestion(question:Object):void {
 				
@@ -84,16 +100,24 @@
 				} else {
 					trace("setting up radio buttons"+question.options[1].toString());
 					answerRadio.visible=false;
+					answergroup.selectedIndex = -1;
 					this.currentState="MultipleChoice";
-					answer0.label=question.options["1"];
-					answer1.label=question.options["2"];
-					answer2.label=question.options["3"];
-					answer3.label=question.options["4"];
-					
-					answer0.selected=false;
-					answer1.selected=false;
-					answer2.selected=false;
-					answer3.selected=false;
+					options = [];
+					for (var i:int=0;i<question.options.length;i++)
+					{
+						options.push( { key: question.options[i].id, value: question.options[i].text, group: answergroup } );
+					}
+					answerCollection.source = options;
+					Console.log( options, this );
+//					answer0.label=question.options["1"];
+//					answer1.label=question.options["2"];
+//					answer2.label=question.options["3"];
+//					answer3.label=question.options["4"];
+//					
+//					answer0.selected=false;
+//					answer1.selected=false;
+//					answer2.selected=false;
+//					answer3.selected=false;
 				}
 //				trace("question:"+question.@type);
 //				trace("question:"+question.@answer);
@@ -103,6 +127,7 @@
 			
 		]]>
 	</fx:Script>
+	
 	<s:HGroup includeIn="Calculator" id="calcGroup" >
 		<s:TileGroup requestedColumnCount="3" horizontalGap="27" verticalGap="19">
 			<s:Button skinClass="skins.NumericKeypadButton" label="1" click="pushKeypad(1)" />
@@ -128,10 +153,17 @@
 		</s:VGroup>
 	</s:HGroup>
 	<s:VGroup includeIn="MultipleChoice" gap="40" id="comboGroup">
-		<s:RadioButton skinClass="skins.RadioButtonSky" value="1" groupName="sky" id="answer0" selected="false" label="ciao" click="answerRadioBut(1)" />
+		<s:DataGroup id="awnserGroup" itemRenderer="components.RadioButtonRenderer">
+			<s:layout>
+				<s:VerticalLayout gap="40" useVirtualLayout="true" />
+			</s:layout>
+			<s:ArrayCollection id="answerCollection" source="{options}" />				
+		</s:DataGroup>
+		
+		<!--<s:RadioButton skinClass="skins.RadioButtonSky" value="1" groupName="sky" id="answer0" selected="false" label="ciao" click="answerRadioBut(1)" />
 		<s:RadioButton skinClass="skins.RadioButtonSky" value="2" groupName="sky" id="answer1" selected="false" click="answerRadioBut(2)"  />
 		<s:RadioButton skinClass="skins.RadioButtonSky" value="3" groupName="sky" id="answer2" selected="false" click="answerRadioBut(3)"  />
-		<s:RadioButton skinClass="skins.RadioButtonSky" value="3" groupName="sky" id="answer3" selected="false" click="answerRadioBut(4)"  />
+		<s:RadioButton skinClass="skins.RadioButtonSky" value="3" groupName="sky" id="answer3" selected="false" click="answerRadioBut(4)"  />-->
 		<s:Button skinClass="skins.ButtonSky" id="answerRadio" label="ANSWER" click="answerQuestion(event)"/>
 	</s:VGroup>
 </s:Group>

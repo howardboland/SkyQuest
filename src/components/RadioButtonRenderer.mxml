@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="true"
+				dataChange="itemrenderer1_dataChangeHandler(event);" >
+	
+	
+	<fx:Script>
+		<![CDATA[
+			import com.utils.Console;
+			
+			import skins.RadioButtonSky;
+			protected function itemrenderer1_dataChangeHandler(evt:Event):void {
+//				Console.log( data, this );
+				rdBtn.label = data.value;
+				rdBtn.value = data.key;
+				if (data.group)
+				{
+					rdBtn.group = data.group;
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	<s:RadioButton skinClass="skins.RadioButtonSky" groupName="sky" id="rdBtn" />
+	
+</s:ItemRenderer>

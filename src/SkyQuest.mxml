@@ -146,11 +146,19 @@
 				countdownScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				quizScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				quizScreen.addEventListener(QuizEvent.QUIZ_COMPLETE,quizComplete);
+				
+				quizScreen2.addEventListener(NavEvent.NAVIGATION,navigate);
+				quizScreen2.addEventListener(QuizEvent.QUIZ_COMPLETE,quizComplete);
+				quizScreen2.addEventListener("READY_TO_PLAY", function(e:Event):void {
+					quizScreen2.startGame();
+				});
+				
 				loserScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				congratScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				lastScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				
 				debugPanel.registrationModule = RegisterView.device;
+				Console.log("Initiated", this);
 			}
 			
 			protected function debugEventHandler(event : DebugEvent):void
@@ -186,9 +194,10 @@
 			}
 			
 			protected function quizComplete(e:QuizEvent):void { 
-				Console.log("quiz completed with score:"+e.score, this);
-				currentScore=e.score;
-				saveScore.send({	id:currentUserID, score:currentScore });
+				Console.log("Quiz completed with score:"+e.score, this);
+				currentScore = e.score;
+				barcode = "12345";
+				saveScore.send({ urn: barcode, game_id: prefs.game_id, location_id: prefs.location_id, score: currentScore });
 			}
 			protected function showTerms(e:NavEvent):void {
 				Console.log("show terms and cond", this);
@@ -227,6 +236,7 @@
 					{
 						trace("go home go");
 						stack.selectedIndex=0;
+						quizScreen2.startGame();
 						break;
 					}
 					case "countdown":
@@ -272,7 +282,8 @@
 					{
 						trace("winner!");
 						stack.selectedChild=congrat;
-						congratScreen.time.text=secondsToMinutesSeconds(currentScore as Number);
+						congratScreen.time.text= currentScore+" out of "+prefs.totalQuestions;
+//						secondsToMinutesSeconds(currentScore as Number);
 						congratScreen.start();
 						break;
 					}
@@ -376,10 +387,13 @@
 			
 			protected function save(e:ResultEvent=null):void
 			{
-				if (e.result.result!="OK")
+				Console.log( e.result, this );
+				var result:Object = JSON.parse( e.result as String ) as Object;
+				Console.log( result, this);
+				if (!result.success)
 				{
 					alertbox = new ErrorAlert();
-					alertbox.message = e.result.message;
+					alertbox.message = result.message;
 					alertbox.windowTitle = "Server Error";
 					alertbox.exitFunction = restart;
 					
@@ -423,8 +437,8 @@
 		</s:Parallel>
 		
 		<s:HTTPService id="saveScore" fault="error(event)" method="POST" result="save(event)"
-					   resultFormat="flashvars"
-					   url="{baseURL+'setscore.php'}"/>
+					   resultFormat="text"
+					   url="{'http://192.168.0.150/api/index.php/skytestlab/v1/score'}"/>
 	</fx:Declarations>
 	<!-- top nav bar -->
 	<s:BorderContainer id="navigationbar" width="100%" height="90" backgroundColor="0x91278E"
@@ -460,6 +474,14 @@
 	
 		
 	<mx:ViewStack id="stack" height="100%" width="100%" creationPolicy="all"   >
+		
+		<s:NavigatorContent width="100%" height="100%" hideEffect="{hideFX}" id="quiz2" showEffect="{showFX}" >
+			<s:VGroup verticalAlign="middle" id="greppo2"  width="100%" height="100%" horizontalAlign="center">
+				<views:Questionnaire id="quizScreen2" />
+			</s:VGroup>
+		</s:NavigatorContent>
+		
+		
 		<s:NavigatorContent width="100%" height="100%"   id="home"  hideEffect="{hideFX}"  showEffect="{showFX}">
 			<s:VGroup width="100%" height="100%" verticalAlign="middle" id="groppo" horizontalAlign="center" >
 				<views:Welcome id="welcomeScreen" />

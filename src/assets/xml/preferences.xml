@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preferences>
-	<timeout>240</timeout>
-	<totalquestions>6</totalquestions>
+	<timeout>10</timeout>
+	<totalquestions>5</totalquestions>
 	<penalty>5</penalty>
 	<modalpause>3</modalpause>
 	<splashpause>5</splashpause>
 	<baseurl>http://www.ignitesocial.co.uk/sky/</baseurl>
 	<localurl>http://192.168.0.2/backend</localurl>
     <applicationtype>Quiz</applicationtype>
+    <game_id>3</game_id>
+    <location_id>24</location_id>
+    <mode>auto</mode>
 </preferences>

@@ -10,9 +10,11 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import events.NavEvent;
 			import com.alfo.DelayedExecution;
 			import com.alfo.XMLPrefs;
+			import com.utils.Console;
+			
+			import events.NavEvent;
 			
 			private var prefs:XMLPrefs = XMLPrefs.getInstance();
 			
@@ -22,6 +24,7 @@
 			
 			protected function restart():void
 			{
+				Console.log("Restarting", this);
 				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"home");
 				dispatchEvent(navigation);
 			}
@@ -35,7 +38,7 @@
 		<components:Congratulations  />
 		<s:Spacer height="20"/>
 		<s:HGroup>
-			<s:Label fontSize="111" text="Your time was" fontWeight="normal" />
+			<s:Label fontSize="111" text="You scored " fontWeight="normal" />
 			<s:Spacer width="15"/>
 			<s:Label fontSize="111" text="00:00" fontWeight="bold" id="time"/>
 				
