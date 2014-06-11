@@ -25,6 +25,7 @@ package com.alfo
 		public var mode:String;
 		public var location_id:String;
 		public var game_id:String;
+		public var urnLength:int;
 		
 		private var prefsXML:XML;
 		
@@ -49,6 +50,7 @@ package com.alfo
 				mode=prefsXML.mode;
 				game_id=prefsXML.game_id;
 				location_id=prefsXML.location_id;
+				urnLength=int(prefsXML.urnLength);
 				ApplicationType = prefsXML.applicationtype;
 				trace("timeout:"+timeOut);
 				trace("totalquestions:"+totalQuestions);

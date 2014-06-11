@@ -11,6 +11,8 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import com.alfo.DelayedExecution;
+			import com.alfo.XMLPrefs;
 			import com.alfo.utils.CleanWebView;
 			import com.alfo.utils.EncryptWrapper;
 			import com.alfo.utils.StringUtils;
@@ -56,6 +58,8 @@
 			public var data:Object;
 			protected var service:HTTPService;
 			
+			private var prefs:XMLPrefs = XMLPrefs.getInstance();
+			
 			public var device:Registration;
 			private var settings:Settings;
 			
@@ -80,10 +84,24 @@
 				currentURN = null;
 				frontMessage.text = "PLEASE WAIT - INITIALISING SCANNER";
 				StageDisplayState.FULL_SCREEN_INTERACTIVE;
-				CleanWebView.wipeOut();
-				startListen();
-				this.executeBindings(true);
-				settings = Settings.instance;				
+				
+				if (prefs.isAuto())
+				{
+					this.currentState = "READY_TO_SCAN";
+					var tempo:DelayedExecution=new DelayedExecution(1000, this, autoRun);
+				} else {
+					CleanWebView.wipeOut();
+					startListen();
+					this.executeBindings(true);
+					settings = Settings.instance;	
+				}
+								
+			}
+			protected function autoRun(e:Event=null):void
+			{
+				this.barcodeInput.text = "A1402478847076Z";
+				this.onAlreadyRegistered( this.barcodeInput.text, prefs.ApplicationType );
+
 			}
 			//Prepare device for scanning
 			protected function startListen(event:Event=null):void
@@ -271,7 +289,7 @@
 			protected function lookupBarCode(e:FlexEvent=null):void
 			{
 				
-				//trace("barcode before:"+barcodeInput.text);
+//				Console.log("barcode before:"+barcodeInput.text, this);
 				barcode = com.alfo.utils.StringUtils.trim(String(barcodeInput.text.toLocaleUpperCase()));
 				// only for hungarian
 				barcode = barcode.split("Ö").join("0");
@@ -336,7 +354,7 @@
 			
 			protected function onAlreadyRegistered(URN:*, type:String):void
 			{
-				trace("RegistrationScan :: onAlreadyRegistered :: " + URN);
+				trace("RegistrationScan :: onAlreadyRegistered :: " + URN+" "+type);
 				this.parentApplication.dispatchEvent( new UserEvent(UserEvent.URN, URN));
 				this.parentApplication.dispatchEvent( new UserEvent(UserEvent.REGISTERED, type));
 //				this.parentApplication.dispatchEvent(new ViewEvent(ViewEvent.LOCATION_WELCOME_BACK));
@@ -512,7 +530,7 @@
 					
 				<s:Button skinClass="spark.skins.spark.ButtonSkin" label="TOUCH HERE TO SCAN AGAIN" click="init(event)" id="scanAgainBtn" />
 				<s:Spacer height="45" />
-				<!-- s:Button skinClass="spark.skins.spark.ButtonSkin" label="TOUCH HERE TO REGISTER" width="{scanAgainBtn.width}" click="onBeginRegister(event)" / -->
+				<!--s:Button skinClass="spark.skins.spark.ButtonSkin" label="TOUCH HERE TO REGISTER" width="{scanAgainBtn.width}" click="onBeginRegister(event)" /-->
 				
 			</s:VGroup>
 			

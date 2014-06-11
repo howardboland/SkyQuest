@@ -5,12 +5,27 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import com.alfo.DelayedExecution;
+			import com.alfo.XMLPrefs;
+			import com.utils.Console;
+			
 			import events.NavEvent;
 			
 			import flashx.textLayout.conversion.TextConverter;
 			import flashx.textLayout.events.StatusChangeEvent;
 			
-			protected function gameButt_clickHandler(event:MouseEvent):void
+			private var prefs:XMLPrefs = XMLPrefs.getInstance();
+			
+			public function start():void
+			{
+				Console.log("START", this);
+				if (prefs.isAuto())
+				{
+					var tempo:DelayedExecution=new DelayedExecution(2000, this,gameButt_clickHandler);
+					
+				}
+			}
+			protected function gameButt_clickHandler(event:Event=null):void
 			{
 				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"register");
 				dispatchEvent(navigation);

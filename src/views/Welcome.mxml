@@ -10,11 +10,24 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import com.alfo.DelayedExecution;
+			import com.alfo.XMLPrefs;
 			import com.utils.Console;
 			
 			import events.NavEvent;
 			
-			protected function touchtoplay1_clickHandler(event:MouseEvent):void
+			private var prefs:XMLPrefs = XMLPrefs.getInstance();
+			
+			public function start():void
+			{
+				Console.log("START", this);
+				if (prefs.isAuto())
+				{
+					
+					var tempo:DelayedExecution=new DelayedExecution(1000,this,touchtoplay1_clickHandler);
+				}
+			}
+			protected function touchtoplay1_clickHandler(event:Event=null):void
 			{
 				
 				Console.log("click", this);
