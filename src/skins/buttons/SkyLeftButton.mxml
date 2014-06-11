@@ -33,8 +33,8 @@
 	<s:RichText id="labelDisplay" color="#ffffff" color.down="#0099FF" fontFamily="Sky" fontSize="31.25"
 				fontWeight="bold" kerning="on" tabStops="S0 S50 S100 S150" textAlign="center"
 				left.disabled="1" right.disabled="6" top.disabled="20" bottom.disabled="22"
-				left.down="7" right.down="0" top.down="26" bottom.down="16"
-				left.over="1" right.over="6" top.over="20" bottom.over="22"
-				left.up="1" right.up="6" top.up="20" bottom.up="22"/>
+				left.down="0" right.down="0" top.down="20" bottom.down="0"
+				left.over="0" right.over="0" top.over="20" bottom.over="0"
+				left.up="0" right.up="0" top.up="20" bottom.up="0"/>
     
 </s:SparkButtonSkin>
