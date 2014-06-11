@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:components="components.*" borderVisible="false" backgroundAlpha="0">
+		 xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:components="components.*" borderVisible="false" backgroundAlpha="0" xmlns:local="*">
 	
 	<fx:Metadata>
 		[Event(name="navigation", type="events.NavEvent")]
@@ -34,6 +34,7 @@
 				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"instructions");
 				dispatchEvent(navigation);
 			}
+			
 		]]>
 	</fx:Script>
 	
@@ -41,6 +42,7 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:HGroup>
+		<!--s:Button skinClass="skins.buttons.SkyLeftButton" label="HELO" /-->
 		<components:TouchToPlay useHandCursor="true" click="touchtoplay1_clickHandler(event)" />
 	</s:HGroup>
 	

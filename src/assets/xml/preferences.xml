@@ -11,5 +11,5 @@
     <game_id>3</game_id>
     <location_id>24</location_id>
     <urnLength>16</urnLength>
-    <mode>auto</mode>
+    <mode>standard</mode>
 </preferences>
