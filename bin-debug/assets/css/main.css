@@ -22,3 +22,7 @@ s|TitleWindow {
 	skinClass: ClassReference("skins.SkyTitle");
 	
 }
+s|TextInput {
+	paddingLeft: 20;
+	paddingRight: 20;
+}
