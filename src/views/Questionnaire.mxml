@@ -339,27 +339,27 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 		<!--Static 192.160.0.150-->
 		<!--s:HTTPService id="getQuestionaires" resultFormat="xml" method="GET" url="{this.parentApplication.localURL+'userteam.php'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" /-->
-		<s:HTTPService id="getQuestionaires" resultFormat="text" method="GET" url="{ 'http://192.168.0.150/api/index.php/skytestlab/v1/quiz'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" />
-		<!--s:HTTPService id="getQuestionaires" resultFormat="text" method="GET" url="{ 'http://192.168.0.4/skyquiz/questions.json'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" /-->
+		<!--s:HTTPService id="getQuestionaires" resultFormat="text" method="GET" url="{ 'http://192.168.0.150/api/index.php/skytestlab/v1/quiz'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" /-->
+		<s:HTTPService id="getQuestionaires" resultFormat="text" method="GET" url="{ 'http://localhost/skyquiz/questions.json'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" />
 	</fx:Declarations>
 	
 	<s:VGroup width="95%" horizontalAlign="left">
 		<s:Spacer height="20"/>
 		<s:HGroup width="100%" verticalAlign="bottom">
 			<s:VGroup width="50%" horizontalAlign="left">
-				<s:Label id="questionNum" width="1000" text="Question X" fontSize="64" fontWeight="bold" color="#91278E" />
+				<s:Label id="questionNum" width="1000" text="Question X" fontSize="60" fontWeight="normal" color="#ffffff" />
 			</s:VGroup>
 			<s:VGroup width="50%" horizontalAlign="right">
 				<local:Contatore id="conto"/>
 			</s:VGroup>
 		</s:HGroup>
 		<s:Spacer height="10"/>
-		<s:Label lineHeight="90%" width="1200" fontSize="45" fontWeight="normal" id="questionText" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
+		<s:Label lineHeight="90%" color="#ffffff" width="1200" fontSize="45" fontWeight="normal" id="questionText" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
 		<s:Spacer height="10"/>
 		<components:QuizBox id="quizBox" />
 		<s:Spacer height="10"/>
 		<s:Label id="timeLeft" text="Time left: "
-				 color="#91278E" fontFamily="Sky"
+				 color="#ffffff" fontFamily="Sky"
 				 fontSize="26.25" fontWeight="bold" kerning="on"
 				 />
 	</s:VGroup>

@@ -16,6 +16,8 @@
 			
 			import events.NavEvent;
 			
+			import skins.buttons.SkyRightButton;
+			
 			private var prefs:XMLPrefs = XMLPrefs.getInstance();
 			
 			public function start():void {
@@ -28,6 +30,10 @@
 				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"home");
 				dispatchEvent(navigation);
 			}
+			protected function submit(e:MouseEvent=null):void
+			{
+				
+			}
 		]]>
 	</fx:Script>
 	
@@ -35,14 +41,14 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:VGroup horizontalAlign="center">
-		<components:Congratulations  />
+		
 		<s:Spacer height="20"/>
-		<s:HGroup>
-			<s:Label fontSize="111" text="You scored " fontWeight="normal" />
-			<s:Spacer width="15"/>
-			<s:Label fontSize="111" text="00:00" fontWeight="bold" id="time"/>
+		
+			<s:Label fontSize="70" text="You scored:" fontWeight="normal" color="#ffffff" />
+		
+			<s:Label fontSize="300" text="00:00" fontWeight="bold" id="time" color="#ffffff"/>
 				
-		</s:HGroup>
+		<s:Button skinClass="skins.buttons.SkyRightButton" label="SUBMIT" click="submit(event)"/>
 	</s:VGroup>
 	
 	

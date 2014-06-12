@@ -164,6 +164,9 @@
 		<s:RadioButton skinClass="skins.RadioButtonSky" value="2" groupName="sky" id="answer1" selected="false" click="answerRadioBut(2)"  />
 		<s:RadioButton skinClass="skins.RadioButtonSky" value="3" groupName="sky" id="answer2" selected="false" click="answerRadioBut(3)"  />
 		<s:RadioButton skinClass="skins.RadioButtonSky" value="3" groupName="sky" id="answer3" selected="false" click="answerRadioBut(4)"  />-->
-		<s:Button skinClass="skins.ButtonSky" id="answerRadio" label="ANSWER" click="answerQuestion(event)"/>
+		<s:HGroup horizontalAlign="center" width="100%">
+			<s:Button skinClass="skins.buttons.SkyRightButton" id="answerRadio" label="Continue" click="answerQuestion(event)"/>	
+		</s:HGroup>
+		
 	</s:VGroup>
 </s:Group>

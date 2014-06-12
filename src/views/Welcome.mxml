@@ -31,7 +31,7 @@
 			{
 				
 				Console.log("click", this);
-				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"instructions");
+				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"register"); /* not using instructions */
 				dispatchEvent(navigation);
 			}
 			
@@ -41,10 +41,50 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:HGroup>
-		<!--s:Button skinClass="skins.buttons.SkyLeftButton" label="HELO" /-->
+	<s:VGroup >
+		
+	<s:Group width="694.75" height="696.8">
+		
+	
+	<local:SkyNormalPanel left="0" right="0" top="0" bottom="0" />
+	<s:VGroup left="10" top="10" bottom="10" right="10">
+		<s:RichText fontFamily="Sky" fontSize="80" textAlign="center" width="100%" paddingLeft="30" paddingRight="30" paddingTop="40" paddingBottom="40" text="Welcome to the Sky Sports Quiz" color="#ffffff">
+			
+		</s:RichText>
+		<s:RichText fontFamily="Sky" fontSize="42" textAlign="center" width="100%"  color="#ffffff" paddingLeft="30" paddingRight="30">
+			<s:text>We’re going to ask you five sport related questions.
+
+You only have 10 seconds to answer each question.
+
+Are you ready?</s:text>
+		</s:RichText>
+	</s:VGroup>
+	</s:Group>
+		<s:Spacer height="20"/>
+	<s:HGroup width="100%" horizontalAlign="right">
+		<s:Button skinClass="skins.buttons.SkyRightButton" label="Let's Play" click="touchtoplay1_clickHandler(event)" />
+		</s:HGroup>
+	</s:VGroup>
+	<!--s:HGroup>
+		
+		< s:VGroup>
+			
+			<s:Button skinClass="skins.buttons.SkyLeftButton" label="CANCEL" />
+			<s:Button skinClass="skins.buttons.SkyRightButton" label="terms &amp; conditions" />
+			<s:Button skinClass="skins.buttons.SkyRightButton" label="SUBMIT" />
+			<s:Button skinClass="skins.buttons.SkyLeftButton" label="CLOSE" />
+			<s:TextInput skinClass="skins.text.SkyTextInput" text="John Doe" />
+			<s:CheckBox skinClass="skins.buttons.SkyCheckbox" label="I Agree" />
+			<s:RadioButton skinClass="skins.buttons.SkyRadiobutton" label="YES" groupName="agreed" />
+			<s:RadioButton skinClass="skins.buttons.SkyRadiobutton" label="NO" groupName="agreed" />
+			
+		</s:VGroup>	
+		<s:VGroup>
+			<components:ErrorAlert />
+			</s:VGroup>
 		<components:TouchToPlay useHandCursor="true" click="touchtoplay1_clickHandler(event)" />
-	</s:HGroup>
+	</s:HGroup-->
+	
 	
 	
 	

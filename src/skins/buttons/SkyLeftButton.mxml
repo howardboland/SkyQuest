@@ -28,10 +28,10 @@
         <s:State name="disabled" />
     </s:states>
 	
-	<local:SkyLeftButtonDownSkin includeIn="down" />
-	<local:SkyLeftButtonUpSkin excludeFrom="down" />
-	<s:RichText id="labelDisplay" color="#ffffff" color.down="#0099FF" fontFamily="Sky" fontSize="31.25"
-				fontWeight="bold" kerning="on" tabStops="S0 S50 S100 S150" textAlign="center"
+	<local:SkyLeftButtonDownSkin includeIn="down, over" />
+	<local:SkyLeftButtonUpSkin excludeFrom="down, over" />
+	<s:RichText id="labelDisplay" color="#ffffff" color.down="#0099FF" color.over="#0099FF" fontFamily="Sky" fontSize="37"
+				kerning="on" tabStops="S0 S50 S100 S150" textAlign="center"
 				left.disabled="1" right.disabled="6" top.disabled="20" bottom.disabled="22"
 				left.down="0" right.down="0" top.down="20" bottom.down="0"
 				left.over="0" right.over="0" top.over="20" bottom.over="0"

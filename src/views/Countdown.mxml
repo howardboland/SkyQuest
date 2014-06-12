@@ -56,8 +56,8 @@
 	<s:VGroup horizontalAlign="center" verticalAlign="middle">
 		
 		
-		<s:Label text="Get ready to start" fontWeight="bold" fontSize="78" color="#91278E" />
+		<s:Label text="Get ready to start" fontWeight="bold" fontSize="78" color="#ffffff" />
 		<s:Spacer height="20"/>
-		<s:Label text="99" id="countDownLabel" fontSize="448" fontWeight="bold"/>
+		<s:Label text="99" id="countDownLabel" fontSize="448" fontWeight="bold" color="#ffffff"/>
 	</s:VGroup>
 </s:BorderContainer>
