@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%"
 		 addedToStage="group1_addedToStageHandler(event)" currentState="MultipleChoice">
 	<s:states>
 		<s:State name="Calculator"/>
@@ -63,12 +63,12 @@
 			}
 			public function select_answer(event:Event=null):void {
 				Console.log("SELECT ANSWER "+answergroup.selectedValue, this);
-				answerRadio.visible=true;
+				answerPanel.visible=true;
 				answer = Number( answergroup.selectedValue );				
 			}
 			public function answerRadioBut(gino:Number):void {
 				trace("pushed answer"+gino);
-				answerRadio.visible=true;
+				answerPanel.visible=true;
 				answer=gino;
 			}
 			public function randomAnswer():void
@@ -99,7 +99,7 @@
 					numericAnswer.text="";
 				} else {
 					trace("setting up radio buttons"+question.options[1].toString());
-					answerRadio.visible=false;
+					answerPanel.visible=false;
 					answergroup.selectedIndex = -1;
 					this.currentState="MultipleChoice";
 					options = [];
@@ -124,9 +124,14 @@
 //				trace("option:"+question.option.length());
 //				trace("option 1:"+question.option[1]);
 			}
-			
+			public function setQuestionText( txt:String ):void
+			{
+				questionNo.text = txt; 
+			}
 		]]>
 	</fx:Script>
+	<s:VGroup>
+		
 	
 	<s:HGroup includeIn="Calculator" id="calcGroup" >
 		<s:TileGroup requestedColumnCount="3" horizontalGap="27" verticalGap="19">
@@ -155,7 +160,7 @@
 	<s:VGroup includeIn="MultipleChoice" gap="40" id="comboGroup">
 		<s:DataGroup id="awnserGroup" itemRenderer="components.RadioButtonRenderer">
 			<s:layout>
-				<s:VerticalLayout gap="40" useVirtualLayout="true" />
+				<s:VerticalLayout gap="80" useVirtualLayout="true" />
 			</s:layout>
 			<s:ArrayCollection id="answerCollection" source="{options}" />				
 		</s:DataGroup>
@@ -164,9 +169,18 @@
 		<s:RadioButton skinClass="skins.RadioButtonSky" value="2" groupName="sky" id="answer1" selected="false" click="answerRadioBut(2)"  />
 		<s:RadioButton skinClass="skins.RadioButtonSky" value="3" groupName="sky" id="answer2" selected="false" click="answerRadioBut(3)"  />
 		<s:RadioButton skinClass="skins.RadioButtonSky" value="3" groupName="sky" id="answer3" selected="false" click="answerRadioBut(4)"  />-->
-		<s:HGroup horizontalAlign="center" width="100%">
-			<s:Button skinClass="skins.buttons.SkyRightButton" id="answerRadio" label="Continue" click="answerQuestion(event)"/>	
-		</s:HGroup>
 		
+		
+	</s:VGroup>
+		<s:Spacer height="100" />
+	<s:VGroup  id="answerPanel" width="1000">
+		
+		<s:HGroup width="100%" horizontalAlign="center">
+			<s:Button skinClass="skins.buttons.SkyRightButton" horizontalCenter="0" id="answerRadio" label="Continue" click="answerQuestion(event)"/>
+		</s:HGroup>
+		<s:HGroup width="100%" horizontalAlign="right" paddingTop="-80">
+		<s:Label id="questionNo" fontWeight="bold" color="#ffffff" alpha=".5" fontSize="80" horizontalCenter="100%" />
+		</s:HGroup>
+	</s:VGroup>
 	</s:VGroup>
 </s:Group>

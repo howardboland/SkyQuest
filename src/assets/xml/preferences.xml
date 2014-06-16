@@ -6,7 +6,7 @@
 	<modalpause>3</modalpause>
 	<splashpause>5</splashpause>
 	<baseurl>http://www.ignitesocial.co.uk/sky/</baseurl>
-	<localurl>http://localhost/</localurl>
+	<localurl>192.168.0.150</localurl>
     <applicationtype>Quiz</applicationtype>
     <game_id>3</game_id>
     <location_id>24</location_id>
