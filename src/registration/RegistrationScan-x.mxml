@@ -3,7 +3,7 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 creationComplete="created()" 
 		 addedToStage="addedToStageHander(event)"
-		 remove="exit(event)" xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:local="*" xmlns:components="views.components.*">
+		 remove="exit(event)" xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:components="views.components.*">
 	
 	<fx:Metadata>
 		[Event(name="debug", type="registration.debug.DebugEvent")]
@@ -34,6 +34,7 @@
 			import spark.events.TextOperationEvent;
 			
 			import events.KioskError;
+			import events.NavEvent;
 			import events.UserEvent;
 			import events.ViewEvent;
 			
@@ -53,11 +54,11 @@
 			[Bindable]
 			public var gameNumber:String = "1";
 			
-			private var prefs:XMLPrefs = XMLPrefs.getInstance();
-			
 			[Bindable]
 			public var data:Object;
 			protected var service:HTTPService;
+			
+			private var prefs:XMLPrefs = XMLPrefs.getInstance();
 			
 			public var device:Registration;
 			private var settings:Settings;
@@ -65,11 +66,11 @@
 			public function created(event:FlexEvent=null):void
 			{
 				
-				Console.log("********** init of finger scan rego process", this);
+				trace("********** init of finger scan rego process");
 				
 				
 				
-				init();
+//				init();
 				this.removeEventListener( Event.INIT, init);
 				this.addEventListener( Event.INIT, init);
 				this.removeEventListener(StateChangeEvent.CURRENT_STATE_CHANGE, onStateChange);
@@ -78,11 +79,12 @@
 			}
 			public function init(event:Event=null):void
 			{
-				Console.log("previous registration:"+this.parentApplication.registrationIncomplete, this);
+				trace("previous registration:"+this.parentApplication.registrationIncomplete);
 				this.currentState = "";
 				currentURN = null;
 				frontMessage.text = "PLEASE WAIT - INITIALISING SCANNER";
 				StageDisplayState.FULL_SCREEN_INTERACTIVE;
+				
 				if (prefs.isAuto())
 				{
 					this.currentState = "READY_TO_SCAN";
@@ -93,24 +95,20 @@
 					this.executeBindings(true);
 					settings = Settings.instance;	
 				}
-				
+								
 			}
 			protected function autoRun(e:Event=null):void
 			{
-				this.barcodeInput.text = "A1402583450731Z";
-				var userdata:UserData = new UserData();
-				settings = Settings.instance;	
-				userdata.urn = this.barcodeInput.text;
-				settings.userData = userdata;
-				
+				this.barcodeInput.text = "A1402478847076Z";
 				this.onAlreadyRegistered( this.barcodeInput.text, prefs.ApplicationType );
-				
+
 			}
 			//Prepare device for scanning
 			protected function startListen(event:Event=null):void
 			{
 				if (device==null)
 				{
+					Console.log("Device Found", device);
 					//systemManager.stage.addEventListener(KeyboardEvent.KEY_DOWN, checkKey);
 					device = new Registration(); 
 					device.addEventListener( RegistrationEvent.SCAN_READY, this.readyToScan);
@@ -131,6 +129,8 @@
 					device.addEventListener( RegistrationEvent.SCAN_REINITIALISE, this.scan_reinitiate);
 					
 					device.addEventListener(DebugEvent.DEBUG, debugEventHandler);
+				} else {
+					this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "SORRY - NO DEVICE FOUND", "DEVICE ERROR"));
 				}
 				
 				device.startSocket();
@@ -170,13 +170,13 @@
 				// this one is called when the user has successfully scanned their finger
 				// ignore on the whole, all the good stuff happens in userRegistered, which seems to be usually called at 
 				// the same time
-				Console.log("RegistrationScan :: register_complete", this);
+				trace("RegistrationScan :: register_complete");
 				this.currentState = "REGISTER_COMPLETE";
 			}
 			
 			protected function readyToScan( e:RegistrationEvent=null ):void
 			{
-				Console.log("RegistrationScan :: ready to scan", this);
+				trace("RegistrationScan :: ready to scan");
 				currentState="READY_TO_SCAN";
 				// if last registration wasn't finalized, delete fingerprint data
 				if(this.parentApplication.registrationIncomplete) {
@@ -189,7 +189,7 @@
 			
 			protected function userRegistered( e:RegistrationEvent = null ):void
 			{
-				Console.log("RegistrationScan :: userRegistered :: " + e.URN,this);
+				trace("RegistrationScan :: userRegistered :: " + e.URN);
 				//Console.log("userRegistered "+e.URN, this);
 				frontMessage.visible = true;
 				if(welcomeScreen)
@@ -220,14 +220,7 @@
 			{			
 				currentState="USER_NOT_FOUND";
 				//register with device first
-				if(this.parentApplication.ApplicationType=="REGISTRATION") {
-					frontMessage.text = ""//"WE CAN'T FIND YOU ON OUR SYSTEM, PLEASE SCAN YOUR\r\nTHUMB AGAIN IF YOU HAVE ALREADY REGISTERED\r\nOR PRESS THE BUTTON BELOW TO REGISTER";
-					registerAgainBtn.visible=true;
-				} else {
-					registerAgainBtn.visible=false;
-					frontMessage.text =""// "WE CAN'T FIND YOU ON OUR SYSTEM, PLEASE SCAN YOUR\r\nTHUMB AGAIN IF YOU HAVE ALREADY REGISTERED\r\nOR GO TO ONE OF THE REGISTRATION POINTS";
-
-				}
+				frontMessage.text = "UNABLE TO LOCATE YOU IN SYSTEM. PLEASE SCAN YOUR\r\nTHUMB AGAIN OR GO BACK TO THE REGISTRATION POINT.";
 			}
 			
 			protected function networkError( e:RegistrationEvent=null ):void
@@ -296,7 +289,7 @@
 			protected function lookupBarCode(e:FlexEvent=null):void
 			{
 				
-				//trace("barcode before:"+barcodeInput.text);
+//				Console.log("barcode before:"+barcodeInput.text, this);
 				barcode = com.alfo.utils.StringUtils.trim(String(barcodeInput.text.toLocaleUpperCase()));
 				// only for hungarian
 				barcode = barcode.split("Ö").join("0");
@@ -356,16 +349,18 @@
 			{
 				this.parentApplication.dispatchEvent( new UserEvent(UserEvent.URN, uid) );
 				this.parentApplication.dispatchEvent( new UserEvent(UserEvent.REGISTERED) );
-				this.parentApplication.dispatchEvent(new ViewEvent(ViewEvent.LOCATION_STANDARD_REGISTRATION) );
+				this.parentApplication.dispatchEvent(new ViewEvent(ViewEvent.LOCATION_SELECT_TEAM) );
 			}
 			
 			protected function onAlreadyRegistered(URN:*, type:String):void
 			{
-				trace("RegistrationScan :: onAlreadyRegistered :: " + URN);
+				trace("RegistrationScan :: onAlreadyRegistered :: " + URN+" "+type);
 				this.parentApplication.dispatchEvent( new UserEvent(UserEvent.URN, URN));
 				this.parentApplication.dispatchEvent( new UserEvent(UserEvent.REGISTERED, type));
+				Console.log("Changing Location", this);
+				this.parentApplication.dispatchEvent( new ViewEvent(ViewEvent.LOCATION_WELCOME_BACK) );
 				
-				this.parentApplication.dispatchEvent( new ViewEvent(ViewEvent.LOCATION_WELCOME_BACK, URN, true, true) );
+//				dispatchEvent(new NavEvent(NavEvent.NAVIGATION,"countdown"));
 			}
 			
 			protected function onDuplicate():void
@@ -376,7 +371,6 @@
 			}
 			protected function onError(msg:String,header:String="ERROR"):void
 			{
-				Console.log("Dispatching error", this );
 				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "COMMUNICATION ERROR WITH THE FINGERPRINT SERVER:\r\nRETURNED:"+msg, "ERROR", init));
 				//init();
 			}
@@ -386,7 +380,7 @@
 				service.removeEventListener(ResultEvent.RESULT, userValidCheck);
 				if (e.result.result!=null)
 				{
-					trace(e.result.result.toString()=="NO");
+					Console.log(e.result.result.toString(), this);
 					switch (e.result.result.toString())
 					{
 						
@@ -497,23 +491,20 @@
 		<s:State name="FINGERPRINT_CONNECTION_ERROR" />
 	</s:states>
 	
-	<s:VGroup id="welcomeScreen" verticalAlign="middle" horizontalAlign="center" includeIn="READY_TO_SCAN" width="1366" height="100%">
-		
-		<local:SkyPanelWelcome visible="{ this.parentApplication.ApplicationType=='REGISTRATION' }" includeInLayout="{ this.parentApplication.ApplicationType=='REGISTRATION' }" />
-		<local:SkyPanelWelcomeControl visible="{ this.parentApplication.ApplicationType=='SCOREGAME1' }" includeInLayout="{ this.parentApplication.ApplicationType=='SCOREGAME1' }" />
-		<local:SkyPanelWelcomeReaction visible="{ this.parentApplication.ApplicationType=='SCOREGAME2' }" includeInLayout="{ this.parentApplication.ApplicationType=='SCOREGAME2' }" />
-		<local:SkyPanelWelcome visible="{ this.parentApplication.ApplicationType=='Quiz' }" includeInLayout="{ this.parentApplication.ApplicationType=='Quiz' }" />
-		<!-- s:Label id="welcomeLabel" textAlign="center" width="90%" styleName="registrationOne" text="WELCOME TO{'\n'}BARCLAYS PREMIER LEAGUE LIVE">
+	<s:VGroup id="welcomeScreen" horizontalAlign="center" includeIn="READY_TO_SCAN" width="1366">
+		<s:Label id="welcomeLabel" textAlign="center" width="90%" styleName="registrationOne" text="WELCOME TO{'\n'}SKYQUEST CHALLENGE">
 			<s:filters>
-				<s:GlowFilter color="0x00AEEF" strength="15"/>
+				<!--s:GlowFilter color="0x00AEEF" strength="15"/-->
 			</s:filters>
 		</s:Label>
 		<s:Spacer height="50"/>
 		<s:Label id="pleaseScanLabel" textAlign="center" styleName="registrationTwo" text="PLEASE SCAN YOUR THUMB"/>
 		<s:Spacer height="30"/>
-		<s:Image source="@Embed('assets/images/fingerprintinstrunctions.png')" smooth="true" smoothingQuality="high" />
+		<mx:Box backgroundColor="0x555555" width="580" height="200">
+			<s:Image source="@Embed('assets/images/fingerprintinstrunctions.png')" smooth="true" smoothingQuality="high" />
+		</mx:Box>
 		<s:Spacer height="30"/>
-		<s:Label id="allFingerprintsLabel" textAlign="center" styleName="registrationFour" text="You only have to register once to play any activity at Barlcays Premier{'\n'}League Live and all prints are deleted directly after the event."/-->
+		<s:Label id="allFingerprintsLabel" textAlign="center" styleName="registrationFour" text="You only have to register once to play any activity at Barlcays Premier{'\n'}League Live and all prints are deleted directly after the event."/>
 	</s:VGroup>
 	
 	<s:VGroup horizontalAlign="center" verticalAlign="top" height="574" width="100%">
@@ -530,56 +521,55 @@
 					 text.STEP2="PLEASE SCAN YOUR THUMB 3 TIMES"
 					 text.STEP3="PLEASE SCAN YOUR THUMB 3 TIMES"
 					 text.REGISTER_COMPLETE="SCANNING SUCCESSFUL"
-					 visible.READY_TO_SCAN="false" excludeFrom="USER_NOT_FOUND"/>
+					 visible.READY_TO_SCAN="false"/>
 			
 			<s:TextInput id="barcodeWriter" top="-50" addedToStage="getBarcodeFocus()" alpha="0" includeInLayout="false" visible="false" text="" textAlign="left" softKeyboardActivating="urn_softKeyboardActivatingHandler(event)"/>
 			
 			<s:TextInput id="barcodeInput" includeInLayout="false" addedToStage="getBarcodeFocus()"  visible="false" text="" textAlign="left"/>
 			
-			<s:VGroup id="userNotFoundModule" paddingTop="-150" horizontalAlign="center" includeIn="USER_NOT_FOUND">
-				<local:SkyPanelNoMatch />
+			<s:VGroup id="userNotFoundModule" paddingTop="75" horizontalAlign="center" includeIn="USER_NOT_FOUND">
+					
+				<s:Button skinClass="spark.skins.spark.ButtonSkin" label="TOUCH HERE TO SCAN AGAIN" click="init(event)" id="scanAgainBtn" />
 				<s:Spacer height="45" />
-				<s:Button label="TOUCH HERE TO SCAN AGAIN" click="init(event)" id="scanAgainBtn" skinClass="skins.buttons.SkyRightButton" />
-				<s:Spacer height="45" />
-				<s:Button label="TOUCH HERE TO REGISTER" visible="{ this.parentApplication.ApplicationType=='REGISTRATION' }" includeInLayout="{ this.parentApplication.ApplicationType=='REGISTRATION' }"  width="{scanAgainBtn.width}" id="registerAgainBtn" click="onBeginRegister(event)" skinClass="skins.buttons.SkyRightButton" />
+				<!--s:Button skinClass="spark.skins.spark.ButtonSkin" label="TOUCH HERE TO REGISTER" width="{scanAgainBtn.width}" click="onBeginRegister(event)" /-->
 				
 			</s:VGroup>
 			
 			<s:HGroup id="userFingerScanStepModule" paddingTop="105" height="250" includeIn="REGISTER_BEGIN, STEP1, STEP2, STEP3, REGISTER_COMPLETE">
 				<s:HGroup includeIn="REGISTER_BEGIN" >
-					<s:BitmapImage source="assets/images/fingerprint_gray.png" smooth="true" />
+					<s:BitmapImage source="assets/images/fingerprint_gray.png" />
 					<s:Spacer width="5" />
-					<s:BitmapImage source="assets/images/fingerprint_gray.png" smooth="true" />
+					<s:BitmapImage source="assets/images/fingerprint_gray.png" />
 					<s:Spacer width="5" />
-					<s:BitmapImage source="assets/images/fingerprint_gray.png" smooth="true" />
+					<s:BitmapImage source="assets/images/fingerprint_gray.png" />
 				</s:HGroup>
 				<s:HGroup includeIn="STEP1" >
-					<s:BitmapImage source="assets/images/fingerprint_orange.png"  smooth="true"/>
+					<s:BitmapImage source="assets/images/fingerprint_orange.png" />
 					<s:Spacer width="5" />
-					<s:BitmapImage source="assets/images/fingerprint_gray.png" smooth="true" />
+					<s:BitmapImage source="assets/images/fingerprint_gray.png" />
 					<s:Spacer width="5" />
-					<s:BitmapImage source="assets/images/fingerprint_gray.png" smooth="true" />
+					<s:BitmapImage source="assets/images/fingerprint_gray.png" />
 				</s:HGroup>
 				<s:HGroup includeIn="STEP2" >
-					<s:BitmapImage source="assets/images/fingerprint_blue.png"  smooth="true"/>
+					<s:BitmapImage source="assets/images/fingerprint_blue.png" />
 					<s:Spacer width="5" />
-					<s:BitmapImage source="assets/images/fingerprint_orange.png" smooth="true" />
+					<s:BitmapImage source="assets/images/fingerprint_orange.png" />
 					<s:Spacer width="5" />
-					<s:BitmapImage source="assets/images/fingerprint_gray.png" smooth="true" />
+					<s:BitmapImage source="assets/images/fingerprint_gray.png" />
 				</s:HGroup>
 				<s:HGroup includeIn="STEP3" >
-					<s:BitmapImage source="assets/images/fingerprint_blue.png"  smooth="true"/>
+					<s:BitmapImage source="assets/images/fingerprint_blue.png" />
 					<s:Spacer width="5" />
-					<s:BitmapImage source="assets/images/fingerprint_blue.png"  smooth="true"/>
+					<s:BitmapImage source="assets/images/fingerprint_blue.png" />
 					<s:Spacer width="5" />
-					<s:BitmapImage source="assets/images/fingerprint_orange.png"  smooth="true"/>
+					<s:BitmapImage source="assets/images/fingerprint_orange.png" />
 				</s:HGroup>
 				<s:HGroup includeIn="REGISTER_COMPLETE" >
-					<s:BitmapImage source="assets/images/fingerprint_orange.png"  smooth="true"/>
+					<s:BitmapImage source="assets/images/fingerprint_orange.png" />
 					<s:Spacer width="5" />
-					<s:BitmapImage source="assets/images/fingerprint_orange.png"  smooth="true"/>
+					<s:BitmapImage source="assets/images/fingerprint_orange.png" />
 					<s:Spacer width="5" />
-					<s:BitmapImage source="assets/images/fingerprint_orange.png"  smooth="true"/>
+					<s:BitmapImage source="assets/images/fingerprint_orange.png" />
 				</s:HGroup>
 			</s:HGroup>
 			

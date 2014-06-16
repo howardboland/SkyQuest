@@ -15,12 +15,14 @@
 			import com.utils.Console;
 			
 			import events.NavEvent;
+			import events.QuizEvent;
 			
 			import skins.buttons.SkyRightButton;
 			
 			private var prefs:XMLPrefs = XMLPrefs.getInstance();
 			
 			public function start():void {
+				this.submit();
 				var tempo:DelayedExecution=new DelayedExecution(prefs.splashPause*1000,this,restart);
 			}
 			
@@ -30,9 +32,9 @@
 				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"home");
 				dispatchEvent(navigation);
 			}
-			protected function submit(e:MouseEvent=null):void
+			protected function submit(e:Event=null):void
 			{
-				
+				dispatchEvent( new QuizEvent(QuizEvent.QUIZ_SAVE ) );
 			}
 		]]>
 	</fx:Script>
@@ -45,9 +47,9 @@
 		<s:Spacer height="20"/>
 		
 			<s:Label fontSize="70" text="You scored:" fontWeight="normal" color="#ffffff" />
-		
+		<s:Spacer height="10"/>
 			<s:Label fontSize="300" text="00:00" fontWeight="bold" id="time" color="#ffffff"/>
-				
+		<s:Spacer height="100"/>		
 		<s:Button skinClass="skins.buttons.SkyRightButton" label="SUBMIT" click="submit(event)"/>
 	</s:VGroup>
 	

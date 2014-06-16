@@ -28,13 +28,13 @@
         <s:State name="disabled" />
     </s:states>
 	
-	<local:SkyLeftButtonDownSkin includeIn="down, over" />
-	<local:SkyLeftButtonUpSkin excludeFrom="down, over" />
-	<s:RichText id="labelDisplay" color="#ffffff" color.down="#0099FF" color.over="#0099FF" fontFamily="Sky" fontSize="37"
+	<local:SkyLeftButtonDownSkin includeIn="down, over" top="0" left="0" right="0" bottom="0" />
+	<local:SkyLeftButtonUpSkin excludeFrom="down, over" top="0" left="0" right="0" bottom="0" />
+	<s:RichText id="labelDisplay" color="#ffffff" color.down="#0099FF" color.over="#0099FF" fontSize="37"
 				kerning="on" tabStops="S0 S50 S100 S150" textAlign="center"
-				left.disabled="1" right.disabled="6" top.disabled="20" bottom.disabled="22"
-				left.down="0" right.down="0" top.down="20" bottom.down="0"
-				left.over="0" right.over="0" top.over="20" bottom.over="0"
-				left.up="0" right.up="0" top.up="20" bottom.up="0"/>
+				top.disabled="20" bottom.disabled="22" left="20" right="20" paddingLeft="20" paddingRight="20"
+				top.down="20" bottom.down="0"
+				top.over="20" bottom.over="0"
+				top.up="20" bottom.up="0"/>
     
 </s:SparkButtonSkin>

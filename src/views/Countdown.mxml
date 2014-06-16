@@ -29,10 +29,8 @@
 				timer.start();
 			}
 			protected function countDown(e:TimerEvent):void {
-				counter--;
+				counter = Math.max(counter-1,0);
 				countDownLabel.text=String(counter);
-				
-				
 			}
 			protected function startGame(e:TimerEvent):void {
 				timer.stop();

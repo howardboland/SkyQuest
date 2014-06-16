@@ -1,17 +1,21 @@
 package com.alfo
 {
+	import com.utils.Console;
+	
+	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
 
 	[Bindable]
-	public class XMLPrefs
+	public class XMLPrefs extends Sprite
 	{
 		
 		/** Only one instance of the model locator **/
 		
 		private static var instance:XMLPrefs = new XMLPrefs();
-		
+		public static var PREFERENCES_READY:String = "PREFERENCES_READY";
 		/** Bindable Data **/
 		
 		public var timeOut:Number;
@@ -26,7 +30,7 @@ package com.alfo
 		public var location_id:String;
 		public var game_id:String;
 		public var urnLength:int;
-		
+		public var isReady:Boolean = false;
 		private var prefsXML:XML;
 		
 		public function XMLPrefs()
@@ -46,17 +50,21 @@ package com.alfo
 				modalPause=Number(prefsXML.modalpause);
 				splashPause=Number(prefsXML.splashpause);
 				baseURL=prefsXML.baseurl;
-				localURL=prefsXML.localURL;
+				localURL=prefsXML.localurl;
 				mode=prefsXML.mode;
 				game_id=prefsXML.game_id;
 				location_id=prefsXML.location_id;
 				urnLength=int(prefsXML.urnLength);
 				ApplicationType = prefsXML.applicationtype;
+				Console.log( prefsXML, this);
+				Console.log( "localURL : "+localURL, this); 
 				trace("timeout:"+timeOut);
 				trace("totalquestions:"+totalQuestions);
 				trace("penalty"+penalty);
 				trace("modalpause"+modalPause);
 				trace("baseURL"+baseURL);
+				isReady = true;
+				dispatchEvent( new Event( "PREFERENCES_READY" ) );
 			}
 		}
 		public function isAuto():Boolean

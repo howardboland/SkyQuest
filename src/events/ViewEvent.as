@@ -14,13 +14,12 @@ package events
 		public static var LOCATION_SELECT_USER_TYPE:String = "Select user type";
 		public static var LOCATION_FACEBOOK:String = "Facebook";
 		public static var LOCATION_FACEBOOK_REGISTERED:String = "Facebook registered";
-		public static var LOCATION_SELECT_TEAM:String = "Select team";
-		public static var LOCATION_TEAM_SELECTED:String = "Team selected";
 		public static var LOCATION_REGISTRATION_COMPLETE:String = "Registration complete";
 		public static var LOCATION_GAME:String = "Game";
 		public static var LOCATION_GAME_COMPLETE:String = "Game Complete";
 
 		public static var LOCATION_WELCOME_BACK : String = "WelcomeBack";
+		public static var LOCATION_COUNTDOWN : String = "Countdown";
 		
 		public var object:Object = null;
 		public var location:String = "";

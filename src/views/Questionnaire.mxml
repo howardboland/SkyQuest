@@ -53,15 +53,16 @@
 			protected function created(event:Event):void
 			{
 				// TODO Auto-generated method stub
+				this.addEventListener("QUIZ_DATA_READY", startQuiz);
 				firstRun();
 				this.addEventListener(Event.ADDED_TO_STAGE, quizBox_addedToStageHandler);
 			}
-			protected function firstRun():void
+			public function firstRun():void
 			{
 				Console.log("RUN FIRST", this);
 				if (data==null)
 				{
-					this.addEventListener("QUIZ_DATA_READY", startQuiz);
+					
 					//readLocalData();
 					readRemoteData();
 				} else {
@@ -90,7 +91,12 @@
 				// **header["Accept"] = "application/json";**
 				// getQuestionaires.contentType = "application/json";
 				// getQuestionaires.headers = header;
-				getQuestionaires.send();
+				if (this.parentApplication.localURL!='')
+				{
+					getQuestionaires.url = this.parentApplication.localURL+'/api/index.php/skytestlab/v1/quiz';
+					Console.log( getQuestionaires.url, this);
+					getQuestionaires.send();
+				}
 			}
 			
 			// HANDLE SERVER RESULTS
@@ -119,27 +125,35 @@
 				this.dispatchEvent( new Event("READY_TO_PLAY") );
 			}
 			
-			public function startGame():void 
+			public function startGame(e:Event=null):void 
 			{
 				Console.log("Start Game", this);
 				// Set up - Event Listeners
-				quizTimer.removeEventListener(TimerEvent.TIMER, timeoutHandler);
-				quizTimer.addEventListener(TimerEvent.TIMER, timeoutHandler);								
-				quizBox.removeEventListener(QuizEvent.CORRECT_ANSWER,correctAnswer);
-				quizBox.addEventListener(QuizEvent.CORRECT_ANSWER,correctAnswer);
-				quizBox.removeEventListener(QuizEvent.WRONG_ANSWER,wrongAnswer);
-				quizBox.addEventListener(QuizEvent.WRONG_ANSWER,wrongAnswer);
-				
-				score = 0;
-				conta = 0;
-				activeIndex = 0;
-				shuffleQuestions();
-				checkTimeOut();
-				conto.timo = conta;
-				var rimasto:Number=prefs.timeOut-conta;
-				timeLeft.text="Time left: "+secondsToMinutesSecondsString(rimasto);
-				quizTimer.start();
-				pullQuestion();
+				if (data!=null)
+				{
+					this.removeEventListener("QUIZ_DATA_READY", startGame);
+					quizTimer.removeEventListener(TimerEvent.TIMER, timeoutHandler);
+					quizTimer.addEventListener(TimerEvent.TIMER, timeoutHandler);								
+					quizBox.removeEventListener(QuizEvent.CORRECT_ANSWER,correctAnswer);
+					quizBox.addEventListener(QuizEvent.CORRECT_ANSWER,correctAnswer);
+					quizBox.removeEventListener(QuizEvent.WRONG_ANSWER,wrongAnswer);
+					quizBox.addEventListener(QuizEvent.WRONG_ANSWER,wrongAnswer);
+					
+					score = 0;
+					conta = 0;
+					activeIndex = 0;
+					shuffleQuestions();
+					checkTimeOut();
+					conto.timo = conta;
+					var rimasto:Number=prefs.timeOut-conta;
+//					timeLeft.text="Time left: "+secondsToMinutesSecondsString(rimasto);
+					quizTimer.start();
+					pullQuestion();
+				} else {
+					this.addEventListener("QUIZ_DATA_READY", startGame);
+					firstRun();
+					
+				}
 			}
 			
 			protected function pullQuestion():void {
@@ -149,6 +163,7 @@
 				{
 					questionNum.text = "Question "+(activeIndex+1)+" / "+activeQuestions.length;
 					questionText.text= dataItem.text;
+					quizBox.setQuestionText( (activeIndex+1)+"/"+activeQuestions.length );
 					quizBox.makeQuestion( dataItem );
 				}
 			}
@@ -185,14 +200,15 @@
 			public function wrongAnswer(e:QuizEvent=null):void 
 			{
 				activeIndex++;
-				showMessage("Wrong answer!","Ready for next question...");
+				showMessage("Wrong answer!", activeIndex<prefs.totalQuestions ? "Ready for next question..." : "Game Complete");
 				conta = 0;
 			}
 			
 			public function timeoutAnswer():void 
 			{
 				activeIndex++;
-				showMessage("Time out!","Ready for next question...");
+				
+				showMessage("Time out!", activeIndex<prefs.totalQuestions ? "Ready for next question..." : "Game Complete");
 				
 			}
 			
@@ -289,7 +305,7 @@
 				
 				conto.timo = conta;
 				var rimasto:Number=prefs.timeOut-conta;
-				timeLeft.text="Time left: "+secondsToMinutesSecondsString(rimasto);
+//				timeLeft.text="Time left: "+secondsToMinutesSecondsString(rimasto);
 			}
 			
 			
@@ -340,7 +356,7 @@
 		<!--Static 192.160.0.150-->
 		<!--s:HTTPService id="getQuestionaires" resultFormat="xml" method="GET" url="{this.parentApplication.localURL+'userteam.php'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" /-->
 		<!--s:HTTPService id="getQuestionaires" resultFormat="text" method="GET" url="{ 'http://192.168.0.150/api/index.php/skytestlab/v1/quiz'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" /-->
-		<s:HTTPService id="getQuestionaires" resultFormat="text" method="GET" url="{ 'http://localhost/skyquiz/questions.json'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" />
+		<s:HTTPService id="getQuestionaires" resultFormat="text" method="GET" url="{ this.parentApplication.localURL+'/skyquiz/questions.json'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" />
 	</fx:Declarations>
 	
 	<s:VGroup width="95%" horizontalAlign="left">
@@ -349,19 +365,22 @@
 			<s:VGroup width="50%" horizontalAlign="left">
 				<s:Label id="questionNum" width="1000" text="Question X" fontSize="60" fontWeight="normal" color="#ffffff" />
 			</s:VGroup>
-			<s:VGroup width="50%" horizontalAlign="right">
-				<local:Contatore id="conto"/>
+			<s:VGroup width="50%" height="100" horizontalAlign="right">
+				
+					<local:Contatore id="conto" width="150" height="150" maintainProjectionCenter="true" explicitWidth="150" explicitHeight="150"  rotationX="-10" rotationY="60" rotationZ="20"   />	
+				
+				
 			</s:VGroup>
 		</s:HGroup>
-		<s:Spacer height="10"/>
-		<s:Label lineHeight="90%" color="#ffffff" width="1200" fontSize="45" fontWeight="normal" id="questionText" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
-		<s:Spacer height="10"/>
+		<s:Spacer height="20"/>
+		<s:Label lineHeight="110%" color="#ffffff" width="1000" fontSize="45" fontWeight="normal" id="questionText" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
+		<s:Spacer height="50"/>
 		<components:QuizBox id="quizBox" />
 		<s:Spacer height="10"/>
-		<s:Label id="timeLeft" text="Time left: "
-				 color="#ffffff" fontFamily="Sky"
+		<!--s:Label id="timeLeft" text="Time left: "
+				 color="#ffffff" 
 				 fontSize="26.25" fontWeight="bold" kerning="on"
-				 />
+				 / -->
 	</s:VGroup>
 	
 	
