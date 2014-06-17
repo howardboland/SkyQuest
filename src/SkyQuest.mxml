@@ -3,12 +3,12 @@
 					   xmlns:s="library://ns.adobe.com/flex/spark"
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
 					   xmlns:views="views.*"
-					   xmlns:local="*"
+					   xmlns:local="*" 
 					   width="1024" height="768"
 					   resize="onresize(event)"
 					   applicationComplete="windowedapplication2_applicationCompleteHandler(event)"
 					   addedToStage="windowedapplication2_addedToStageHandler(event)"
-					   horizontalCenter="center" showStatusBar="false" xmlns:components="components.*" xmlns:registration="registration.*" xmlns:debug="registration.debug.*"
+					   horizontalCenter="center" showStatusBar="false" xmlns:registration="registration.*" xmlns:debug="registration.debug.*"
 					   >
 	<fx:Script>
 		<![CDATA[
@@ -24,17 +24,29 @@
 			import components.ErrorAlert;
 			import components.tandcWindow;
 			
+			import events.ApplicationEvent;
 			import events.NavEvent;
 			import events.QuizEvent;
 			import events.UserDataEvent;
 			import events.UserEvent;
 			import events.ViewEvent;
 			
+			import model.ML;
 			import model.Settings;
 			
 			import registration.debug.DebugEvent;
 			
+			import skins.BasicButton;
+			
+			import components.PasswordAlert;
+			
+			public var password:String = "123";
+			protected var passwordbox:components.PasswordAlert;
+			
+			[Bindable]
+			protected var loggedIn:Boolean = false;
 
+			
 			[Bindable]
 			public var baseURL:String;
 			
@@ -163,7 +175,7 @@
 //				var timer:Timer = new Timer(10);
 //				timer.addEventListener(TimerEvent.TIMER, playTimer);
 //				timer.start();
-				
+				this.addEventListener( ApplicationEvent.SAVE_TYPE, notifyApplicationTypeUpdate );
 				
 				welcomeScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				RegisterView.addEventListener(NavEvent.NAVIGATION,navigate);
@@ -192,6 +204,18 @@
 				
 				welcomeScreen.start();
 			}
+			protected function notifyApplicationTypeUpdate( e:ApplicationEvent ):void
+			{
+				prefs.saveApplicationVariables( e.value );
+				//	trace(pref.prefsXML);
+				baseURL =  "http://"+prefs.baseURL+"/";
+				localURL= "http://"+prefs.localURL+"/";
+				ApplicationType = prefs.ApplicationType;
+				urn = prefs.urnLength;
+				this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
+				
+				trace("Main :: notifyApplicationTypeUpdate :: " + ApplicationType);
+			}
 			protected function viewChanged( e:ViewEvent ):void
 			{
 				Console.log("viewChanged", this);
@@ -202,6 +226,12 @@
 				} else if (e.location == ViewEvent.LOCATION_COUNTDOWN)
 				{
 					this.navigate( new NavEvent( NavEvent.NAVIGATION, "countdown" ) );
+				} else if (e.location == ViewEvent.LOCATION_CONFIG)
+				{
+					this.navigate( new NavEvent( NavEvent.NAVIGATION, "config" ) );
+				} else if (e.location == ViewEvent.LOCATION_RESTART)
+				{
+					this.navigate( new NavEvent( NavEvent.NAVIGATION, "home" ) );
 				}
 			}
 			
@@ -277,79 +307,93 @@
 			}
 			protected function navigate(e:NavEvent):void {
 				Console.log("going to"+e.page, this);
-				currentSlide=e.page;
-				switch(e.page)
+				if ( currentSlide == "config" && prefs.isAuto() && e.page!="home")
 				{
-					case "home":
+					
+				} else
+				{
+					currentSlide=e.page;
+					
+					switch(e.page)
 					{
-						trace("go home go");
-						stack.selectedIndex=0;
-						welcomeScreen.start();
-						
-						break;
-					}
-					case "countdown":
-					{
-						stack.selectedChild=countdown;
-						countdownScreen.start();
-						break;
-					}
-					case "instructions":
-					{
-						stack.selectedChild=instructions;
-						instructionsScreen.start();
-						break;
-					}
-					case "quiz":
-					{
-						stack.selectedChild=quiz;
-						quizScreen.startGame();
-						break;
-					}
-					case "register":
-					{
-						trace("registrazzzz");
-						//TODO: HB - CONSOLIDATE HANDOVER APPLICATION
-						//registration.clearForm();
-						RegisterView.init();
-						stack.selectedChild=reg;
-						break;
-					}
-					case "welcomeback":
-					{
-						trace("welcomeback");
-						stack.selectedChild=welcomeback;
-						this.WelcomeBackView.nextScreen = ViewEvent.LOCATION_COUNTDOWN;
-						this.WelcomeBackView.onInitialise();
-						break;
-					}
-					case "loser":
-					{
-						trace("looser!");
-						stack.selectedChild=loser;
-						loserScreen.start();
-						break;
-					}
-					case "last":
-					{
-						trace("last");
-						stack.selectedChild=last;
-						break;
-					}
-					case "congrat":
-					{
-						trace("winner!");
-						stack.selectedChild=congrat;
-						congratScreen.time.text= currentScore+"/"+prefs.totalQuestions;
-//						secondsToMinutesSeconds(currentScore as Number);
-						congratScreen.start();
-						break;
-					}
-						
-					default:
-					{
-						trace("default action");
-						break;
+						case "home":
+						{
+							trace("go home go");
+							stack.selectedIndex=0;
+							welcomeScreen.start();
+							
+							break;
+						}
+						case "countdown":
+						{
+							stack.selectedChild=countdown;
+							countdownScreen.start();
+							break;
+						}
+						case "instructions":
+						{
+							stack.selectedChild=instructions;
+							instructionsScreen.start();
+							break;
+						}
+						case "quiz":
+						{
+							stack.selectedChild=quiz;
+							quizScreen.startGame();
+							break;
+						}
+						case "register":
+						{
+							trace("registrazzzz");
+							//TODO: HB - CONSOLIDATE HANDOVER APPLICATION
+							//registration.clearForm();
+							RegisterView.init();
+							stack.selectedChild=reg;
+							break;
+						}
+						case "welcomeback":
+						{
+							trace("welcomeback");
+							stack.selectedChild=welcomeback;
+							this.WelcomeBackView.nextScreen = ViewEvent.LOCATION_COUNTDOWN;
+							this.WelcomeBackView.onInitialise();
+							break;
+						}
+						case "loser":
+						{
+							trace("looser!");
+							stack.selectedChild=loser;
+							loserScreen.start();
+							break;
+						}
+						case "last":
+						{
+							trace("last");
+							stack.selectedChild=last;
+							break;
+						}
+						case "congrat":
+						{
+							trace("winner!");
+							stack.selectedChild=congrat;
+							congratScreen.time.text= currentScore+"/"+prefs.totalQuestions;
+	//						secondsToMinutesSeconds(currentScore as Number);
+							congratScreen.start();
+							break;
+						}
+						case "config":
+						{
+							trace("config!");
+							stack.selectedChild=configView;
+							
+							break;
+						}
+							
+						default:
+						{
+							trace("default action");
+							break;
+						}
 					}
 				}
 			}
@@ -383,32 +427,32 @@
 				
 				contentholder.scaleX=0.8;
 				contentholder.scaleY=0.8;
-				var screenWidth : Number = this.stage.stageWidth;//Capabilities.screenResolutionX;
-				var screenHeight : Number = this.stage.stageHeight;// Capabilities.screenResolutionY;
-				var bgWidth : Number = 1366
-				var bgHeight : Number = 768
+				var screenWidth : Number = Capabilities.screenResolutionX;
+				var screenHeight : Number = Capabilities.screenResolutionY;
+				var bgWidth : Number = 1080;
+				var bgHeight : Number = 1920;
 				var scaleDiff:Number = Math.max(screenWidth/1366, screenHeight/768);
 				if ( ( screenWidth > screenHeight) )
 				{
-					Console.log("widthwise", this);
-					background.width = (screenWidth)/.7;
-					background.height = (screenWidth * bgHeight / bgWidth)/.7;
+//					Console.log("widthwise", this);
+					background.width = (screenWidth);
+					background.height = (screenWidth * bgHeight / bgWidth);
 					
 				} else if ( ( screenWidth < screenHeight) )
 				{
-					Console.log("heightwise", this);
-					background.height = (screenHeight)/.7;
-					background.width = (screenHeight  * bgWidth / bgHeight)/.7;
+//					Console.log("heightwise", this);
+					background.height = (screenHeight);
+					background.width = (screenHeight  * bgWidth / bgHeight);
 					
 				} else {
 					
-					Console.log("samewise", this);
-					background.width = screenWidth/1;
-					background.height = screenWidth/1;
+//					Console.log("samewise", this);
+					background.width = screenWidth;
+					background.height = screenWidth;
 					
 				}
-				Console.log( "width: "+background.width, this );
-				Console.log( "height: "+background.height, this );
+//				Console.log( "width: "+background.width, this );
+//				Console.log( "height: "+background.height, this );
 //				Console.log( "scale: "+scaleDiff, this );
 			}
 			
@@ -502,6 +546,48 @@
 				
 			}
 			
+			protected function exitApplication(event:MouseEvent=null):void
+			{
+				NativeApplication.nativeApplication.exit();
+			}
+			protected function logout(event:MouseEvent=null):void
+			{
+				loggedIn = false;
+				this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_RESTART ));
+				
+			}
+			protected function changeConfig(event:MouseEvent=null):void
+			{
+				
+				if (loggedIn)
+				{
+					this.dispatchEvent( new ViewEvent( ViewEvent.LOCATION_CONFIG ));
+					
+				} else {
+					showPassword("Please enter password", password, this.login)
+				}
+			}
+			protected function login( e:Event=null ):void
+			{
+				this.loggedIn = true;
+				changeConfig();
+				
+			}
+			
+			protected function showPassword(title:String="", password:String=null, exitFunction:Function=null):void
+			{
+				clearPopups();
+				
+				passwordbox = new PasswordAlert();
+				passwordbox.windowTitle = title;
+				passwordbox.password = password;
+				passwordbox.exitFunction = exitFunction;
+				
+				PopUpManager.addPopUp(passwordbox, this, false);
+				PopUpManager.centerPopUp(passwordbox);
+				this.dispatchEvent( new ApplicationEvent( ApplicationEvent.POPUP_OPEN ) );
+//				centerPopups();
+			}
 			
 		]]>
 	</fx:Script>
@@ -527,24 +613,31 @@
 					   url="{this.localURL+'/api/index.php/skytestlab/v1/score'}"/>
 	</fx:Declarations>
 	<!-- top nav bar -->
-	<s:BorderContainer id="navigationbar" width="100%" borderVisible="false" height="90"
+	<s:VGroup width="100%" height="100%" clipAndEnableScrolling="true">
+		<s:Image smooth="true" smoothingQuality="high" id="background" source="@Embed('assets/images/background.png')"  />
+	</s:VGroup>
+	<s:Group id="navigationbar" width="100%"  height="90" 
 					   click="fullscreen(event)">
-		<s:backgroundFill>
-			<s:SolidColor  color="0x00000" alpha="1"/>
-		</s:backgroundFill>
-		
-		<s:HGroup width="100%" height="60" verticalAlign="middle">
+		<s:Rect width="100%" height="90">
+			<s:fill>
+				<s:SolidColor color="0x000000" alpha=".5" />
+			</s:fill>
+		</s:Rect>
+		<s:HGroup width="100%" height="90" verticalAlign="middle">
 			<s:HGroup width="33%" horizontalAlign="left">
 				<s:Spacer width="10"/><local:SkyLogo click="homebutton_clickHandler(event)" useHandCursor="true" mouseEnabled="true"/>
 			</s:HGroup>
 			<s:HGroup width="33%">
 				<!--s:Button label="admin" id="admin" click="admin_clickHandler(event)" alpha="0" /-->
 			</s:HGroup>
-			<s:HGroup width="33%" horizontalAlign="right">
+			<s:HGroup width="33%" horizontalAlign="right" verticalAlign="middle">
 				
 				<!--s:Button id="homebutton" scaleX="0.8" scaleY="0.8" skinClass="skins.HomeButtonSkin" click="homebutton_clickHandler(event)">
 				</s:Button-->	
+				<s:Button skinClass="skins.BasicButton" styleName="nav" label="{ML.t('Quit')}" click="exitApplication(event)" id="quitButton" color="0xFFFFFF" visible="{loggedIn}" includeInLayout="{loggedIn}" />
 				<s:Spacer width="10"/>
+				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/padlock.png')" click="changeConfig(event)" color="0xFFFFFF"   visible="{!loggedIn}" includeInLayout="{!loggedIn}"/>
+				<s:Button skinClass="skins.BasicButton" styleName="nav" icon="@Embed('assets/images/core/padlock_open.png')" click="logout(event)" color="0xFFFFFF"  visible="{loggedIn}" includeInLayout="{loggedIn}" />
 			</s:HGroup>
 		
 			
@@ -552,15 +645,13 @@
 			
 		</s:HGroup>
 		
-	</s:BorderContainer>
+	</s:Group>
 	<s:VGroup id="contentholder" width="100%" height="100%" horizontalAlign="center"
 			  verticalAlign="middle">
 
 		<s:Group width="100%" height="100%">
-<s:BorderContainer width="100%" height="100%" top="80" id="contentHolder" borderVisible="false">
-<s:VGroup width="100%" height="100%" clipAndEnableScrolling="true">
-	<s:Image smooth="true" smoothingQuality="high" id="background" source="@Embed('assets/images/background.png')"  />
-</s:VGroup>
+<s:BorderContainer width="100%" height="100%" top="80" id="contentHolder" backgroundAlpha="0" borderVisible="false">
+
 	
 	<!--local:Contatore id="conto" x="200" y="100" z="0" rotationX="20" rotationY="30" rotationZ="0"  timo="5" timeLimit="10" /-->
 	
@@ -619,6 +710,12 @@
 				<views:LastScreen id="lastScreen" />
 			</s:VGroup>
 		</s:NavigatorContent>
+		<s:NavigatorContent width="100%" height="100%" hideEffect="{hideFX}" id="configView" showEffect="{showFX}" >
+			<s:VGroup verticalAlign="middle"  width="100%" height="100%" horizontalAlign="center">
+				<views:ApplicationType id="SelectApplication" />
+			</s:VGroup>
+		</s:NavigatorContent>
+		
 		
 	</mx:ViewStack>
 </s:BorderContainer>

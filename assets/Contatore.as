@@ -23,7 +23,7 @@
 			
 		}
 		public function set timo(ora:Number):void {
-			tempo.text=secondsToMinutesSeconds(ora);
+			tempo.tempo.text=secondsToMinutesSeconds(ora);
 			roller.gotoAndStop(int(ora*frameFraction));
 		}
 		function secondsToMinutesSeconds(secs:Number):String {

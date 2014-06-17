@@ -17,6 +17,9 @@
     <application path="SkyQuest.mxml">
       <airExcludes/>
     </application>
+    <application path="test.mxml">
+      <airExcludes/>
+    </application>
   </applications>
   <modules/>
   <workers/>
@@ -24,7 +27,7 @@
   <flashCatalyst validateFlashCatalystCompatibility="false"/>
   <buildTargets>
     <buildTarget buildTargetName="default" platformId="default">
-      <airSettings airCertificatePath="C:/Users/alfonso.florio/Desktop/ignite.p12" airTimestamp="true" anePathSet="true" version="1">
+      <airSettings airCertificatePath="//psf/Home/Documents/signature.p12" airTimestamp="true" anePathSet="true" version="1">
         <airExcludes/>
         <anePaths/>
         <newLaunchParams/>

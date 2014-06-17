@@ -33,8 +33,8 @@
 			[Bindable]
 			public var options:Array = [];
 			
-			public var answer:Number=-1;
-			public var correctAnswer:Number;
+			public var answer:String="";
+			public var correctAnswer:String;
 			
 			protected function group1_addedToStageHandler(event:Event):void
 			{
@@ -55,18 +55,18 @@
 				if(lungo<4) {
 					numericAnswer.text+=String(num);
 				}
-				answer=Number(numericAnswer.text);
+				answer=String(numericAnswer.text);
 			}
 			public function backKeypad():void {
 				numericAnswer.text=numericAnswer.text.slice(0,-1);
-				answer=Number(numericAnswer.text);
+				answer=String(numericAnswer.text);
 			}
 			public function select_answer(event:Event=null):void {
 				Console.log("SELECT ANSWER "+answergroup.selectedValue, this);
 				answerPanel.visible=true;
-				answer = Number( answergroup.selectedValue );				
+				answer = String( answergroup.selectedValue );				
 			}
-			public function answerRadioBut(gino:Number):void {
+			public function answerRadioBut(gino:String):void {
 				trace("pushed answer"+gino);
 				answerPanel.visible=true;
 				answer=gino;
@@ -80,7 +80,7 @@
 			}
 			protected function answerQuestion(event:MouseEvent=null):void
 			{				
-				if (Number(answer)==Number(correctAnswer)) {
+				if (String(answer)==String(correctAnswer)) {
 					dispatchEvent( new QuizEvent(QuizEvent.CORRECT_ANSWER) );
 					Console.log("CORRECT", this);
 				} else {
@@ -92,7 +92,7 @@
 			public function makeQuestion(question:Object):void {
 				
 				
-				correctAnswer=Number(question.answer);
+				correctAnswer=String(question.answer);
 				if(question.type=="digit") {
 					this.currentState="Calculator";
 					answerbut.visible=false;

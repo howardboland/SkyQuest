@@ -13,21 +13,21 @@ package model
 		{
 			if (langXML==null)
 			{
-			langFile = File.applicationDirectory;
-			langFile = langFile.resolvePath("assets/lang/translation.xml"); 
-
-			stream = new FileStream();
-			// If it exists read it 
-			if (langFile.exists) {
-				trace("preference file exists");
-				stream.open(langFile, FileMode.READ);
-				processXMLData();
-			}
-			else //Otherwise make a file and save it
-			{
-				trace("no file");
-				
-			}
+				langFile = File.applicationDirectory;
+				langFile = langFile.resolvePath("assets/lang/translation.xml"); 
+	
+				stream = new FileStream();
+				// If it exists read it 
+				if (langFile.exists) {
+					trace("preference file exists");
+					stream.open(langFile, FileMode.READ);
+					processXMLData();
+				}
+				else //Otherwise make a file and save it
+				{
+					trace("no translation file");
+					
+				}
 			}
 		}
 		

@@ -1,5 +1,7 @@
 package model
 {
+	import com.utils.Console;
+
 	public class Config
 	{
 		import flash.filesystem.*;
@@ -110,7 +112,7 @@ package model
 			}
 			else
 			{
-				trace("no file");
+				Console.log("no preference file", this);
 			}
 		}
 		public function setLocationLabel(theLabel:String):void {

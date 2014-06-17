@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+				   xmlns:s="library://ns.adobe.com/flex/spark"
+				   xmlns:mx="library://ns.adobe.com/flex/mx"
+				   xmlns:local="*" 
+				   xmlns:components="components.*"
+				   borderVisible="false" backgroundAlpha="0" 
+				   creationComplete="created(event)" 
+				   show="showHandler(event)"   
+				   activate="bordercontainer1_activateHandler(event)" 
+				   deactivate="bordercontainer1_deactivateHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.XMLPrefs;
+			import com.utils.Console;
+			
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import components.QuizModal;
+			
+			import events.NavEvent;
+			import events.QuizEvent;
+			
+			import org.osmf.events.TimeEvent;
+			
+			private var questionsXML:XML;
+			private var data:Array;
+			private var shuffledQuestions:Array;
+			
+			private var quizTimer:Timer=new Timer(1000);
+			private var conta:Number=1;
+			protected var score:int = 0;
+			
+			private var quizModal:QuizModal;
+			
+			private var prefs:XMLPrefs = XMLPrefs.getInstance();
+			
+			protected var isActive:Boolean = false;
+			protected var activeQuestions:Array;
+			protected var activeIndex:int = 0;
+			
+			// RUN FIRST
+			protected function quizBox_addedToStageHandler(event:Event):void
+			{   
+				this.removeEventListener(Event.ADDED_TO_STAGE, quizBox_addedToStageHandler);
+				firstRun();				
+				
+				
+			}
+			protected function showHandler(event:Event):void
+			{
+				firstRun();
+			}
+			protected function created(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				this.addEventListener("QUIZ_DATA_READY", startQuiz);
+				firstRun();
+				this.addEventListener(Event.ADDED_TO_STAGE, quizBox_addedToStageHandler);
+			}
+			public function firstRun():void
+			{
+				Console.log("RUN FIRST", this);
+				if (data==null)
+				{
+					
+					//readLocalData();
+					readRemoteData();
+				} else {
+					startQuiz();
+				}
+			}
+			
+			// READ DATA IN LOCAL APPLICATION DIRECTORY
+			protected function readLocalData():void
+			{
+				Console.log("path:"+File.applicationDirectory.nativePath, this);
+				// Need to be json - fix once questions are known
+				var file:File = File.applicationDirectory.resolvePath("assets/xml/questions.xml");
+				var fileStream:FileStream = new FileStream();
+				fileStream.open(file, FileMode.READ);
+				questionsXML = XML(fileStream.readUTFBytes(fileStream.bytesAvailable));
+				fileStream.close();
+				dispatchEvent( new Event("QUIZ_DATA_READY"));                   
+			}
+			
+			// READ DATA FROM SERVER
+			protected function readRemoteData():void
+			{
+				Console.log("read RemoteData", this);
+				var header:Object=new Object();
+				// **header["Accept"] = "application/json";**
+				// getQuestionaires.contentType = "application/json";
+				// getQuestionaires.headers = header;
+				if (this.parentApplication.localURL!='')
+				{
+				}
+			}
+			
+			// HANDLE SERVER RESULTS
+			protected function remoteDataSuccess(event:ResultEvent):void
+			{
+				Console.log("remoteDataSuccess", this);
+				// Console.log( event.message, this);
+				Console.log( event.result, this );
+				data = JSON.parse( event.result as String ) as Array;
+				Console.log( data, this );
+				this.dispatchEvent( new Event("QUIZ_DATA_READY"));
+			}
+			protected function remoteDataFailed(event:FaultEvent):void
+			{
+				Console.log("remoteDataFailed", this);
+				Console.log( event.message, this);
+				
+			}
+			
+			protected function startQuiz(e:Event=null):void
+			{
+				Console.log("startQuiz", this);
+				// this.removeEventListener("QUIZ_DATA_READY", startQuiz);
+				
+				this.dispatchEvent( new Event("READY_TO_PLAY") );
+			}
+			
+			public function startGame(e:Event=null):void 
+			{
+				Console.log("Start Game", this);
+				// Set up - Event Listeners
+				if (data!=null)
+				{
+					this.removeEventListener("QUIZ_DATA_READY", startGame);
+					quizTimer.removeEventListener(TimerEvent.TIMER, timeoutHandler);
+					quizTimer.addEventListener(TimerEvent.TIMER, timeoutHandler);								
+					
+					score = 0;
+					conta = 0;
+					activeIndex = 0;
+					shuffleQuestions();
+					checkTimeOut();
+					var rimasto:Number=prefs.timeOut-conta;
+					//					timeLeft.text="Time left: "+secondsToMinutesSecondsString(rimasto);
+					quizTimer.start();
+					pullQuestion();
+				} else {
+					this.addEventListener("QUIZ_DATA_READY", startGame);
+					firstRun();
+					
+				}
+			}
+			
+			protected function pullQuestion():void {
+				
+				var dataItem:Object = activeQuestions[ activeIndex ];
+				if (dataItem!=null)
+				{
+				}
+			}
+			
+			protected function checkComplete():void {
+				if(activeIndex<(prefs.totalQuestions)) 
+				{
+					//                  There are still questions to be an
+					pullQuestion();
+				} else 
+				{
+					//                  All questions answered
+					Console.log("Quiz complete - navigating away", this);
+					quizTimer.stop();
+					
+					quizTimer.removeEventListener(TimerEvent.TIMER, timeoutHandler);
+					
+					dispatchEvent( new QuizEvent(QuizEvent.QUIZ_COMPLETE, score ) );
+					dispatchEvent( new NavEvent(NavEvent.NAVIGATION, "congrat" ) );
+				}
+			}
+			
+			public function correctAnswer(e:QuizEvent=null):void 
+			{
+				score++;
+				activeIndex++;
+				showMessage("Correct answer!");
+				conta = 0;
+			}
+			
+			
+			public function wrongAnswer(e:QuizEvent=null):void 
+			{
+				activeIndex++;
+				showMessage("Wrong answer!", activeIndex<prefs.totalQuestions ? "Ready for next question..." : "Game Complete");
+				conta = 0;
+			}
+			
+			public function timeoutAnswer():void 
+			{
+				activeIndex++;
+				
+				showMessage("Time out!", activeIndex<prefs.totalQuestions ? "Ready for next question..." : "Game Complete");
+				
+			}
+			
+			// Overlay (modal window) message to inform user of correct or incorrect answer
+			public function showMessage(line1:String,line2:String=null):void {
+				quizTimer.stop();
+				quizModal = new QuizModal();
+				quizModal.setMessage(line1,line2);
+				quizModal.exitFunction = resumeTimer;
+				PopUpManager.addPopUp(quizModal, this, true);
+				PopUpManager.centerPopUp(quizModal);
+				quizModal.y-=100;
+				quizModal.x=(1024-quizModal.width)/2;
+			}
+			
+			// Continue timer
+			public function resumeTimer():void {
+				Console.log("resume timer", this);
+				quizTimer.start();
+				checkComplete();
+			}
+			
+			// Prepare set of questions for current user by extracting N number of random questions from pool
+			protected function getArrayOfRandomQuestions( n:int ):Array
+			{
+				var tempdata:Array = [];
+				var counter:int = 0;
+				if ( data.length<n )
+				{
+					Console.log("Not enough data in set", this);
+					// not enough data for our temp set so will need to re-use existing data
+					
+					while (tempdata.length<n)
+					{
+						tempdata.push( data[counter % data.length] );
+						counter++;
+					}
+					
+				} else {
+					Console.log("Mixing questions", this);
+					// sufficent questions - we can pick and mix
+					// This is done by making an array of ids and the splicing it (reducing it to ensure unique questions) as we pick random items.
+					var tempIds:Array = [];
+					for (var i:Number=0;i<data.length;i++) {
+						tempIds[i]=i;
+					}
+					while (tempdata.length<n)
+					{
+						tempdata.push( data[ tempIds.splice( Math.round( Math.random() * tempIds.length-1 ), 1) ] )
+						counter++;
+					}
+				}
+				
+				return tempdata;
+				
+			}
+			
+			
+			protected function shuffleQuestions():void {
+				activeQuestions = getArrayOfRandomQuestions( prefs.totalQuestions );
+				//              for (var i:int=0;i<activeQuestions.length;i++)
+				//              {
+				//                  Console.log("=============================", this);
+				//                  for (var m:String in activeQuestions[i])
+				//                  {
+				//                      Console.log(m+" "+activeQuestions[i][m], this);
+				//                  }
+				//              }
+				//              
+			}
+			
+			// Fire everytime quizTimer is called			
+			protected function timeoutHandler(e:Event):void 
+			{
+				if (quizTimer.running)
+				{
+					checkTimeOut();
+					conta++;	
+					
+				}
+			}
+			protected function checkTimeOut():void 
+			{
+				if(conta>=prefs.timeOut) {
+					Console.log("time out!", this);
+					quizTimer.stop();
+					conta = 0;
+					timeoutAnswer();
+					//					var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"loser");
+					//					dispatchEvent(navigation);
+				} else {
+					autoAnswer();
+				}
+				
+				var rimasto:Number=prefs.timeOut-conta;
+				//				timeLeft.text="Time left: "+secondsToMinutesSecondsString(rimasto);
+			}
+			
+			
+			protected function autoAnswer():void
+			{
+				if (prefs.isAuto())
+				{
+					if ((Math.round(Math.random()*prefs.timeOut)/2)<conta)
+					{
+					}
+				}
+			}
+			protected function secondsToMinutesSecondsString(secs:Number):String {
+				var s:Number = secs % 60;
+				var m:Number = Math.floor((secs % 3600 ) /60);
+				var h:Number = Math.floor(secs / (60*60));
+				
+				var minutestring:String = m<10 ? "0"+String(m)+":" : String(m)+":";
+				var secstring:String = s<10 ? "0"+String(s) : String(s);
+				return minutestring+secstring;
+			}
+			protected function bordercontainer1_activateHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				isActive = true;
+				Console.log("Activated!!!", this);
+				
+			}
+			
+			protected function bordercontainer1_deactivateHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				isActive = false;
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<!--Static 192.160.0.150-->
+		<!--s:HTTPService id="getQuestionaires" resultFormat="xml" method="GET" url="{this.parentApplication.localURL+'userteam.php'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" /-->
+		<!--s:HTTPService id="getQuestionaires" resultFormat="text" method="GET" url="{ 'http://192.168.0.150/api/index.php/skytestlab/v1/quiz'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" /-->
+		<s:HTTPService id="getQuestionaires" resultFormat="text" method="GET" url="{ this.parentApplication.localURL+'/skyquiz/questions.json'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" />
+	</fx:Declarations>
+	
+	
+	<s:VGroup width="95%" horizontalAlign="left">
+		<s:Spacer height="20"/>
+		<s:HGroup width="100%" verticalAlign="bottom">
+			<s:VGroup width="50%" horizontalAlign="left">
+				<s:Label id="questionNum" width="1000" text="Question X" fontSize="60" fontWeight="normal" color="#ffffff" />
+			</s:VGroup>
+			<s:VGroup width="50%" height="100" horizontalAlign="right">
+				
+				<local:Contatore id="conto" width="150" height="150" maintainProjectionCenter="true" explicitWidth="150" explicitHeight="150"  rotationX="-10" rotationY="60" rotationZ="20"   />	
+				
+				
+			</s:VGroup>
+		</s:HGroup>
+		<s:Spacer height="20"/>
+		<s:Label lineHeight="110%" color="#ffffff" width="1000" fontSize="45" fontWeight="normal" id="questionText" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
+		<s:Spacer height="50"/>
+		<components:QuizBox id="quizBox" />
+		<s:Spacer height="10"/>
+		<!--s:Label id="timeLeft" text="Time left: "
+		color="#ffffff" 
+		fontSize="26.25" fontWeight="bold" kerning="on"
+		/ -->
+	</s:VGroup>
+	
+</s:BorderContainer>

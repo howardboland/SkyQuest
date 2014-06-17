@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		remove="exit(event)" creationComplete="created(event)" 
+		xmlns:components="views.components.*" 
+		currentState="paths" xmlns:calibrator="views.components.calibrator.*"
+		>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.XMLPrefs;
+			import com.utils.Console;
+			
+			import mx.collections.ArrayList;
+			import mx.core.Window;
+			import mx.events.FlexEvent;
+			
+			import events.ApplicationEvent;
+			import events.ViewEvent;
+			
+			import model.Settings;
+			
+			
+			[Bindable]
+			public var data:XMLPrefs;
+			
+			
+			public function created(event:FlexEvent=null):void
+			{
+				init();
+				this.addEventListener( Event.INIT, init);
+			}
+			public function init(event:Event=null):void
+			{
+				trace("*************Applicationtype ");
+				Console.log( this.parentApplication.prefs , this );
+
+				if (this.parentApplication.prefs!=null)
+				{
+//					stage.displayState=StageDisplayState.NORMAL;
+//					NativeApplication.nativeApplication.activeWindow.alwaysInFront=false;
+					data = this.parentApplication.prefs;
+					this.baseURL.text = data.baseURL
+					this.localURL.text = data.localURL;
+					
+					this.urnLength.text = data.urnLength.toString();
+					this.locationID.text=data.location_id;
+					this.gameID.text=data.game_id;
+					this.modalpause.text=data.modalPause.toString();
+					this.timeout.text = data.timeOut.toString();
+					this.totalquestions.text = data.totalQuestions.toString();
+					
+					this.radioGroupType.selectedValue = data.ApplicationType;
+					this.radioGroupMode.selectedValue = data.mode;
+					
+				}
+			}
+			
+			protected function exit(event:Event=null):void
+			{
+				trace("*** EXIT APPLICATIONTYPE ***");
+				stage.displayState=StageDisplayState.FULL_SCREEN_INTERACTIVE;
+				NativeApplication.nativeApplication.activeWindow.alwaysInFront=true;
+			}
+			
+			protected function submit(e:MouseEvent):void
+			{
+				this.parentApplication.dispatchEvent( new ApplicationEvent( ApplicationEvent.SAVE_TYPE, { 
+					baseURL: baseURL.text.toString(),
+					localURL: localURL.text.toString(),
+					urnLength: urnLength.text.toString(), 
+					applicationtype: radioGroupType.selectedValue.toString(),
+					mode: radioGroupMode.selectedValue.toString(),
+					location_id: locationID.text.toString(),
+					game_id: gameID.text.toString(),
+					timeout: Number(timeout.text.toString()),
+					totalquestions: Number(totalquestions.text.toString()),
+					modalpause: Number(modalpause.text.toString())
+				} ) );			
+			}
+			
+			
+			
+			protected function cancel(e:MouseEvent):void
+			{
+				
+				this.parentApplication.dispatchEvent( new ViewEvent(ViewEvent.LOCATION_RESTART ));
+			}
+			
+			protected function forceLogout(e:MouseEvent):void
+			{
+				this.parentApplication.dispatchEvent( new ViewEvent(ViewEvent.LOCATION_FACEBOOK_FORCELOGOUT ));
+			}
+			
+
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->						
+		<s:RadioButtonGroup id="radioGroupType" />
+		<s:RadioButtonGroup id="radioGroupMode" />
+	</fx:Declarations>
+	
+	<s:states>
+		<s:State name="paths"/>
+		<s:State name="calibrator" />
+	</s:states>
+	
+	<s:VGroup horizontalAlign="left" verticalAlign="middle" width="1180" height="100%" includeIn="paths">
+		
+			<s:FormHeading label="CONFIGURATION DETAILS:" />
+			<s:Scroller width="100%" height="850" verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+				<s:Group height="850" width="100%" textAlign="left">	
+				<s:VGroup>
+					
+				<s:Form id="configform" width="100%" height="100%">		
+						
+						<s:FormItem width="365" label="Base URL:">
+							<s:TextInput id="baseURL" width="650" skinClass="skins.text.SkyTextInput" color="0x000000"/>
+						</s:FormItem>
+							
+						<s:FormItem width="365" label="Local URL:">
+							<s:TextInput id="localURL" width="650"   skinClass="skins.text.SkyTextInput" color="0x000000"/>
+						</s:FormItem>
+						
+						<s:HGroup>
+						
+							<s:FormItem label="Time limit:">				
+								<s:TextInput id="timeout" width="150"  skinClass="skins.text.SkyTextInput" color="0x000000"/>
+							</s:FormItem>
+							
+							
+							<s:FormItem label="Modal pause:" >
+								<s:TextInput id="modalpause" width="150" skinClass="skins.text.SkyTextInput" color="0x000000"   />
+							</s:FormItem>
+							
+						</s:HGroup>
+						
+						<s:HGroup>
+						
+							<s:FormItem label="Location ID:">				
+								<s:TextInput id="locationID" width="150"  skinClass="skins.text.SkyTextInput" color="0x000000"/>
+							</s:FormItem>
+							
+							<s:FormItem label="Game ID:">				
+								<s:TextInput id="gameID" width="150"  skinClass="skins.text.SkyTextInput" color="0x000000"/>
+							</s:FormItem>
+
+							
+							
+						</s:HGroup>
+			
+					
+						<s:HGroup>
+						<s:FormItem label="URN Length:" >
+							<s:TextInput id="urnLength" width="150" skinClass="skins.text.SkyTextInput" color="0x000000"   />
+						</s:FormItem>
+						
+						<s:FormItem label="Questions:">				
+							<s:TextInput id="totalquestions" width="150"  skinClass="skins.text.SkyTextInput" color="0x000000"/>
+						</s:FormItem>
+							
+						</s:HGroup>
+					
+						<s:FormItem width="365" label="Application:">
+							<s:VGroup width="628">
+									<s:RadioButton width="500" label="Quiz" value="Quiz" group="{radioGroupType}" skinClass="skins.buttons.SkyRadiobutton"/>
+							</s:VGroup>
+						
+						</s:FormItem>
+					
+						<s:FormItem label="Mode:">
+							<s:HGroup>
+								<s:RadioButton width="500" label="Auto Play" value="auto" group="{radioGroupMode}" skinClass="skins.buttons.SkyRadiobutton"/>
+								<s:RadioButton width="500" label="Standard" value="standard" group="{radioGroupMode}" skinClass="skins.buttons.SkyRadiobutton"/>
+							</s:HGroup>
+							
+						</s:FormItem>
+									
+					</s:Form>	
+				</s:VGroup>
+				</s:Group>
+			</s:Scroller>
+				
+		<s:HGroup verticalAlign="middle">
+			<s:Button  label="Cancel" click="cancel(event)"  skinClass="skins.buttons.SkyLeftButton"/>
+			<s:Spacer y="8" width="200" height="24"/>
+			<s:Button id="submitButton" label="Submit" click="submit(event)"  skinClass="skins.buttons.SkyRightButton" />
+		</s:HGroup>
+		
+	</s:VGroup>
+	
+	
+</s:Group>

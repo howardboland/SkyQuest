@@ -10,6 +10,7 @@ package com.alfo
 		_obj:Object,
 		_func:Function,
 		_args:Array;
+		protected var t:Timer;
 		/*
 		*  new DelayedExecution(100, Math, round, 4.5);
 		*
@@ -35,13 +36,19 @@ package com.alfo
 									_args.push(arguments[i]);
 								}
 							}
-							var t:Timer = new Timer(arguments[0] as Number, 1);
+							t = new Timer(arguments[0] as Number, 1);
 							t.addEventListener(TimerEvent.TIMER, exec);
 							t.start();
 						} else trace('DelayedExecution-Error: third argument should be a function');
 					} else trace('DelayedExecution-Error: seconds argument should be an object (this-context of function)');
 				} else trace('DelayedExecution-Error: first argument should be a number (milliseconds delay)');
 			}
+		}
+		public function cancel(e:Event = null):void
+		{
+			t.stop();
+			t.removeEventListener(TimerEvent.TIMER, exec);
+			
 		}
 		
 		private function exec(e:Event = null):void

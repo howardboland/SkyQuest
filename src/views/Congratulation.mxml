@@ -20,10 +20,10 @@
 			import skins.buttons.SkyRightButton;
 			
 			private var prefs:XMLPrefs = XMLPrefs.getInstance();
-			
+			protected var tempo:DelayedExecution
 			public function start():void {
-				this.submit();
-				var tempo:DelayedExecution=new DelayedExecution(prefs.splashPause*1000,this,restart);
+				
+				tempo = new DelayedExecution(prefs.splashPause*10000,this,restart);
 			}
 			
 			protected function restart():void
@@ -34,7 +34,9 @@
 			}
 			protected function submit(e:Event=null):void
 			{
+				tempo.cancel();
 				dispatchEvent( new QuizEvent(QuizEvent.QUIZ_SAVE ) );
+				restart();
 			}
 		]]>
 	</fx:Script>
