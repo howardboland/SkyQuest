@@ -1,0 +1,43 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyErrorPanel" itemID="53988b36-00000309" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyErrorPanel" scaleGridLeft="60" scaleGridRight="880.2" scaleGridTop="56" scaleGridBottom="540.1" lastModified="1403000464" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyErrorPanel">
+      <layers>
+        <DOMLayer name="Layer 2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="panel_bg5">
+                  <matrix>
+                    <Matrix tx="-0.05"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="467.35" y="298.4"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="SkyErrorPanelBck">
+                  <matrix>
+                    <Matrix tx="-0.05"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="467.35" y="298.4"/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="30" blurY="30" color="#FFFFFF" knockout="true" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

@@ -1,0 +1,31 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyCheckboxUpSkin" itemID="53987ea0-0000027c" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyCheckboxUpSkin" lastModified="1402997434" lastUniqueIdentifier="1" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyCheckboxUpSkin">
+      <layers>
+        <DOMLayer name="Layer 2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[stop();]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="panel_terms_check" selected="true" centerPoint3DX="161.75" centerPoint3DY="33.25">
+                  <transformationPoint>
+                    <Point x="161.75" y="33.25"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

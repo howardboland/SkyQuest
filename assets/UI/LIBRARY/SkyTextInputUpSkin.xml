@@ -1,0 +1,75 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyTextInputUpSkin" itemID="539872b6-0000023e" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyTextInputUpSkin" scaleGridLeft="137.85" scaleGridRight="415.65" scaleGridTop="23.6" scaleGridBottom="72.9" lastModified="1403002968" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyTextInputUpSkin" guides='&lt;guidelines&gt;&lt;guideline direction="h"&gt;0&lt;/guideline&gt;&lt;/guidelines&gt;'>
+      <layers>
+        <DOMLayer name="Layer 2" color="#9933CC" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#203257" alpha="0.8"/>
+                    </FillStyle>
+                    <FillStyle index="2">
+                      <SolidColor color="#FFFFFF"/>
+                    </FillStyle>
+                  </fills>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal" weight="2">
+                        <fill>
+                          <SolidColor color="#FFFFFF"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge fillStyle0="1" strokeStyle="1" edges="!65 1839/65 1930!65 1930/10810 1930!10810 1930/11070 1670!11070 1670/11070 75!11070 75/898 75"/>
+                    <Edge fillStyle0="2" strokeStyle="1" edges="!898 75/814 -1!814 -1|-1 -1!-1 -1/0 1770!0 1770|65 1839"/>
+                    <Edge fillStyle0="2" fillStyle1="1" strokeStyle="1" edges="!65 1839/65 1835!65 1835/65 75!65 75/898 75"/>
+                    <Edge cubics="!814 -1(;814,-1 898,75 898,75q814 -1 898 75);"/>
+                    <Edge cubics="!-1 -1(;-1,-1 0,1770 0,1770q-1 -1 0 1770);"/>
+                    <Edge cubics="!-1 -1(;-1,-1 814,-1 814,-1q-1 -1 814 -1);"/>
+                    <Edge cubics="!0 1770(;0,1770 65,1839 65,1839q0 1770 65 1839);"/>
+                    <Edge cubics="!10810 1930(;10810,1930 11070,1670 11070,1670p10810 1930q11070 1670);"/>
+                    <Edge cubics="!11070 1670(;11070,1670 11070,75 11070,75q11070 1670 11070 75);"/>
+                    <Edge cubics="!65 75(;65,75 65,1835 65,1835q65 75 65 1835);"/>
+                    <Edge cubics="!65 1930(;65,1930 10810,1930 10810,1930q65 1930 10810 1930);"/>
+                    <Edge cubics="!11070 75(;11070,75 898,75 898,75q11070 75 898 75);"/>
+                    <Edge cubics="!898 75(;898,75 65,75 65,75q898 75 65 75);"/>
+                    <Edge cubics="!65 1839(;65,1839 65,1930 65,1930q65 1839 65 1930);"/>
+                    <Edge cubics="!65 1835(;65,1835 65,1839 65,1839q65 1835 65 1839);"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 1" color="#4FFF4F">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 3" color="#FF800A" locked="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="SkyTextInputSkinGlow">
+                  <transformationPoint>
+                    <Point x="276.75" y="48.25"/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="30" blurY="30" color="#FFFFFF" knockout="true" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

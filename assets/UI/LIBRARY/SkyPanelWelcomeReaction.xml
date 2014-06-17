@@ -1,0 +1,145 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyPanelWelcomeReaction" itemID="5399aa66-000005b1" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyPanelWelcomeReaction" scaleGridLeft="232.65" scaleGridRight="700.1" scaleGridTop="88.2" scaleGridBottom="266.6" lastModified="1403000342" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyPanelWelcomeReaction">
+      <layers>
+        <DOMLayer name="Layer 2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMGroup>
+                  <transformationPoint>
+                    <Point x="70.95" y="307.45"/>
+                  </transformationPoint>
+                  <members>
+                    <DOMShape>
+                      <transformationPoint>
+                        <Point x="70.95" y="307.45"/>
+                      </transformationPoint>
+                      <fills>
+                        <FillStyle index="1">
+                          <SolidColor color="#FFFFFF" alpha="0.498039215686275"/>
+                        </FillStyle>
+                      </fills>
+                      <strokes>
+                        <StrokeStyle index="1">
+                          <SolidStroke scaleMode="normal">
+                            <fill>
+                              <SolidColor color="#FFFFFF"/>
+                            </fill>
+                          </SolidStroke>
+                        </StrokeStyle>
+                      </strokes>
+                      <edges>
+                        <Edge fillStyle1="1" strokeStyle="1" edges="!1766 5809[1724 5766 1724 5708!1724 5708[1724 5648 1766 5606!1766 5606[1808 5565 1866 5565!1866 5565[1925 5565 1968 5606!1968 5606[2010 5648 2010 5708!2010 5708[2010 5766 1968 5809!1968 5809[1925 5850 1866 5850!1866 5850[1808 5850 1766
+ 5809!884 5821[880 5818 874 5813!874 5813[873 5811 871 5810!871 5810|870 5809!870 5809[828 5766 828 5708!828 5708[828 5648 870 5606!870 5606[878 5600 886 5594!886 5594[889 5590 894 5587!894 5587[900 5582 907 5579!907 5579[929 5567 955
+ 5566!955 5566[957 5566 960 5566!960 5566[963 5565 965 5565!965 5565[968 5565 971 5565!971 5565[1029 5565 1072 5606!1072 5606[1113 5648 1113 5708!1113 5708[1113 5766 1072 5809!1072 5809[1031 5848 975 5850"/>
+                        <Edge fillStyle1="1" edges="
+!975 5850[973 5850 971 5850!971 5850[969 5850 968 5850"/>
+                        <Edge fillStyle1="1" strokeStyle="1" edges="
+!968 5850[967 5850 965 5850!965 5850[963 5850 962 5850!962 5850|957 5850!957 5850[955 5850 954 5850"/>
+                        <Edge fillStyle1="1" edges="
+!954 5850[921 5846 894 5828!894 5828[892 5828 890 5826!890 5826[888 5825 884 5821"/>
+                        <Edge strokeStyle="1" edges="
+!1412 5565[1472 5565 1512 5606!1512 5606[1556 5648 1556 5708!1556 5708[1556 5766 1512 5809!1512 5809[1472 5850 1412 5850!1412 5850[1369 5850 1334 5828!1334 5828[1322 5819 1310 5809!1310 5809[1270 5766 1270 5708!1270 5708[1270 5648 1310
+ 5606!1310 5606[1322 5595 1334 5587!1334 5587[1369 5565 1412 5565"/>
+                        <Edge fillStyle1="1" strokeStyle="1" edges="
+!1556 6149[1556 6209 1512 6249!1512 6249[1472 6292 1412 6292!1412 6292[1369 6292 1334 6269!1334 6269[1322 6261 1310 6249!1310 6249[1270 6209 1270 6149!1270 6149[1270 6090 1310 6047!1310 6047[1322 6036 1334 6030!1334 6030[1369 6007 1412
+ 6007!1412 6007[1472 6007 1512 6047!1512 6047[1556 6090 1556 6149!968 6292[910 6292 870 6249!870 6249[828 6209 828 6149!828 6149[828 6090 870 6047!870 6047[911 6007 971 6007!971 6007[1029 6007 1072 6047!1072 6047[1113 6090 1113 6149!1113
+ 6149[1113 6209 1072 6249!1072 6249[1070 6251 1068 6253!1068 6253|1068 6255!1068 6255[1066 6255 1065 6255!1065 6255|1065 6257!1065 6257[1063 6257 1062 6259!1062 6259|1060 6261!1060 6261[1023 6292 975 6292"/>
+                        <Edge fillStyle1="1" edges="
+!975 6292[973 6292 971 6292!971 6292[969 6292 968 6292"/>
+                        <Edge fillStyle1="1" strokeStyle="1" edges="
+!1556 6590[1556 6650 1512 6692!1512 6692[1472 6734 1412 6734!1412 6734[1369 6734 1334 6711!1334 6711[1322 6701 1310 6692!1310 6692[1270 6650 1270 6590!1270 6590[1270 6532 1310 6490!1310 6490[1322 6478 1334 6470!1334 6470[1369 6448 1412
+ 6448!1412 6448[1472 6448 1512 6490!1512 6490[1556 6532 1556 6590"/>
+                        <Edge strokeStyle="1" edges="
+!1968 6047[2010 6090 2010 6149!2010 6149[2010 6209 1968 6249!1968 6249[1925 6292 1866 6292!1866 6292[1808 6292 1766 6249!1766 6249[1724 6209 1724 6149!1724 6149[1724 6090 1766 6047!1766 6047[1808 6007 1866 6007!1866 6007[1925 6007 1968
+ 6047"/>
+                        <Edge fillStyle1="1" strokeStyle="1" edges="
+!1724 6590[1724 6532 1766 6490!1766 6490[1808 6448 1866 6448!1866 6448[1925 6448 1968 6490!1968 6490[2010 6532 2010 6590!2010 6590[2010 6650 1968 6692!1968 6692[1925 6734 1866 6734!1866 6734[1808 6734 1766 6692!1766 6692[1724 6650 1724
+ 6590"/>
+                      </edges>
+                    </DOMShape>
+                  </members>
+                </DOMGroup>
+                <DOMStaticText width="864.95" height="136.4" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="28" ty="33"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>Welcome to the Sky Sports Reaction Game</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" size="60" bitmapSize="1200" face="SkyText-Bold" fillColor="#FFFFFF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+                <DOMStaticText width="840.95" height="43.55" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="40" ty="282.95"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>Scan your thumb to begin</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" size="40" bitmapSize="800" face="SkyText-Regular" fillColor="#0099FF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+                <DOMStaticText width="840.95" height="49" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="40" ty="199.95"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>It's time to test your speed</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" size="45" bitmapSize="900" face="SkyText-Regular" fillColor="#FFFFFF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="panel" color="#FF4FFF" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="panel_bg" selected="true">
+                  <matrix>
+                    <Matrix tx="-1" ty="-1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="467.35" y="178.4"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 3" color="#FF800A">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="SkyPanelWelcomeReactionBckd">
+                  <matrix>
+                    <Matrix tx="-1" ty="-1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="467.35" y="178.4"/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="30" blurY="30" color="#FFFFFF" knockout="true" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

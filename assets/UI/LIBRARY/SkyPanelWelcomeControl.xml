@@ -1,0 +1,128 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyPanelWelcomeControl" itemID="5399aa8e-000005b9" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyPanelWelcomeControl" scaleGridLeft="232.65" scaleGridRight="700.1" scaleGridTop="88.2" scaleGridBottom="266.6" lastModified="1403000156" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyPanelWelcomeControl">
+      <layers>
+        <DOMLayer name="Layer 2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMStaticText width="864.95" height="136.4" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="28" ty="33"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>Welcome to the Sky Sports Control Game</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" size="60" bitmapSize="1200" face="SkyText-Bold" fillColor="#FFFFFF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+                <DOMStaticText width="840.95" height="43.55" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="40" ty="282.95"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>Scan your thumb to begin</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" size="40" bitmapSize="800" face="SkyText-Regular" fillColor="#0099FF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+                <DOMGroup>
+                  <transformationPoint>
+                    <Point x="78.1" y="304"/>
+                  </transformationPoint>
+                  <members>
+                    <DOMShape>
+                      <transformationPoint>
+                        <Point x="78.1" y="304"/>
+                      </transformationPoint>
+                      <fills>
+                        <FillStyle index="1">
+                          <SolidColor color="#FFFFFF" alpha="0.498039215686275"/>
+                        </FillStyle>
+                      </fills>
+                      <strokes>
+                        <StrokeStyle index="1">
+                          <SolidStroke scaleMode="normal">
+                            <fill>
+                              <SolidColor color="#FFFFFF"/>
+                            </fill>
+                          </SolidStroke>
+                        </StrokeStyle>
+                      </strokes>
+                      <edges>
+                        <Edge fillStyle0="1" strokeStyle="1" edges="!1551 5419|1551 5482!1551 5482[1556 5482 1562 5482!1562 5482[1812 5482 1988 5655!1988 5655[2163 5832 2163 6080!2163 6080|2228 6080!2228 6080[2228 5805 2034 5611!2034 5611[1839 5419 1562 5419!1562 5419[1558 5419 1551 5419!1551 5687|1551
+ 5839!1551 5839[1556 5839 1562 5839!1562 5839[1662 5839 1733 5909!1733 5909[1805 5979 1805 6080!1805 6080|1955 6080!1955 6080[1955 5916 1841 5802!1841 5802[1725 5687 1562 5687!1562 5687[1556 5687 1551 5687"/>
+                        <Edge strokeStyle="1" edges="
+!1805 6080[1805 6179 1733 6250!1733 6250[1662 6319 1562 6319!1562 6319[1462 6319 1391 6250!1391 6250[1320 6179 1320 6080!1320 6080[1320 5979 1391 5909!1391 5909[1458 5842 1551 5839!1551 5687[1394 5690 1283 5802!1283 5802[1168 5916 1168
+ 6080!1168 6080[1168 6242 1283 6356!1283 6356[1399 6472 1562 6472!1562 6472[1725 6472 1841 6356!1841 6356[1955 6242 1955 6080"/>
+                        <Edge fillStyle0="1" strokeStyle="1" edges="
+!1445 5491|1445 5428!1445 5428[1246 5462 1094 5611!1094 5611[899 5805 899 6080!899 6080[899 6354 1094 6548!1094 6548[1289 6742 1562 6742!1562 6742[1839 6742 2034 6548!2034 6548[2200 6381 2224 6154!2224 6154|2160 6154!2160 6154[2136 6354
+ 1988 6503!1988 6503[1812 6678 1562 6678!1562 6678[1314 6678 1138 6503!1138 6503[961 6328 961 6080!961 6080[961 5832 1138 5655!1138 5655[1271 5525 1445 5491"/>
+                        <Edge strokeStyle="1" edges="
+!1955 6080|2163 6080"/>
+                      </edges>
+                    </DOMShape>
+                  </members>
+                </DOMGroup>
+                <DOMStaticText width="840.95" height="49" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="40" ty="199.95"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>It's time to test your agility</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" size="45" bitmapSize="900" face="SkyText-Regular" fillColor="#FFFFFF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="panel" color="#FF800A" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="panel_bg2" selected="true">
+                  <matrix>
+                    <Matrix tx="-1" ty="-1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="467.35" y="178.4"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 3" color="#FF800A">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="SkyPanelWelcomeControlBck">
+                  <matrix>
+                    <Matrix tx="-1" ty="-1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="467.35" y="178.4"/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="30" blurY="30" color="#FFFFFF" knockout="true" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

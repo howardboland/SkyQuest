@@ -1,0 +1,41 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyLogoBck" itemID="53a017ed-00000107" scaleGridLeft="51.05" scaleGridRight="155.2" scaleGridTop="12.4" scaleGridBottom="39.35" lastModified="1403009767">
+  <timeline>
+    <DOMTimeline name="SkyLogoBck">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4F80FF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#33CC00"/>
+                    </FillStyle>
+                  </fills>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal" weight="2">
+                        <fill>
+                          <SolidColor color="#FFFFFF"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge fillStyle0="1" strokeStyle="1" edges="!4125 0S5/0 0!0 0/0 940!0 940/0 1035!0 1035/3865 1035!3865 1035/4125 775!4125 775/4125 0"/>
+                    <Edge cubics="!4125 775(;4125,775 4125,0 4125,0p4125 775q4125 0);"/>
+                    <Edge cubics="!3865 1035(;3865,1035 4125,775 4125,775q3865 1035 4125 775);"/>
+                    <Edge cubics="!0 0(;0,0 0,940 0,940q0 0 0 940);"/>
+                    <Edge cubics="!0 940(;0,940 0,1035 0,1035q0 940 0 1035);"/>
+                    <Edge cubics="!0 1035(;0,1035 3865,1035 3865,1035q0 1035 3865 1035);"/>
+                    <Edge cubics="!4125 0(;4125,0 0,0 0,0q4125 0 0 0);"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

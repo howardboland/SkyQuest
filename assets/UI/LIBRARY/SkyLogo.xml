@@ -1,0 +1,86 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyLogo" itemID="53988644-0000028c" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyLogo" scaleGridLeft="12" scaleGridRight="195" scaleGridTop="7" scaleGridBottom="53" lastModified="1403000834" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyLogo">
+      <layers>
+        <DOMLayer name="Layer 2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="Sky Sports Logo[1].png">
+                  <matrix>
+                    <Matrix a="0.22869873046875" d="0.22869873046875" tx="11.8" ty="6.75"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="400.1" y="99.9"/>
+                  </transformationPoint>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="panel" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#FFFFFF"/>
+                    </FillStyle>
+                    <FillStyle index="2">
+                      <SolidColor color="#203257" alpha="0.8"/>
+                    </FillStyle>
+                  </fills>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal" weight="2">
+                        <fill>
+                          <SolidColor color="#FFFFFF"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge fillStyle0="2" strokeStyle="1" edges="!65 1015/65 1110!65 1110/3930 1110!3930 1110/4190 850!4190 850/4190 75!4190 75/870 75"/>
+                    <Edge fillStyle0="1" strokeStyle="1" edges="!870 75|795 0!795 0|0 0!0 0/0 950!0 950/65 1015"/>
+                    <Edge fillStyle0="1" fillStyle1="2" strokeStyle="1" edges="!65 1015/65 75!65 75|870 75"/>
+                    <Edge cubics="!4190 850(;4190,850 4190,75 4190,75p4190 850q4190 75);"/>
+                    <Edge cubics="!3930 1110(;3930,1110 4190,850 4190,850q3930 1110 4190 850);"/>
+                    <Edge cubics="!0 950(;0,950 65,1015 65,1015q0 950 65 1015);"/>
+                    <Edge cubics="!0 0(;0,0 0,950 0,950q0 0 0 950);"/>
+                    <Edge cubics="!795 0(;795,0 0,0 0,0q795 0 0 0);"/>
+                    <Edge cubics="!65 75(;65,75 65,1015 65,1015q65 75 65 1015);"/>
+                    <Edge cubics="!65 1015(;65,1015 65,1110 65,1110q65 1015 65 1110);"/>
+                    <Edge cubics="!870 75(;870,75 795,0 795,0q870 75 795 0);"/>
+                    <Edge cubics="!870 75(;870,75 65,75 65,75q870 75 65 75);"/>
+                    <Edge cubics="!4190 75(;4190,75 870,75 870,75q4190 75 870 75);"/>
+                    <Edge cubics="!65 1110(;65,1110 3930,1110 3930,1110q65 1110 3930 1110);"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 3" color="#FF800A">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="SkyLogoBck">
+                  <matrix>
+                    <Matrix tx="3.25" ty="3.75"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="103.1" y="25.85"/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="30" blurY="30" color="#FFFFFF" knockout="true" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

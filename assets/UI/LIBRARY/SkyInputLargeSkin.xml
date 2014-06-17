@@ -1,0 +1,24 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyInputLargeSkin" itemID="53998712-0000050a" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyInputLargeSkin" scaleGridLeft="85" scaleGridRight="427" scaleGridTop="61" scaleGridBottom="393" lastModified="1402916933" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyInputLargeSkin">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4F80FF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="panel_terms_check" selected="true" centerPoint3DX="305.45" centerPoint3DY="214.5">
+                  <matrix>
+                    <Matrix a="6.62738037109375" d="6.62738037109375"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="36.75" y="33.25"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

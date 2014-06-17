@@ -1,0 +1,43 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyNormalPanel" itemID="5399412c-0000038d" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyNormalPanel" scaleGridLeft="55" scaleGridRight="635" scaleGridTop="53" scaleGridBottom="646" lastModified="1403001951" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyNormalPanel">
+      <layers>
+        <DOMLayer name="Layer 2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="panel_bg4" selected="true">
+                  <matrix>
+                    <Matrix tx="-1" ty="-1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="347.35" y="348.4"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="panel" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="SkyNormalPanelGlow">
+                  <matrix>
+                    <Matrix tx="-1" ty="-1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="347.35" y="348.4"/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="30" blurY="30" color="#FFFFFF" knockout="true" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

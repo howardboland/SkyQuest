@@ -1,0 +1,56 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyPanelNoMatch" itemID="5399ad0f-000005c2" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyPanelNoMatch" scaleGridLeft="182.15" scaleGridRight="550.6" scaleGridTop="75.95" scaleGridBottom="228" lastModified="1402998977" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyPanelNoMatch" guides='&lt;guidelines&gt;&lt;guideline direction="v"&gt;57&lt;/guideline&gt;&lt;guideline direction="v"&gt;786&lt;/guideline&gt;&lt;/guidelines&gt;'>
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMStaticText width="725.95" height="58.25" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="4.9" ty="344.95"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>Please register to play</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" size="52" bitmapSize="1040" face="SkyText-Bold" fillColor="#FFFFFF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+                <DOMSymbolInstance libraryItemName="03_panel_error" selected="true" centerPoint3DX="469.35" centerPoint3DY="217.05">
+                  <matrix>
+                    <Matrix tx="2" ty="0.05"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="467.35" y="217"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 2" color="#9933CC" visible="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="SkyPanelNoMatchGlowBck" selected="true">
+                  <matrix>
+                    <Matrix tx="5.1" ty="2.2"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="364.9" y="147.25"/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="30" blurY="30" color="#FFFFFF" knockout="true" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

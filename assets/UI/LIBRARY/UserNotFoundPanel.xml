@@ -1,0 +1,37 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="UserNotFoundPanel" itemID="5396f264-00005b97" linkageExportForAS="true" linkageClassName="UserNotFoundPanel" lastModified="1402401380" lastUniqueIdentifier="1">
+  <timeline>
+    <DOMTimeline name="UserNotFoundPanel">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMStaticText width="840.95" height="56.6" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="2" ty="371.95"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>User not found in database.</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" size="52" bitmapSize="1040" face="SkyText-Regular" fillColor="#999999"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+                <DOMSymbolInstance libraryItemName="SkyPanelNoMatch" centerPoint3DX="523.45" centerPoint3DY="217.05">
+                  <matrix>
+                    <Matrix tx="56.1" ty="0.05"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="467.35" y="217"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

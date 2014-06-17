@@ -1,0 +1,90 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyPanelWelcome" itemID="53998f33-00000595" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyPanelWelcome" scaleGridLeft="232.65" scaleGridRight="700.1" scaleGridTop="107.5" scaleGridBottom="324.55" lastModified="1402999254" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyPanelWelcome">
+      <layers>
+        <DOMLayer name="Layer 2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMStaticText width="864.95" height="136.4" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="28" ty="53"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>Welcome to the&#xD;Sky Sports Test Lab</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" size="60" bitmapSize="1200" face="SkyText-Bold" fillColor="#FFFFFF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+                <DOMStaticText width="840.95" height="49" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="40" ty="242.95"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>Scan your thumb to register</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" size="45" bitmapSize="900" face="SkyText-Regular" fillColor="#0099FF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+                <DOMStaticText width="579" height="23.95" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="134.95" ty="381.95"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>*All fingerprints are deleted once you have completed playing</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" size="22" bitmapSize="440" face="SkyText-Regular" fillColor="#FFFFFF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="panel" color="#FF4FFF" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="panel_bg3" selected="true">
+                  <matrix>
+                    <Matrix tx="-1" ty="-1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="467.35" y="217"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="panel" color="#FF800A" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="SkyPanelWelcomeBkg">
+                  <matrix>
+                    <Matrix tx="-1" ty="-1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="467.35" y="217"/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="30" blurY="30" color="#FFFFFF" knockout="true" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

@@ -1,0 +1,87 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyIconBallControl" itemID="53998d31-0000058e" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyIconBallControl" scaleGridLeft="21.45" scaleGridRight="65.45" scaleGridTop="21.45" scaleGridBottom="65.4" lastModified="1403001861" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyIconBallControl">
+      <layers>
+        <DOMLayer name="Layer 2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMGroup>
+                  <members>
+                    <DOMGroup selected="true">
+                      <transformationPoint>
+                        <Point x="49.55" y="43.4"/>
+                      </transformationPoint>
+                      <members>
+                        <DOMShape selected="true">
+                          <transformationPoint>
+                            <Point x="49.55" y="43.4"/>
+                          </transformationPoint>
+                          <fills>
+                            <FillStyle index="1">
+                              <SolidColor color="#FFFFFF" alpha="0.498039215686275"/>
+                            </FillStyle>
+                          </fills>
+                          <strokes>
+                            <StrokeStyle index="1">
+                              <SolidStroke scaleMode="normal">
+                                <fill>
+                                  <SolidColor color="#FFFFFF"/>
+                                </fill>
+                              </SolidStroke>
+                            </StrokeStyle>
+                          </strokes>
+                          <edges>
+                            <Edge fillStyle0="1" strokeStyle="1" edges="!1772 965S5[1741 1228 1548 1423!1548 1423[1318 1653 991 1653!991 1653[666 1653 436 1423!436 1423[204 1193 204 868!204 868[204 542 436 310!436 310[610 139 838 95!838 95|838 12!838 12[577 56 378 252!378 252[123 507 123 868!123 868[123 1228
+ 378 1483!378 1483[633 1737 991 1737!991 1737[1353 1737 1608 1483!1608 1483[1825 1263 1856 965!1856 965|1772 965!1861 868[1861 507 1608 252!1608 252[1353 0 991 0!991 0[985 0 976 0!976 0|976 83!976 83[983 83 991 83!991 83[1318 83 1548
+ 310!1548 310[1776 542 1776 868!1776 868|1861 868!976 352|976 551!976 551[983 551 991 551!991 551[1121 551 1214 644!1214 644[1308 735 1308 868!1308 868|1504 868!1504 868[1504 652 1355 503!1355 503[1204 352 991 352!991 352[983 352 976
+ 352"/>
+                            <Edge strokeStyle="1" edges="
+!976 352S4[771 356 626 503!626 503[475 652 475 868!475 868[475 1081 626 1230!626 1230[777 1383 991 1383!991 1383[1204 1383 1355 1230!1355 1230[1504 1081 1504 868!1308 868[1308 998 1214 1091!1214 1091[1121 1182 991 1182!991 1182[860 1182
+ 767 1091!767 1091[674 998 674 868!674 868[674 735 767 644!767 644[854 555 976 551!1504 868|1776 868"/>
+                          </edges>
+                        </DOMShape>
+                      </members>
+                    </DOMGroup>
+                    <DOMStaticText selected="true" left="208.8" width="178.75" height="76.25" autoExpand="true" isSelectable="false">
+                      <matrix>
+                        <Matrix a="0" b="-1" c="1" d="0" tx="2" ty="499.6"/>
+                      </matrix>
+                      <textRuns>
+                        <DOMTextRun>
+                          <characters>Agility</characters>
+                          <textAttrs>
+                            <DOMTextAttrs alignment="right" aliasText="false" size="70" bitmapSize="1400" face="SkyText-Regular" fillColor="#FFFFFF"/>
+                          </textAttrs>
+                        </DOMTextRun>
+                      </textRuns>
+                    </DOMStaticText>
+                  </members>
+                </DOMGroup>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 1" color="#4F80FF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="SkyIconBallGlow">
+                  <matrix>
+                    <Matrix tx="6.15"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="43.45" y="144.85"/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="30" blurY="30" color="#FFFFFF" knockout="true" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

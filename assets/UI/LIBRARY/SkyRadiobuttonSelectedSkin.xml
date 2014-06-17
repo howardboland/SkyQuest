@@ -1,0 +1,45 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="SkyRadiobuttonSelectedSkin" itemID="539881c5-00000285" linkageExportForAS="true" linkageBaseClass="mx.flash.UIMovieClip" linkageClassName="SkyRadiobuttonSelectedSkin" scaleGridLeft="39.65" scaleGridRight="121.1" scaleGridTop="16.1" scaleGridBottom="50.4" lastModified="1402997419" lastUniqueIdentifier="1" isFlexComponent="true">
+  <timeline>
+    <DOMTimeline name="SkyRadiobuttonSelectedSkin">
+      <layers>
+        <DOMLayer name="Layer 2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[stop();]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="panel_terms_check" centerPoint3DX="161.75" centerPoint3DY="33.25">
+                  <transformationPoint>
+                    <Point x="161.75" y="33.25"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMGroup>
+                  <members>
+                    <DOMShape>
+                      <fills>
+                        <FillStyle index="1">
+                          <SolidColor color="#FFFFFF"/>
+                        </FillStyle>
+                      </fills>
+                      <edges>
+                        <Edge fillStyle1="1" edges="!1221 679[1221 861 1092 990!1092 990[963 1119 781 1119!781 1119[599 1119 470 990!470 990[341 861 341 679!341 679[341 497 470 368!470 368[599 239 781 239!781 239[963 239 1092 368!1092 368[1221 497 1221 679"/>
+                      </edges>
+                    </DOMShape>
+                  </members>
+                </DOMGroup>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

@@ -268,8 +268,10 @@
 			}
 			protected function quizSave(e:QuizEvent):void { 
 //				Console.log("Quiz completed with score:"+e.score, this);
-//				currentScore = e.score;				
-				saveScore.send({ urn: barcode, game_id: prefs.game_id, location_id: prefs.location_id, score: currentScore });
+//				currentScore = e.score;		
+				var scoreObject:Object = { urn: barcode, game_id: prefs.game_id, location_id: prefs.location_id, score: currentScore };
+				Console.log( scoreObject, this );
+				saveScore.send(scoreObject);
 			}
 			protected function quizComplete(e:QuizEvent):void { 
 				Console.log("Quiz completed with score:"+e.score, this);

@@ -1,0 +1,634 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" backgroundColor="#00013D" currentTimeline="1" xflVersion="2.3" creatorInfo="Adobe Flash Professional CC" platform="Windows" versionInfo="Saved by Adobe Flash Windows 13.0 build 759" majorVersion="13" buildNumber="759" rulerVisible="true" objectsSnapTo="false" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false">
+     <folders>
+          <DOMFolderItem name="panels" itemID="5395a3e4-000003d1" isExpanded="true"/>
+     </folders>
+     <media>
+          <DOMBitmapItem name="Background.png" itemID="539ec55d-00000034" sourceExternalFilepath="./LIBRARY/Background.png" sourceLastImported="1402997516" externalFileCRC32="1048402707" externalFileSize="716546" allowSmoothing="true" originalCompressionType="lossless" quality="50" href="Background.png" bitmapDataHRef="M 3 1402914141.dat" frameRight="27320" frameBottom="15360"/>
+          <DOMCompiledClipItem name="FlexComponentBase" itemID="5398436b-000001f0" linkageExportForAS="true" linkageClassName="mx.flash.FlexContentHolder" sourceExternalFilepath="./LIBRARY/FlexComponentBase" sourceLastImported="1262819207" sourcePlatform="macintosh" customIconID="0" actionscriptClass="mx.flash.FlexContentHolder" swfScmHRef="26253811765868.swf" swfScmSourceFilename="/Users/Howard/Library/Application Support/Adobe/Flash CC/en_US/Configuration/TMP0004018A5398446C..swf" persistLivePreview11="true" livePreview11ScmHRef="262538117658681.swf" livePreview11ScmSourceFilename="/Users/Howard/Library/Application Support/Adobe/Flash CC/en_US/Configuration/TMP000401895398446C..swf" editFrameIndex="1" requiredMinimumPlayerVersion="0" requiredMinimumASVersion="0" parametersAreLocked="true" swcPath="FlexComponentBase.xml" rootSymbolLinkageID="mx.flash.FlexContentHolder" movieRectRight="10000" movieRectBottom="7500" playerVersion="9" actionscriptVersion="3" hashKey="W4/s/RUftagZay/5v/0450">
+               <parametersAsXML><![CDATA[   <property id="baseline">
+      <Inspectable name="baseline" variable="baseline" category="" verbose="0" defaultValue="" type="Object"/>
+   </property>
+   <property id="bottom">
+      <Inspectable name="bottom" variable="bottom" category="" verbose="0" defaultValue="" type="Object"/>
+   </property>
+   <property id="boundingBoxName">
+      <Inspectable name="boundingBoxName" variable="boundingBoxName" category="" verbose="0" defaultValue="" type="String"/>
+   </property>
+   <property id="hasFocusableChildren">
+      <Inspectable name="hasFocusableChildren" variable="hasFocusableChildren" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+   <property id="horizontalCenter">
+      <Inspectable name="horizontalCenter" variable="horizontalCenter" category="" verbose="0" defaultValue="" type="Object"/>
+   </property>
+   <property id="left">
+      <Inspectable name="left" variable="left" category="" verbose="0" defaultValue="" type="Object"/>
+   </property>
+   <property id="right">
+      <Inspectable name="right" variable="right" category="" verbose="0" defaultValue="" type="Object"/>
+   </property>
+   <property id="tabFocusEnabled">
+      <Inspectable name="tabFocusEnabled" variable="tabFocusEnabled" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+   <property id="top">
+      <Inspectable name="top" variable="top" category="" verbose="0" defaultValue="" type="Object"/>
+   </property>
+   <property id="verticalCenter">
+      <Inspectable name="verticalCenter" variable="verticalCenter" category="" verbose="0" defaultValue="" type="Object"/>
+   </property>
+   <property id="autoUpdateCurrentState">
+      <Inspectable name="autoUpdateCurrentState" variable="autoUpdateCurrentState" category="General" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="autoUpdateMeasuredSize">
+      <Inspectable name="autoUpdateMeasuredSize" variable="autoUpdateMeasuredSize" category="General" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="scaleContentWhenResized">
+      <Inspectable name="scaleContentWhenResized" variable="scaleContentWhenResized" category="General" verbose="0" defaultValue="false" enumeration="false,true" type="List"/>
+   </property>
+   <property id="x">
+      <Inspectable name="x" variable="x" category="General" verbose="0" defaultValue="0" type="Number"/>
+   </property>
+   <property id="y">
+      <Inspectable name="y" variable="y" category="General" verbose="0" defaultValue="0" type="Number"/>
+   </property>
+   <property id="scaleX">
+      <Inspectable name="scaleX" variable="scaleX" category="Size" verbose="0" defaultValue="1.0" type="Number"/>
+   </property>
+   <property id="scaleY">
+      <Inspectable name="scaleY" variable="scaleY" category="Size" verbose="0" defaultValue="1.0" type="Number"/>
+   </property>
+   <property id="scaleZ">
+      <Inspectable name="scaleZ" variable="scaleZ" category="Size" verbose="0" defaultValue="1.0" type="Number"/>
+   </property>
+]]></parametersAsXML>
+               <classProperties><![CDATA[<component id="mx/flash/FlexContentHolder" class="mx.flash.FlexContentHolder" modified="1262819207886">
+<movieBounds xmin="0" xmax="10000" ymin="0" ymax="7500" />
+<componentData>
+<classDefs>
+	<classDef id="mx.geom.Transform"/>
+	<classDef id="mx.core.AdvancedLayoutFeatures"/>
+	<classDef id="mx.resources.ResourceManagerImpl"/>
+	<classDef id="ResourceManagerImpl.as$130.ResourceModuleInfo"/>
+	<classDef id="ResourceManagerImpl.as$130.ResourceEventDispatcher"/>
+	<classDef id="mx.core.IChildList"/>
+	<classDef id="mx.geom.CompoundTransform"/>
+	<classDef id="mx.managers.IFocusManagerComponent"/>
+	<classDef id="mx.events.ResourceEvent"/>
+	<classDef id="mx.core.LayoutElementUIComponentUtils"/>
+	<classDef id="mx.core.IFlexModule"/>
+	<classDef id="mx.modules.IModuleInfo"/>
+	<classDef id="mx.events.Request"/>
+	<classDef id="mx.events.ToolTipEvent"/>
+	<classDef id="mx.modules.ModuleManagerGlobals"/>
+	<classDef id="mx.resources.ResourceManager"/>
+	<classDef id="mx.flash.ContainerMovieClip"/>
+	<classDef id="mx.events.MoveEvent"/>
+	<classDef id="mx.modules.ModuleManager"/>
+	<classDef id="ModuleManager.as$140.ModuleManagerImpl"/>
+	<classDef id="ModuleManager.as$140.ModuleInfo"/>
+	<classDef id="ModuleManager.as$140.FactoryInfo"/>
+	<classDef id="ModuleManager.as$140.ModuleInfoProxy"/>
+	<classDef id="mx.resources.IResourceModule"/>
+	<classDef id="_472d13db055d1131b047fac436bf2f3b7d76e737da2d1e445956f4e1c3a74d7d_flash_display_Sprite"/>
+	<classDef id="mx.events.PropertyChangeEventKind"/>
+	<classDef id="mx.events.StateChangeEvent"/>
+	<classDef id="mx.core.IStateClient"/>
+	<classDef id="mx.events.DragEvent"/>
+	<classDef id="mx.events.PropertyChangeEvent"/>
+	<classDef id="mx.utils.StringUtil"/>
+	<classDef id="mx.resources.IResourceBundle"/>
+	<classDef id="mx.core.IFlexDisplayObject"/>
+	<classDef id="mx.core.FlexVersion"/>
+	<classDef id="mx.core.IConstraintClient"/>
+	<classDef id="mx.managers.SystemManagerGlobals"/>
+	<classDef id="mx.core.IUIComponent"/>
+	<classDef id="mx.resources.LocaleSorter"/>
+	<classDef id="LocaleSorter.as$133.LocaleID"/>
+	<classDef id="LocaleSorter.as$133.LocaleRegistry"/>
+	<classDef id="mx.flash.UIMovieClip"/>
+	<classDef id="mx.managers.ISystemManager"/>
+	<classDef id="mx.core.ILayoutElement"/>
+	<classDef id="mx.core.Singleton"/>
+	<classDef id="mx.resources.ResourceBundle"/>
+	<classDef id="mx.core.IVisualElementContainer"/>
+	<classDef id="mx.core.IToolTip"/>
+	<classDef id="mx.events.FlexEvent"/>
+	<classDef id="mx.resources.IResourceManager"/>
+	<classDef id="mx.core.IInvalidating"/>
+	<classDef id="mx.core.IMXMLObject"/>
+	<classDef id="mx.events.ResizeEvent"/>
+	<classDef id="mx.managers.IToolTipManagerClient"/>
+	<classDef id="mx.core.IDeferredInstantiationUIComponent"/>
+	<classDef id="mx.utils.MatrixUtil"/>
+	<classDef id="mx.core.ComponentDescriptor"/>
+	<classDef id="mx.core.DragSource"/>
+	<classDef id="mx.events.FlexMouseEvent"/>
+	<classDef id="mx.events.ModuleEvent"/>
+	<classDef id="mx.flash.FlexContentHolder"/>
+	<classDef id="mx.automation.IAutomationObject"/>
+	<classDef id="mx.core.DesignLayer"/>
+	<classDef id="mx.core.IVisualElement"/>
+	<classDef id="mx.core.IFlexModuleFactory"/>
+	<classDef id="mx.geom.TransformOffsets"/>
+	<classDef id="mx.core.UIComponentDescriptor"/>
+</classDefs>
+<class id="mx.flash.FlexContentHolder" >
+	<ExcludeClass />
+	<__go_to_ctor_definition_help file="/Users/rfrishbe/opensource/flex/sdk/trunk/frameworks/projects/flash-integration/src/mx/flash/FlexContentHolder.as" pos="1386" />
+	<DefaultProperty param1="content" />
+	<__go_to_ctor_definition_help file="/Users/rfrishbe/opensource/flex/sdk/trunk/frameworks/projects/flash-integration/src/mx/flash/ContainerMovieClip.as" pos="3618" />
+	<Event name="toolTipStart" type="mx.events.ToolTipEvent" />
+	<Event name="toolTipShown" type="mx.events.ToolTipEvent" />
+	<Event name="toolTipShow" type="mx.events.ToolTipEvent" />
+	<Event name="toolTipHide" type="mx.events.ToolTipEvent" />
+	<Event name="toolTipEnd" type="mx.events.ToolTipEvent" />
+	<Event name="toolTipCreate" type="mx.events.ToolTipEvent" />
+	<Event name="currentStateChange" type="mx.events.StateChangeEvent" />
+	<Event name="currentStateChanging" type="mx.events.StateChangeEvent" />
+	<Event name="dragComplete" type="mx.events.DragEvent" />
+	<Event name="dragDrop" type="mx.events.DragEvent" />
+	<Event name="dragExit" type="mx.events.DragEvent" />
+	<Event name="dragOver" type="mx.events.DragEvent" />
+	<Event name="dragEnter" type="mx.events.DragEvent" />
+	<Event name="mouseWheelOutside" type="mx.events.FlexMouseEvent" />
+	<Event name="mouseDownOutside" type="mx.events.FlexMouseEvent" />
+	<Event name="show" type="mx.events.FlexEvent" />
+	<Event name="resize" type="mx.events.ResizeEvent" />
+	<Event name="remove" type="mx.events.FlexEvent" />
+	<Event name="preinitialize" type="mx.events.FlexEvent" />
+	<Event name="move" type="mx.events.MoveEvent" />
+	<Event name="initialize" type="mx.events.FlexEvent" />
+	<Event name="hide" type="mx.events.FlexEvent" />
+	<Event name="creationComplete" type="mx.events.FlexEvent" />
+	<Event name="add" type="mx.events.FlexEvent" />
+	<__go_to_ctor_definition_help file="/Users/rfrishbe/opensource/flex/sdk/trunk/frameworks/projects/flash-integration/src/mx/flash/UIMovieClip.as" pos="20590" />
+	<method id="content" returnType="IUIComponent" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="scaleContentWhenResized" returnType="Boolean" isProperty="true" permissions="readwrite">
+		<Inspectable category="General" enumeration="false,true" defaultValue="false" />
+	</method>
+	<method id="numElements" returnType="int" isProperty="true" permissions="readonly">
+	</method>
+	<method id="alpha" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="autoUpdateMeasuredSize" returnType="Boolean" isProperty="true" permissions="readwrite">
+		<Inspectable category="General" />
+	</method>
+	<method id="autoUpdateCurrentState" returnType="Boolean" isProperty="true" permissions="readwrite">
+		<Inspectable category="General" />
+	</method>
+	<method id="x" returnType="Number" isProperty="true" permissions="readwrite">
+		<Inspectable category="General" />
+	</method>
+	<method id="y" returnType="Number" isProperty="true" permissions="readwrite">
+		<Inspectable category="General" />
+	</method>
+	<method id="z" returnType="Number" isProperty="true" permissions="readwrite">
+		<Bindable param1="zChanged" />
+	</method>
+	<method id="baseline" returnType="Object" isProperty="true" permissions="readwrite">
+		<Bindable event="propertyChange" />
+		<Inspectable />
+	</method>
+	<method id="bottom" returnType="Object" isProperty="true" permissions="readwrite">
+		<Bindable event="propertyChange" />
+		<Inspectable />
+	</method>
+	<method id="horizontalCenter" returnType="Object" isProperty="true" permissions="readwrite">
+		<Bindable event="propertyChange" />
+		<Inspectable />
+	</method>
+	<method id="left" returnType="Object" isProperty="true" permissions="readwrite">
+		<Bindable event="propertyChange" />
+		<Inspectable />
+	</method>
+	<method id="right" returnType="Object" isProperty="true" permissions="readwrite">
+		<Bindable event="propertyChange" />
+		<Inspectable />
+	</method>
+	<method id="top" returnType="Object" isProperty="true" permissions="readwrite">
+		<Bindable event="propertyChange" />
+		<Inspectable />
+	</method>
+	<method id="verticalCenter" returnType="Object" isProperty="true" permissions="readwrite">
+		<Bindable event="propertyChange" />
+		<Inspectable />
+	</method>
+	<method id="cachePolicy" returnType="String" isProperty="true" permissions="readonly">
+	</method>
+	<method id="descriptor" returnType="UIComponentDescriptor" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="id" returnType="String" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="baselinePosition" returnType="Number" isProperty="true" permissions="readonly">
+	</method>
+	<method id="document" returnType="Object" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="explicitHeight" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="explicitMaxHeight" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="explicitMaxWidth" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="explicitMinHeight" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="explicitMinWidth" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="explicitWidth" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="focusPane" returnType="Sprite" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="includeInLayout" returnType="Boolean" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="isPopUp" returnType="Boolean" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="designLayer" returnType="DesignLayer" isProperty="true" permissions="readwrite">
+		<Inspectable environment="none" />
+	</method>
+	<method id="maxHeight" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="maxWidth" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="measuredMinHeight" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="measuredMinWidth" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="minHeight" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="minWidth" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="moduleFactory" returnType="IFlexModuleFactory" isProperty="true" permissions="readwrite">
+		<Inspectable environment="none" />
+	</method>
+	<method id="owner" returnType="DisplayObjectContainer" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="percentHeight" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="percentWidth" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="systemManager" returnType="ISystemManager" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="tweeningProperties" returnType="Array" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="visible" returnType="Boolean" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="height" returnType="Number" isProperty="true" permissions="readwrite">
+		<PercentProxy param1="percentHeight" />
+	</method>
+	<method id="measuredHeight" returnType="Number" isProperty="true" permissions="readonly">
+	</method>
+	<method id="measuredWidth" returnType="Number" isProperty="true" permissions="readonly">
+	</method>
+	<method id="width" returnType="Number" isProperty="true" permissions="readwrite">
+		<PercentProxy param1="percentWidth" />
+	</method>
+	<method id="scaleX" returnType="Number" isProperty="true" permissions="readwrite">
+		<Inspectable category="Size" defaultValue="1.0" />
+	</method>
+	<method id="scaleY" returnType="Number" isProperty="true" permissions="readwrite">
+		<Inspectable category="Size" defaultValue="1.0" />
+	</method>
+	<method id="scaleZ" returnType="Number" isProperty="true" permissions="readwrite">
+		<Inspectable category="Size" defaultValue="1.0" />
+	</method>
+	<method id="toolTip" returnType="String" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="focusEnabled" returnType="Boolean" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="hasFocusableChildren" returnType="Boolean" isProperty="true" permissions="readwrite">
+		<Inspectable defaultValue="true" />
+		<Bindable param1="hasFocusableChildrenChange" />
+	</method>
+	<method id="mouseFocusEnabled" returnType="Boolean" isProperty="true" permissions="readonly">
+	</method>
+	<method id="tabFocusEnabled" returnType="Boolean" isProperty="true" permissions="readwrite">
+		<Inspectable defaultValue="true" />
+		<Bindable param1="tabFocusEnabledChange" />
+	</method>
+	<method id="depth" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="transformX" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="transformY" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="transformZ" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="rotation" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="rotationX" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="rotationY" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="rotationZ" returnType="Number" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="postLayoutTransformOffsets" returnType="TransformOffsets" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="transform" returnType="Transform" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="maintainProjectionCenter" returnType="Boolean" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="hasLayoutMatrix3D" returnType="Boolean" isProperty="true" permissions="readonly">
+	</method>
+	<method id="is3D" returnType="Boolean" isProperty="true" permissions="readonly">
+	</method>
+	<method id="parent" returnType="DisplayObjectContainer" isProperty="true" permissions="readonly">
+	</method>
+	<method id="parentDocument" returnType="Object" isProperty="true" permissions="readonly">
+	</method>
+	<method id="currentState" returnType="String" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="tabEnabled" returnType="Boolean" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="automationDelegate" returnType="Object" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="automationName" returnType="String" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="automationValue" returnType="Array" isProperty="true" permissions="readonly">
+	</method>
+	<method id="automationOwner" returnType="DisplayObjectContainer" isProperty="true" permissions="readonly">
+	</method>
+	<method id="automationParent" returnType="DisplayObjectContainer" isProperty="true" permissions="readonly">
+	</method>
+	<method id="automationEnabled" returnType="Boolean" isProperty="true" permissions="readonly">
+	</method>
+	<method id="automationVisible" returnType="Boolean" isProperty="true" permissions="readonly">
+	</method>
+	<method id="showInAutomationHierarchy" returnType="Boolean" isProperty="true" permissions="readwrite">
+	</method>
+	<method id="numAutomationChildren" returnType="int" isProperty="true" permissions="readonly">
+	</method>
+	<method id="automationTabularData" returnType="Object" isProperty="true" permissions="readonly">
+	</method>
+	<method id="cacheHeuristic" returnType="Boolean" isProperty="true" permissions="writeonly">
+	</method>
+	<method id="boundingBoxName" returnType="String" isProperty="true" permissions="readwrite">
+		<Inspectable />
+	</method>
+	<method id="initialize" returnType="void" isProperty="false">
+	</method>
+	<method id="setActualSize" returnType="void" isProperty="false">
+	</method>
+	<method id="sizeFlexContent" returnType="void" isProperty="false">
+	</method>
+	<method id="FlexContentHolder" isConstructor="true" isProperty="false">
+	</method>
+	<method id="getElementAt" returnType="IVisualElement" isProperty="false">
+	</method>
+	<method id="getElementIndex" returnType="int" isProperty="false">
+	</method>
+	<method id="addElement" returnType="IVisualElement" isProperty="false">
+	</method>
+	<method id="addElementAt" returnType="IVisualElement" isProperty="false">
+	</method>
+	<method id="removeElement" returnType="IVisualElement" isProperty="false">
+	</method>
+	<method id="removeElementAt" returnType="IVisualElement" isProperty="false">
+	</method>
+	<method id="removeAllElements" returnType="void" isProperty="false">
+	</method>
+	<method id="setElementIndex" returnType="void" isProperty="false">
+	</method>
+	<method id="swapElements" returnType="void" isProperty="false">
+	</method>
+	<method id="swapElementsAt" returnType="void" isProperty="false">
+	</method>
+	<method id="ContainerMovieClip" isConstructor="true" isProperty="false">
+	</method>
+	<method id="createReferenceOnParentDocument" returnType="void" isProperty="false">
+	</method>
+	<method id="deleteReferenceOnParentDocument" returnType="void" isProperty="false">
+	</method>
+	<method id="executeBindings" returnType="void" isProperty="false">
+	</method>
+	<method id="registerEffects" returnType="void" isProperty="false">
+	</method>
+	<method id="getConstraintValue" returnType="null" isProperty="false">
+	</method>
+	<method id="setConstraintValue" returnType="void" isProperty="false">
+	</method>
+	<method id="getLayoutMatrix" returnType="Matrix" isProperty="false">
+	</method>
+	<method id="setLayoutMatrix" returnType="void" isProperty="false">
+	</method>
+	<method id="getLayoutMatrix3D" returnType="Matrix3D" isProperty="false">
+	</method>
+	<method id="setLayoutMatrix3D" returnType="void" isProperty="false">
+	</method>
+	<method id="transformAround" returnType="void" isProperty="false">
+	</method>
+	<method id="transformPointToParent" returnType="void" isProperty="false">
+	</method>
+	<method id="getPreferredBoundsWidth" returnType="Number" isProperty="false">
+	</method>
+	<method id="getPreferredBoundsHeight" returnType="Number" isProperty="false">
+	</method>
+	<method id="getMinBoundsWidth" returnType="Number" isProperty="false">
+	</method>
+	<method id="getMinBoundsHeight" returnType="Number" isProperty="false">
+	</method>
+	<method id="getMaxBoundsWidth" returnType="Number" isProperty="false">
+	</method>
+	<method id="getMaxBoundsHeight" returnType="Number" isProperty="false">
+	</method>
+	<method id="getBoundsXAtSize" returnType="Number" isProperty="false">
+	</method>
+	<method id="getBoundsYAtSize" returnType="Number" isProperty="false">
+	</method>
+	<method id="getLayoutBoundsWidth" returnType="Number" isProperty="false">
+	</method>
+	<method id="getLayoutBoundsHeight" returnType="Number" isProperty="false">
+	</method>
+	<method id="getLayoutBoundsX" returnType="Number" isProperty="false">
+	</method>
+	<method id="getLayoutBoundsY" returnType="Number" isProperty="false">
+	</method>
+	<method id="setLayoutBoundsPosition" returnType="void" isProperty="false">
+	</method>
+	<method id="setLayoutBoundsSize" returnType="void" isProperty="false">
+	</method>
+	<method id="parentChanged" returnType="void" isProperty="false">
+	</method>
+	<method id="getExplicitOrMeasuredWidth" returnType="Number" isProperty="false">
+	</method>
+	<method id="getExplicitOrMeasuredHeight" returnType="Number" isProperty="false">
+	</method>
+	<method id="setVisible" returnType="void" isProperty="false">
+	</method>
+	<method id="owns" returnType="Boolean" isProperty="false">
+	</method>
+	<method id="move" returnType="void" isProperty="false">
+	</method>
+	<method id="setFocus" returnType="void" isProperty="false">
+	</method>
+	<method id="drawFocus" returnType="void" isProperty="false">
+	</method>
+	<method id="createAutomationIDPart" returnType="Object" isProperty="false">
+	</method>
+	<method id="createAutomationIDPartWithRequiredProperties" returnType="Object" isProperty="false">
+	</method>
+	<method id="resolveAutomationIDPart" returnType="Array" isProperty="false">
+	</method>
+	<method id="getAutomationChildAt" returnType="IAutomationObject" isProperty="false">
+	</method>
+	<method id="getAutomationChildren" returnType="Array" isProperty="false">
+	</method>
+	<method id="replayAutomatableEvent" returnType="Boolean" isProperty="false">
+	</method>
+	<method id="UIMovieClip" isConstructor="true" isProperty="false">
+	</method>
+</class>
+</componentData>
+</component>
+]]></classProperties>
+               <SwcItem name="mx.flash.FlexContentHolder" version="1262819207" isTopLevel="true"/>
+          </DOMCompiledClipItem>
+          <DOMBitmapItem name="Sky Sports Logo[1].png" itemID="539594bc-00000369" sourceExternalFilepath="./LIBRARY/Sky Sports Logo&amp;#0911&amp;#093.png" sourceLastImported="1402311867" sourcePlatform="macintosh" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Sky Sports Logo&amp;#0911&amp;#093.png" bitmapDataHRef="M 2 1402504622.dat" frameRight="16000" frameBottom="4000"/>
+     </media>
+     <symbols>
+          <Include href="03_panel_error.xml" loadImmediate="false" itemID="5395a427-000003d8" lastModified="1402998998"/>
+          <Include href="btn_bg1.xml" loadImmediate="false" itemID="539eb468-00000234" lastModified="1403009911"/>
+          <Include href="button_bg1_glow.xml" loadImmediate="false" itemID="53a01d7d-00000131" lastModified="1403009906"/>
+          <Include href="button_bg2.xml" loadImmediate="false" itemID="539eb484-00000238" lastModified="1403009901"/>
+          <Include href="panel_bg.xml" loadImmediate="false" itemID="539eb17d-00000220" lastModified="1403000335"/>
+          <Include href="panel_bg2.xml" loadImmediate="false" itemID="539eb1e9-00000224" lastModified="1403000205"/>
+          <Include href="panel_bg3.xml" loadImmediate="false" itemID="539eb210-00000228" lastModified="1402999287"/>
+          <Include href="panel_bg4.xml" loadImmediate="false" itemID="539eb257-0000022c" lastModified="1402909271"/>
+          <Include href="panel_bg5.xml" loadImmediate="false" itemID="539eb433-00000230" lastModified="1403000403"/>
+          <Include href="panel_terms.xml" loadImmediate="false" itemID="5395fbd5-000027fc" lastModified="1403002166"/>
+          <Include href="panel_terms_check.xml" loadImmediate="false" itemID="5395fcd3-000031db" lastModified="1403002091"/>
+          <Include href="panel_terms_check_glow.xml" loadImmediate="false" itemID="53a01ce8-00000125" lastModified="1403002098"/>
+          <Include href="panel_terms_glow.xml" loadImmediate="false" itemID="53a01d26-0000012b" lastModified="1403002150"/>
+          <Include href="SkyCheckboxSelectedSkin.xml" itemID="53987e93-0000027a" lastModified="1402914784"/>
+          <Include href="SkyCheckboxUpSkin.xml" itemID="53987ea0-0000027c" lastModified="1402997434"/>
+          <Include href="SkyErrorPanel.xml" itemID="53988b36-00000309" lastModified="1403000464"/>
+          <Include href="SkyErrorPanelBck.xml" loadImmediate="false" itemID="53a0168b-00000101" lastModified="1403009791"/>
+          <Include href="SkyIconBallControl.xml" itemID="53998d31-0000058e" lastModified="1403001861"/>
+          <Include href="SkyIconBallGlow.xml" loadImmediate="false" itemID="53a01bff-00000111" lastModified="1403001855"/>
+          <Include href="SkyIconReactionControl.xml" itemID="539b04de-00000278" lastModified="1403001903"/>
+          <Include href="SkyIconReactionControlGlow.xml" loadImmediate="false" itemID="53a01c29-00000117" lastModified="1403001897"/>
+          <Include href="SkyInputLargeSkin.xml" itemID="53998712-0000050a" lastModified="1402916933"/>
+          <Include href="SkyLeftButtonDownSkin.xml" itemID="5399d3c4-000005d8" lastModified="1402916939"/>
+          <Include href="SkyLeftButtonGlowSkin.xml" loadImmediate="false" itemID="53a020fc-00000185" lastModified="1403009776"/>
+          <Include href="SkyLeftButtonUpSkin.xml" itemID="5399d3d2-000005d9" lastModified="1403004397"/>
+          <Include href="SkyLogo.xml" itemID="53988644-0000028c" lastModified="1403000834"/>
+          <Include href="SkyLogoBck.xml" loadImmediate="false" itemID="53a017ed-00000107" lastModified="1403009767"/>
+          <Include href="SkyNormalPanel.xml" itemID="5399412c-0000038d" lastModified="1403001951"/>
+          <Include href="SkyNormalPanelGlow.xml" loadImmediate="false" itemID="53a01c58-0000011e" lastModified="1403009757"/>
+          <Include href="SkyPanelNoMatch.xml" itemID="5399ad0f-000005c2" lastModified="1402998977"/>
+          <Include href="SkyPanelNoMatchGlowBck.xml" loadImmediate="false" itemID="539ec64e-00000047" lastModified="1403009741"/>
+          <Include href="SkyPanelWelcome.xml" itemID="53998f33-00000595" lastModified="1402999254"/>
+          <Include href="SkyPanelWelcomeBkg.xml" loadImmediate="false" itemID="539ec8a4-0000005c" lastModified="1403009728"/>
+          <Include href="SkyPanelWelcomeControl.xml" itemID="5399aa8e-000005b9" lastModified="1403000156"/>
+          <Include href="SkyPanelWelcomeControlBck.xml" loadImmediate="false" itemID="53a0153f-000000e2" lastModified="1403009722"/>
+          <Include href="SkyPanelWelcomeReaction.xml" itemID="5399aa66-000005b1" lastModified="1403000342"/>
+          <Include href="SkyPanelWelcomeReactionBckd.xml" loadImmediate="false" itemID="53a015dc-000000f6" lastModified="1403009713"/>
+          <Include href="SkyRadiobuttonSelectedSkin.xml" itemID="539881c5-00000285" lastModified="1402997419"/>
+          <Include href="SkyRightButtonDownSkin.xml" itemID="5399d413-000005dc" lastModified="1403011045"/>
+          <Include href="SkyRightButtonGlow.xml" itemID="53a03e95-000000a8" lastModified="1403011019"/>
+          <Include href="SkyRightButtonUpSkin.xml" itemID="5399d3f6-000005db" lastModified="1403011048"/>
+          <Include href="SkyTextInputDownSkin.xml" itemID="539872d9-00000245" lastModified="1403003053"/>
+          <Include href="SkyTextInputSkinGlow.xml" loadImmediate="false" itemID="53a01f54-00000139" lastModified="1403009684"/>
+          <Include href="SkyTextInputUpSkin.xml" itemID="539872b6-0000023e" lastModified="1403002968"/>
+          <Include href="UserNotFoundPanel.xml" itemID="5396f264-00005b97" lastModified="1402401380"/>
+     </symbols>
+     <timelines>
+          <DOMTimeline name="Scene 1" guides='&lt;guidelines&gt;&lt;guideline direction="h"&gt;-155&lt;/guideline&gt;&lt;guideline direction="h"&gt;-149&lt;/guideline&gt;&lt;/guidelines&gt;'>
+               <layers>
+                    <DOMLayer name="Layer 1" color="#4F80FF" current="true" isSelected="true">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMBitmapInstance libraryItemName="Background.png">
+                                             <matrix>
+                                                  <Matrix tx="-273" ty="-114"/>
+                                             </matrix>
+                                        </DOMBitmapInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <PrinterSettings platform="macintosh"/>
+     <publishHistory>
+          <PublishItem publishSize="335787" publishTime="1403010801" publishDebug="true"/>
+          <PublishItem publishSize="335426" publishTime="1403010307" publishDebug="true"/>
+          <PublishItem publishSize="335715" publishTime="1403010213" publishDebug="true"/>
+          <PublishItem publishSize="335434" publishTime="1403009924" publishDebug="true"/>
+          <PublishItem publishSize="335479" publishTime="1403009802" publishDebug="true"/>
+          <PublishItem publishSize="335227" publishTime="1403009521" publishDebug="true"/>
+          <PublishItem publishSize="336088" publishTime="1403006286" publishDebug="true"/>
+     </publishHistory>
+     <swcCache>
+          <Swc hashKey="W4/s/RUftagZay/5v/0450" href="29807111765904.swc">
+               <classDefinitions>
+                    <ClassDefinition value="mx.geom.Transform"/>
+                    <ClassDefinition value="mx.core.AdvancedLayoutFeatures"/>
+                    <ClassDefinition value="mx.resources.ResourceManagerImpl"/>
+                    <ClassDefinition value="ResourceManagerImpl.as$130.ResourceModuleInfo"/>
+                    <ClassDefinition value="ResourceManagerImpl.as$130.ResourceEventDispatcher"/>
+                    <ClassDefinition value="mx.core.IChildList"/>
+                    <ClassDefinition value="mx.geom.CompoundTransform"/>
+                    <ClassDefinition value="mx.managers.IFocusManagerComponent"/>
+                    <ClassDefinition value="mx.events.ResourceEvent"/>
+                    <ClassDefinition value="mx.core.LayoutElementUIComponentUtils"/>
+                    <ClassDefinition value="mx.core.IFlexModule"/>
+                    <ClassDefinition value="mx.modules.IModuleInfo"/>
+                    <ClassDefinition value="mx.events.Request"/>
+                    <ClassDefinition value="mx.events.ToolTipEvent"/>
+                    <ClassDefinition value="mx.modules.ModuleManagerGlobals"/>
+                    <ClassDefinition value="mx.resources.ResourceManager"/>
+                    <ClassDefinition value="mx.flash.ContainerMovieClip"/>
+                    <ClassDefinition value="mx.events.MoveEvent"/>
+                    <ClassDefinition value="mx.modules.ModuleManager"/>
+                    <ClassDefinition value="ModuleManager.as$140.ModuleManagerImpl"/>
+                    <ClassDefinition value="ModuleManager.as$140.ModuleInfo"/>
+                    <ClassDefinition value="ModuleManager.as$140.FactoryInfo"/>
+                    <ClassDefinition value="ModuleManager.as$140.ModuleInfoProxy"/>
+                    <ClassDefinition value="mx.resources.IResourceModule"/>
+                    <ClassDefinition value="_472d13db055d1131b047fac436bf2f3b7d76e737da2d1e445956f4e1c3a74d7d_flash_display_Sprite"/>
+                    <ClassDefinition value="mx.events.PropertyChangeEventKind"/>
+                    <ClassDefinition value="mx.events.StateChangeEvent"/>
+                    <ClassDefinition value="mx.core.IStateClient"/>
+                    <ClassDefinition value="mx.events.DragEvent"/>
+                    <ClassDefinition value="mx.events.PropertyChangeEvent"/>
+                    <ClassDefinition value="mx.utils.StringUtil"/>
+                    <ClassDefinition value="mx.resources.IResourceBundle"/>
+                    <ClassDefinition value="mx.core.IFlexDisplayObject"/>
+                    <ClassDefinition value="mx.core.FlexVersion"/>
+                    <ClassDefinition value="mx.core.IConstraintClient"/>
+                    <ClassDefinition value="mx.managers.SystemManagerGlobals"/>
+                    <ClassDefinition value="mx.core.IUIComponent"/>
+                    <ClassDefinition value="mx.resources.LocaleSorter"/>
+                    <ClassDefinition value="LocaleSorter.as$133.LocaleID"/>
+                    <ClassDefinition value="LocaleSorter.as$133.LocaleRegistry"/>
+                    <ClassDefinition value="mx.flash.UIMovieClip"/>
+                    <ClassDefinition value="mx.managers.ISystemManager"/>
+                    <ClassDefinition value="mx.core.ILayoutElement"/>
+                    <ClassDefinition value="mx.core.Singleton"/>
+                    <ClassDefinition value="mx.resources.ResourceBundle"/>
+                    <ClassDefinition value="mx.core.IVisualElementContainer"/>
+                    <ClassDefinition value="mx.core.IToolTip"/>
+                    <ClassDefinition value="mx.events.FlexEvent"/>
+                    <ClassDefinition value="mx.resources.IResourceManager"/>
+                    <ClassDefinition value="mx.core.IInvalidating"/>
+                    <ClassDefinition value="mx.core.IMXMLObject"/>
+                    <ClassDefinition value="mx.events.ResizeEvent"/>
+                    <ClassDefinition value="mx.managers.IToolTipManagerClient"/>
+                    <ClassDefinition value="mx.core.IDeferredInstantiationUIComponent"/>
+                    <ClassDefinition value="mx.utils.MatrixUtil"/>
+                    <ClassDefinition value="mx.core.ComponentDescriptor"/>
+                    <ClassDefinition value="mx.core.DragSource"/>
+                    <ClassDefinition value="mx.events.FlexMouseEvent"/>
+                    <ClassDefinition value="mx.events.ModuleEvent"/>
+                    <ClassDefinition value="mx.flash.FlexContentHolder"/>
+                    <ClassDefinition value="mx.automation.IAutomationObject"/>
+                    <ClassDefinition value="mx.core.DesignLayer"/>
+                    <ClassDefinition value="mx.core.IVisualElement"/>
+                    <ClassDefinition value="mx.core.IFlexModuleFactory"/>
+                    <ClassDefinition value="mx.geom.TransformOffsets"/>
+                    <ClassDefinition value="mx.core.UIComponentDescriptor"/>
+               </classDefinitions>
+          </Swc>
+     </swcCache>
+</DOMDocument>
