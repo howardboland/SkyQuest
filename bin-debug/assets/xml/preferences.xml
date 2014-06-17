@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preferences>
-  <timeout>20</timeout>
-  <totalquestions>5</totalquestions>
-  <penalty>5</penalty>
-  <modalpause>5</modalpause>
-  <splashpause>5</splashpause>
-  <baseurl>http://www.ignitesocial.co.uk/sky/</baseurl>
-  <localurl>192.168.0.150</localurl>
-  <applicationtype>Quiz</applicationtype>
-  <game_id>3</game_id>
-  <location_id>24</location_id>
-  <urnLength>16</urnLength>
-  <mode>standard</mode>
-  <baseURL>http://www.ignitesocial.co.uk/sky/</baseURL>
+	<timeout>10</timeout>
+	<totalquestions>5</totalquestions>
+	<penalty>5</penalty>
+	<modalpause>3</modalpause>
+	<splashpause>5</splashpause>
+	<baseurl>http://www.ignitesocial.co.uk/sky/</baseurl>
+	<localurl>192.168.0.150</localurl>
+    <applicationtype>Quiz</applicationtype>
+    <game_id>3</game_id>
+    <location_id>24</location_id>
+    <urnLength>16</urnLength>
+    <mode>standard</mode>
 </preferences>
