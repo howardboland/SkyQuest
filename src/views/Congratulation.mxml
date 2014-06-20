@@ -20,7 +20,16 @@
 			import skins.buttons.SkyRightButton;
 			
 			private var prefs:XMLPrefs = XMLPrefs.getInstance();
-			protected var tempo:DelayedExecution
+			protected var tempo:DelayedExecution;
+			
+			public function destroy():void
+			{
+				
+				if ( tempo!=null )
+				{
+					tempo.cancel();		
+				}
+			}
 			public function start():void {
 				
 				tempo = new DelayedExecution(prefs.splashPause*10000,this,restart);

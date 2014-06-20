@@ -97,7 +97,7 @@
 			}
 			protected function autoRun(e:Event=null):void
 			{
-				this.barcodeInput.text = "A1402583450731Z";
+				this.barcodeInput.text = "A1403016526142Z";
 				var userdata:UserData = new UserData();
 				settings = Settings.instance;	
 				userdata.urn = this.barcodeInput.text;
@@ -502,7 +502,7 @@
 		<local:SkyPanelWelcome visible="{ this.parentApplication.ApplicationType=='REGISTRATION' }" includeInLayout="{ this.parentApplication.ApplicationType=='REGISTRATION' }" />
 		<local:SkyPanelWelcomeControl visible="{ this.parentApplication.ApplicationType=='SCOREGAME1' }" includeInLayout="{ this.parentApplication.ApplicationType=='SCOREGAME1' }" />
 		<local:SkyPanelWelcomeReaction visible="{ this.parentApplication.ApplicationType=='SCOREGAME2' }" includeInLayout="{ this.parentApplication.ApplicationType=='SCOREGAME2' }" />
-		<local:SkyPanelWelcome visible="{ this.parentApplication.ApplicationType=='Quiz' }" includeInLayout="{ this.parentApplication.ApplicationType=='Quiz' }" />
+		<local:SkyPanelQuiz visible="{ this.parentApplication.ApplicationType=='Quiz' }" includeInLayout="{ this.parentApplication.ApplicationType=='Quiz' }" />
 		<!-- s:Label id="welcomeLabel" textAlign="center" width="90%" styleName="registrationOne" text="WELCOME TO{'\n'}BARCLAYS PREMIER LEAGUE LIVE">
 			<s:filters>
 				<s:GlowFilter color="0x00AEEF" strength="15"/>

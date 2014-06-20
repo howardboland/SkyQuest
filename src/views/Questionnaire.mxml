@@ -43,6 +43,15 @@
 			protected var activeQuestions:Array;
 			protected var activeIndex:int = 0;
 			
+			public function destroy():void
+			{
+				//ensure all timers are stopped.
+				
+				Console.log("Destroy! Stop Timers.", this);
+				quizTimer.stop();				
+				quizTimer.removeEventListener(TimerEvent.TIMER, timeoutHandler);
+				
+			}
 			// RUN FIRST
 			protected function quizBox_addedToStageHandler(event:Event):void
 			{   

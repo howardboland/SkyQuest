@@ -76,12 +76,6 @@ s|Label#frontMessage  {
 	color:#00ADEE;
 }
 
-.welcomeBackHeader{
-	fontSize: 112;
-	fontFamily:"PremiereLeague";
-	color:#FFFFFF;
-}
-
 .verysmallprint {
 	fontSize: 14;
 	fontFamily: "StandardRegularAllCase";
@@ -245,11 +239,7 @@ mx|ViewStack mx|VBox
 .tclink {
 	textDecoration: underline;
 }
-s|Label#welcomeBackUser{
-	fontSize:95;
-	fontFamily: "StandardRegularAllCase";
-	color:#00AEEF;
-}
+
 components1|CameraSelectionPanel{
 	fontSize:50;
 	fontFamily: "StandardRegularAllCase";

@@ -30,6 +30,11 @@ s|Label, s|RichEditableText  {
 	fontSize: 57;
 	fontWeight: normal;
 }
+s|Label#frontMessage  {
+	fontSize:57;
+	fontFamily: "StandardRegularAllCase";
+	
+}
 
 #photoList s|Label  {
 	fontSize: 24;

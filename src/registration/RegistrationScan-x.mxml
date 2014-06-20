@@ -99,7 +99,7 @@
 			}
 			protected function autoRun(e:Event=null):void
 			{
-				this.barcodeInput.text = "A1402478847076Z";
+				this.barcodeInput.text = "A1403016526142Z";
 				this.onAlreadyRegistered( this.barcodeInput.text, prefs.ApplicationType );
 
 			}

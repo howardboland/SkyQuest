@@ -10,15 +10,28 @@
 			protected var totalSec:Number=3;
 			protected var counter:Number;
 			import events.NavEvent;
-			
+			protected var tempo:DelayedExecution;
 			protected function bordercontainer1_addedToStageHandler(event:Event):void
 			{
 
 				
 			}
+			public function destroy():void
+			{
+				if (timer!=null)
+				{
+					timer.stop();
+					timer.removeEventListener(TimerEvent.TIMER,countDown);
+					timer.removeEventListener(TimerEvent.TIMER_COMPLETE,startGame);
+				}
+				if ( tempo!=null )
+				{
+					tempo.cancel();		
+				}
+			}
 			public function start():void {
 				countDownLabel.text="3";
-				var tempo:DelayedExecution=new DelayedExecution(1000,this,startCounter);
+				tempo = new DelayedExecution(1000,this,startCounter);
 			}
 			protected function startCounter():void {
 				timer=new Timer(1000,totalSec);
@@ -37,7 +50,7 @@
 				timer.removeEventListener(TimerEvent.TIMER,countDown);
 				timer.removeEventListener(TimerEvent.TIMER_COMPLETE,startGame);
 				trace("end of counter!");
-				var tempo:DelayedExecution=new DelayedExecution(1000,this,exitScreen)
+				tempo = new DelayedExecution(1000,this,exitScreen)
 
 			}
 			protected function exitScreen():void {

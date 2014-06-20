@@ -22,6 +22,7 @@
 			
 			import components.AdminWindow;
 			import components.ErrorAlert;
+			import components.PasswordAlert;
 			import components.tandcWindow;
 			
 			import events.ApplicationEvent;
@@ -37,8 +38,6 @@
 			import registration.debug.DebugEvent;
 			
 			import skins.BasicButton;
-			
-			import components.PasswordAlert;
 			
 			public var password:String = "123";
 			protected var passwordbox:components.PasswordAlert;
@@ -191,8 +190,7 @@
 				countdownScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				quizScreen.addEventListener(NavEvent.NAVIGATION,navigate);
 				quizScreen.addEventListener(QuizEvent.QUIZ_COMPLETE,quizComplete);
-				quizScreen.addEventListener(QuizEvent.QUIZ_SAVE, quizSave);
-				
+				congratScreen.addEventListener(QuizEvent.QUIZ_SAVE, quizSave);
 				
 				
 				loserScreen.addEventListener(NavEvent.NAVIGATION,navigate);
@@ -267,10 +265,12 @@
 				}
 			}
 			protected function quizSave(e:QuizEvent):void { 
-//				Console.log("Quiz completed with score:"+e.score, this);
+				Console.log("Quiz completed with score:"+currentScore, this);
 //				currentScore = e.score;		
 				var scoreObject:Object = { urn: barcode, game_id: prefs.game_id, location_id: prefs.location_id, score: currentScore };
-				Console.log( scoreObject, this );
+				for (var m:String in scoreObject)
+				Console.log( m+" :"+scoreObject[m], this );
+				Console.log( saveScore.url, this);
 				saveScore.send(scoreObject);
 			}
 			protected function quizComplete(e:QuizEvent):void { 
@@ -309,11 +309,24 @@
 			}
 			protected function navigate(e:NavEvent):void {
 				Console.log("going to"+e.page, this);
+				if ( currentSlide=="quiz" )
+				{
+					quizScreen.destroy();
+				}
+				if ( currentSlide=="congrat" )
+				{
+					congratScreen.destroy();
+				}
+				if ( currentSlide=="countdown" )
+				{
+					countdownScreen.destroy();
+				}
 				if ( currentSlide == "config" && prefs.isAuto() && e.page!="home")
 				{
 					
 				} else
 				{
+					
 					currentSlide=e.page;
 					
 					switch(e.page)
@@ -460,7 +473,7 @@
 			
 			protected function homebutton_clickHandler(event:MouseEvent):void
 			{
-				stack.selectedIndex=0;
+				this.navigate( new NavEvent( NavEvent.NAVIGATION, "home" ) );
 				
 			}
 			protected function clearPopups(e:Event=null):void
@@ -519,6 +532,7 @@
 			
 			protected function save(e:ResultEvent=null):void
 			{
+				Console.log("SAVING SCORE", this);
 				Console.log( e.result, this );
 				var result:Object = JSON.parse( e.result as String ) as Object;
 				Console.log( result, this);
@@ -532,10 +546,13 @@
 					PopUpManager.addPopUp(alertbox, this, true);
 					PopUpManager.centerPopUp(alertbox);
 
-				} 
+				} else {
+					Console.log("YUP - SCORE SAVED!!!", this);
+				}
 			}
 			protected function error(e:FaultEvent):void
 			{
+				Console.log("ERROR SCORE", this);
 				trace("server error"+e.fault.message.toString());
 				alertbox = new ErrorAlert();
 				alertbox.message = e.fault.message.toString();
