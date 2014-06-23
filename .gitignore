@@ -16,7 +16,6 @@ local.properties
 .settings/
 .loadpath
 bin-debug/
-*.swf
 .actionScriptProperties
 .flexProperties
 .project
