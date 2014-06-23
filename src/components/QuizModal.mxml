@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark"  xmlns:local="*"
-		 xmlns:mx="library://ns.adobe.com/flex/mx" width="525" height="250" added="onAdded()" remove="exit()">
+		 xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="650" added="onAdded()" remove="exit()">
 	
 	<fx:Script>
 		<![CDATA[
-			
 			import com.alfo.DelayedExecution;
 			import com.alfo.XMLPrefs;
+			import com.greensock.TweenLite;
 			
 			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
@@ -21,6 +21,7 @@
 			
 			protected function onAdded(e:FlexEvent=null):void
 			{
+				trace("quizmodal added");
 				var tempo:DelayedExecution=new DelayedExecution(prefs.modalPause*1000,this,closeMe);
 			}
 			
@@ -45,7 +46,8 @@
 				trace("line 1 width:"+line1.getExplicitOrMeasuredWidth());
 				trace("line 2 width" + line2.getExplicitOrMeasuredWidth());
 				
-				
+				trace("line 1 width:"+line1.width);
+				trace("line 2 width" + line2.width);
 				
 
 				
@@ -60,20 +62,39 @@
 			protected function closeMe():void {
 				PopUpManager.removePopUp(this);
 			}
+			protected function create(event:Event):void
+			{
+				TweenLite.to(countdownFrame, 2, {glowFilter:{color:0xFFFFFF, blurX:30, blurY:30, strength:2, alpha:0.5, knockout: true}});
+			}
+			
+			protected function line1_updateCompleteHandler(event:FlexEvent):void
+			{
+				trace("line 1 update complete"+line1.width);
+				
+			}
+			
 		]]>
 	</fx:Script>
 	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
-	<local:SkyErrorPanel width="{textBox.width+100}" height="{textBox.height+100}"  />
+	
+	<s:VGroup  horizontalAlign="center" verticalAlign="middle" width="100%" height="100%">
+		<local:SkyTextLabel width="{textBlock.width+100}" height="{textBlock.height+100}" />
+		
 	</s:VGroup>
+	<s:VGroup   horizontalAlign="center" verticalAlign="middle"  width="100%" height="100%">
+		
+		<local:SkyTextLabelGlow width="{textBlock.width+100}" height="{textBlock.height+100}" id="countdownFrame" creationComplete="create(event)" />
+	</s:VGroup>
+	
+
 	<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
 		
 
-	<s:VGroup horizontalAlign="center" verticalAlign="middle" id="textBox" paddingLeft="100">
-		<s:Label id="line1" color="#ffffff" text="Correct!" textAlign="center" fontSize="52" typographicCase="uppercase" fontWeight="bold"/>
+	<s:VGroup horizontalAlign="center" verticalAlign="middle" id="textBlock" paddingTop="20" >
+		<s:Label updateComplete="line1_updateCompleteHandler(event)" id="line1" color="#ffffff" text="Correct!" textAlign="center" fontSize="52" typographicCase="uppercase" fontWeight="bold"/>
 		<s:Spacer height="15"/>
 		<s:Label id="line2" color="#ffffff" text="this is the penalty" textAlign="center" fontSize="52" typographicCase="uppercase" fontWeight="normal"/>
 	</s:VGroup>

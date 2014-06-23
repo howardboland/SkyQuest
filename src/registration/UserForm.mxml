@@ -2,7 +2,7 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		xmlns:mx="library://ns.adobe.com/flex/mx"
-		remove="exit(event)" creationComplete="created(event)" 
+		remove="exit(event)" added="group1_addedHandler(event)" creationComplete="created(event)" 
 		>
 	<fx:Script>
 		<![CDATA[
@@ -35,10 +35,13 @@
 			
 			public function created(event:FlexEvent=null):void
 			{
+				
 				this.addEventListener( Event.INIT, init);
 			}
 			public function init(event:Event=null):void
 			{
+				trace("**********userform INIT");
+				
 				clearData();
 				settings = Settings.instance;
 				if (this.parentApplication.data!=null)
@@ -156,6 +159,12 @@
 						stage.focus = null;
 					}
 				}
+			}
+			
+			protected function group1_addedHandler(event:Event):void
+			{
+				trace("**********userform added");
+				
 			}
 			
 		]]>
