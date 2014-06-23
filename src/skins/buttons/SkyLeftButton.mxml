@@ -23,7 +23,7 @@
 			
 			protected function create(event:Event):void
 			{
-				TweenLite.to(event.currentTarget, 2, {glowFilter:{color:0xFFFFFF, blurX:10, blurY:10, strength:1, alpha:1, knockout: true}});
+				TweenLite.to(event.currentTarget, 2, {glowFilter:{color:0xFFFFFF, blurX:30, blurY:30, strength:2, alpha:0.5, knockout: true}});
 			}
         ]]>        
     </fx:Script>
@@ -39,9 +39,9 @@
 	<local:SkyLeftButtonDownSkin includeIn="down, over" top="0" left="0" right="0" bottom="0" />
 	<local:SkyLeftButtonUpSkin excludeFrom="down, over" top="0" left="0" right="0" bottom="0" />
 	<local:SkyRightButtonGlow addedToStage="create(event)" id="downbtn" top="0" left="0" right="0" bottom="0" />
-	<s:RichText id="labelDisplay" color="#ffffff" color.down="#0099FF" color.over="#0099FF" fontSize="37"
-				kerning="on" tabStops="S0 S50 S100 S150" textAlign="center"
-				top.disabled="20" bottom.disabled="22" left="20" right="20" paddingLeft="20" paddingRight="20"
+	<s:RichText id="labelDisplay" color="#ffffff" color.down="#0099FF" color.over="#0099FF" fontSize="52"
+				kerning="on" tabStops="S0 S50 S100 S150" textAlign="center" typographicCase="uppercase" fontWeight="bold"
+				top.disabled="20" bottom.disabled="22" left="20" right="20" paddingLeft="20" paddingRight="20" paddingBottom="20"
 				top.down="20" bottom.down="0"
 				top.over="20" bottom.over="0"
 				top.up="20" bottom.up="0"/>

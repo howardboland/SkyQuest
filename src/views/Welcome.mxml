@@ -41,17 +41,17 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:VGroup >
+	<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" >
 		
-	<s:Group width="694.75" height="696.8">
+	<s:Group width="80%">
 		
 	
-	<local:SkyNormalPanel left="0" right="0" top="0" bottom="0" />
-	<s:VGroup left="10" top="10" bottom="10" right="10">
-		<s:RichText fontSize="80" textAlign="center" width="100%" paddingLeft="30" paddingRight="30" paddingTop="40" paddingBottom="40" text="Welcome to the Sky Sports Quiz" color="#ffffff">
+	<local:SkyNormalPanel left="0" right="0" width="{textGroup.width}" height="{textGroup.height}" top="0" bottom="0" />
+	<s:VGroup left="10" top="10" bottom="10" right="10" id="textGroup" paddingBottom="70" paddingTop="30" paddingLeft="30" paddingRight="65">
+		<s:RichText fontSize="96" fontWeight="bold" textAlign="center" typographicCase="uppercase" width="100%" paddingLeft="30" paddingRight="30" paddingTop="40" paddingBottom="40" text="Welcome to the Sky Sports Quiz" color="#ffffff">
 			
 		</s:RichText>
-		<s:RichText fontSize="42" textAlign="center" width="100%"  color="#ffffff" paddingLeft="30" paddingRight="30">
+		<s:RichText fontSize="52" textAlign="center" width="100%"  color="#ffffff" paddingLeft="30" paddingRight="30">
 			<s:text>We’re going to ask you five sport related questions.
 
 You only have 10 seconds to answer each question.
@@ -61,7 +61,7 @@ Are you ready?</s:text>
 	</s:VGroup>
 	</s:Group>
 		<s:Spacer height="20"/>
-	<s:HGroup width="100%" horizontalAlign="right">
+	<s:HGroup width="80%" horizontalAlign="right">
 		<s:Button skinClass="skins.buttons.SkyRightButton" label="Let's Play" click="touchtoplay1_clickHandler(event)" />
 		</s:HGroup>
 	</s:VGroup>

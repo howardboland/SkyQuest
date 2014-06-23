@@ -3,7 +3,7 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 creationComplete="created()" 
 		 addedToStage="addedToStageHander(event)"
-		 remove="exit(event)" xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:local="*" xmlns:components="views.components.*">
+		 remove="exit(event)" xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:local="*" xmlns:components="views.components.*" xmlns:components1="components.*">
 	
 	<fx:Metadata>
 		[Event(name="debug", type="registration.debug.DebugEvent")]
@@ -500,9 +500,7 @@
 	<s:VGroup id="welcomeScreen" verticalAlign="middle" horizontalAlign="center" includeIn="READY_TO_SCAN" width="1366" height="100%">
 		
 		<local:SkyPanelWelcome visible="{ this.parentApplication.ApplicationType=='REGISTRATION' }" includeInLayout="{ this.parentApplication.ApplicationType=='REGISTRATION' }" />
-		<local:SkyPanelWelcomeControl visible="{ this.parentApplication.ApplicationType=='SCOREGAME1' }" includeInLayout="{ this.parentApplication.ApplicationType=='SCOREGAME1' }" />
-		<local:SkyPanelWelcomeReaction visible="{ this.parentApplication.ApplicationType=='SCOREGAME2' }" includeInLayout="{ this.parentApplication.ApplicationType=='SCOREGAME2' }" />
-		<local:SkyPanelWelcome visible="{ this.parentApplication.ApplicationType=='Quiz' }" includeInLayout="{ this.parentApplication.ApplicationType=='Quiz' }" />
+		<local:SkyPanelWelcomeQuiz visible="{ this.parentApplication.ApplicationType=='Quiz' }" includeInLayout="{ this.parentApplication.ApplicationType=='Quiz' }" />
 		<!-- s:Label id="welcomeLabel" textAlign="center" width="90%" styleName="registrationOne" text="WELCOME TO{'\n'}BARCLAYS PREMIER LEAGUE LIVE">
 			<s:filters>
 				<s:GlowFilter color="0x00AEEF" strength="15"/>
@@ -521,7 +519,7 @@
 		<s:Spacer height="130" height.DEFAULT="260" />
 		<s:VGroup horizontalAlign="center">
 			
-			<s:Label id="frontMessage" horizontalCenter="0" textAlign="center"
+			<components1:SkyLabel id="frontMessage" horizontalCenter="0" textAlign="center"
 					 text="PLEASE SCAN YOUR THUMB 3 TIMES"
 					 text.REGISTER_BEGIN = "PLEASE WAIT"
 					 text.FINGERPRINT_CONNECTION_ERROR="NETWORK ERROR 500 PLEASE ASK HELP TO A MEMBER OF STAFF"

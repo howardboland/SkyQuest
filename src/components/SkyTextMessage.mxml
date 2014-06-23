@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"   xmlns:local="*" creationComplete="group1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import com.greensock.TweenLite;
+			import com.greensock.plugins.GlowFilterPlugin;
+			import com.greensock.plugins.TweenPlugin;
+			TweenPlugin.activate([GlowFilterPlugin]);
+			
+			[Bindable]
+			public var text1:String="";
+			
+			[Bindable]
+			public var text2:String="";
+			
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+			protected function create(event:Event):void
+			{
+				TweenLite.to(labelFrame, 2, {glowFilter:{color:0xFFFFFF, blurX:30, blurY:30, strength:2, alpha:0.5, knockout: true}});
+			}
+			
+		]]>
+	</fx:Script>
+	<local:SkyTextBoxGlow addedToStage="create(event)" id="labelFrame" top="0" left="0" right="0" bottom="0" />
+	<local:SkyTextBox top="0" left="0" right="0" bottom="0"   />
+	<s:VGroup horizontalAlign="center" verticalAlign="middle" bottom="30"  top="30" left="80" right="80" >
+		<s:Label textAlign="center" fontFamily="StandardRegularAllCase" typographicCase="uppercase" fontWeight="bold" fontSize="96"  text="{text1}"  />
+		<s:Spacer width="10" height="20" />
+		<s:Label textAlign="center" fontFamily="StandardRegularAllCase" typographicCase="uppercase" fontWeight="bold" id="userText" fontSize="96"  text="{text2}" />
+	</s:VGroup>
+</s:Group>

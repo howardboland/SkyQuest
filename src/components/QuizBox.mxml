@@ -173,12 +173,12 @@
 		
 	</s:VGroup>
 		<s:Spacer height="100" />
-	<s:VGroup  id="answerPanel" width="1000">
+	<s:VGroup  id="answerPanel" width="90%">
 		
 		<s:HGroup width="100%" horizontalAlign="center">
 			<s:Button skinClass="skins.buttons.SkyRightButton" horizontalCenter="0" id="answerRadio" label="Continue" click="answerQuestion(event)"/>
 		</s:HGroup>
-		<s:HGroup width="100%" horizontalAlign="right" paddingTop="-80">
+		<s:HGroup width="700" horizontalAlign="right" paddingTop="-80">
 		<s:Label id="questionNo" fontWeight="bold" color="#ffffff" alpha=".5" fontSize="80" horizontalCenter="100%" />
 		</s:HGroup>
 	</s:VGroup>

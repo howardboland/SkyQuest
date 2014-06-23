@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"  xmlns:local="*" addedToStage="group1_addedToStageHandler(event)"> 
+	
+	<fx:Script>
+		<![CDATA[
+			import com.alfo.utils.StringUtils;
+			import com.greensock.TweenLite;
+			import com.greensock.plugins.GlowFilterPlugin;
+			import com.greensock.plugins.TweenPlugin;
+			
+			import mx.events.FlexEvent;
+			TweenPlugin.activate([GlowFilterPlugin]);
+			
+			[Bindable]
+			public var text:String="";
+			
+			protected function create(event:Event):void
+			{
+				TweenLite.to(labelFrame, 2, {glowFilter:{color:0xFFFFFF, blurX:30, blurY:30, strength:2, alpha:0.5, knockout: true}});
+			}
+			
+			protected function group1_addedToStageHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+			protected function label1_updateCompleteHandler(event:FlexEvent):void
+			{
+				trace("label updated");
+				//theLabel.text=StringUtils.capitalize(text,true);
+			}
+			
+		]]>
+    
+
+	</fx:Script>
+	
+	<local:SkyTextLabelGlow addedToStage="create(event)" id="labelFrame" top="0" left="0" right="0" bottom="0" />
+	<local:SkyTextLabel top="0" left="0" right="0" bottom="0" />
+	<s:Label id="theLabel" updateComplete="label1_updateCompleteHandler(event)" typographicCase="uppercase" text="{text}" textAlign="center" fontFamily="StandardRegularAllCase" fontWeight="bold" fontSize="52" top="60" left="50" right="60" bottom="50" />
+</s:Group>

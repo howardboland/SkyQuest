@@ -25,13 +25,30 @@
 			}
 			
 			public function setMessage(title:String,secondRow:String = null):void {
+				
+				var width1:Number;
+				var width2:Number;
+
 				line1.text=title;
+
 				if(secondRow!=null) {
 					line2.text=secondRow;
 				} else {
 					line2.visible=false;
 					line2.includeInLayout=false;
 				}
+
+				line1.invalidateSize();
+				line2.invalidateSize();
+				line1.validateNow();
+				line2.validateNow();
+				trace("line 1 width:"+line1.getExplicitOrMeasuredWidth());
+				trace("line 2 width" + line2.getExplicitOrMeasuredWidth());
+				
+				
+				
+
+				
 			}
 			
 			protected function exit(e:FlexEvent=null):void
@@ -49,10 +66,16 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<local:SkyErrorPanel left="0" right="0" top="0" bottom="0"  />
 	<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
-		<s:Label id="line1" color="#ffffff" text="Correct!" fontSize="63" fontWeight="bold"/>
+	<local:SkyErrorPanel width="{textBox.width+100}" height="{textBox.height+100}"  />
+	</s:VGroup>
+	<s:VGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+		
+
+	<s:VGroup horizontalAlign="center" verticalAlign="middle" id="textBox" paddingLeft="100">
+		<s:Label id="line1" color="#ffffff" text="Correct!" textAlign="center" fontSize="52" typographicCase="uppercase" fontWeight="bold"/>
 		<s:Spacer height="15"/>
-		<s:Label id="line2" color="#ffffff" text="this is the penalty" fontSize="40" fontWeight="normal"/>
+		<s:Label id="line2" color="#ffffff" text="this is the penalty" textAlign="center" fontSize="52" typographicCase="uppercase" fontWeight="normal"/>
+	</s:VGroup>
 	</s:VGroup>
 </s:Group>

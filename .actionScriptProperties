@@ -17,9 +17,6 @@
     <application path="SkyQuest.mxml">
       <airExcludes/>
     </application>
-    <application path="test.mxml">
-      <airExcludes/>
-    </application>
   </applications>
   <modules/>
   <workers/>

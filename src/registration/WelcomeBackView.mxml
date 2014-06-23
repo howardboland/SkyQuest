@@ -2,7 +2,7 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 creationComplete="onCreationComplete(event)"
+		 creationComplete="onCreationComplete(event)" xmlns:components="components.*"
 		 >
 	
 	<fx:Script>
@@ -49,7 +49,7 @@
 				parameters.urn = settings.userData.urn;
 				request.data = parameters;
 				loader.load(request);
-				welcomeBackUser.alpha = 0;
+				welcomeBackUser.userText.alpha = 0;
 				
 			}
 			
@@ -65,8 +65,8 @@
 					settings.userData.firstName = result.data["firstname"];
 					settings.userData.lastName = result.data["lastname"];
 					
-					welcomeBackUser.text = result.data["firstname"] + " " + result.data["lastname"];
-					TweenMax.to(welcomeBackUser, .3, {alpha : 1});
+					welcomeBackUser.userText.text = result.data["firstname"] ;
+					TweenMax.to(welcomeBackUser.userText, .3, {alpha : 1});
 				}
 			}
 			
@@ -82,9 +82,7 @@
 		]]>
 	</fx:Script>
 	<s:VGroup width="100%" height="597" horizontalAlign="center" verticalAlign="middle">
-		<s:Spacer width="10" height="30"/>
-		<s:Label textAlign="center" styleName="thankyou" id="frontMessage" text="WELCOME BACK"  />
-		<s:Spacer width="10" height="20"/>
-		<s:Label id="welcomeBackUser" styleName="username" />
+		<components:SkyTextMessage id="welcomeBackUser" text1="Welcome Back" />
+
 	</s:VGroup>
 </s:Group>

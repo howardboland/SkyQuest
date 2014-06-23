@@ -6,6 +6,7 @@
 					   xmlns:local="*" 
 					   width="1024" height="768"
 					   resize="onresize(event)"
+					   alwaysInFront="true"
 					   applicationComplete="windowedapplication2_applicationCompleteHandler(event)"
 					   addedToStage="windowedapplication2_addedToStageHandler(event)"
 					   horizontalCenter="center" showStatusBar="false" xmlns:registration="registration.*" xmlns:debug="registration.debug.*"
@@ -309,6 +310,9 @@
 			}
 			protected function navigate(e:NavEvent):void {
 				Console.log("going to"+e.page, this);
+				if(quizScreen.quizTimer) {
+					quizScreen.quizTimer.stop();
+				}
 				if ( currentSlide == "config" && prefs.isAuto() && e.page!="home")
 				{
 					
@@ -622,7 +626,7 @@
 					   click="fullscreen(event)">
 		<s:Rect width="100%" height="90">
 			<s:fill>
-				<s:SolidColor color="0x000000" alpha=".5" />
+				<s:SolidColor color="0x000000" alpha="0" />
 			</s:fill>
 		</s:Rect>
 		<s:HGroup width="100%" height="90" verticalAlign="middle">

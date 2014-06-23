@@ -13,9 +13,9 @@
 	<fx:Script>
 		<![CDATA[
 			import com.alfo.XMLPrefs;
+			import com.greensock.TweenLite;
 			import com.utils.Console;
 			
-			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.events.ResultEvent;
@@ -25,13 +25,11 @@
 			import events.NavEvent;
 			import events.QuizEvent;
 			
-			import org.osmf.events.TimeEvent;
-			
 			private var questionsXML:XML;
 			private var data:Array;
 			private var shuffledQuestions:Array;
 			
-			private var quizTimer:Timer=new Timer(1000);
+			public var quizTimer:Timer=new Timer(1000);
 			private var conta:Number=1;
 			protected var score:int = 0;
 			
@@ -349,7 +347,10 @@
 			}
 			
 			
-			
+			protected function create(event:Event):void
+			{
+				TweenLite.to(quizFrame, 2, {glowFilter:{color:0xFFFFFF, blurX:30, blurY:30, strength:2, alpha:0.5, knockout: true}});
+			}
 			
 			
 			
@@ -363,12 +364,20 @@
 		<!--s:HTTPService id="getQuestionaires" resultFormat="text" method="GET" url="{ 'http://192.168.0.150/api/index.php/skytestlab/v1/quiz'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" /-->
 		<s:HTTPService id="getQuestionaires" resultFormat="text" method="GET" url="{ this.parentApplication.localURL+'/skyquiz/questions.json'}" result="remoteDataSuccess(event)" fault="remoteDataFailed(event)" />
 	</fx:Declarations>
+	<s:VGroup  horizontalAlign="center" verticalAlign="middle" width="90%" height="90%">
+		<local:SkyTextBox width="{textBlock.width+100}" height="{textBlock.height+100}" />
 	
-	<s:VGroup width="95%" horizontalAlign="left">
+	</s:VGroup>
+	<s:VGroup horizontalAlign="center" verticalAlign="middle"  width="90%" height="90%">
+		
+		<local:SkyTextBoxGlow width="{textBlock.width+100}" height="{textBlock.height+100}" id="quizFrame"  creationComplete="create(event)" />
+	</s:VGroup>
+	<s:VGroup  horizontalAlign="center" verticalAlign="middle" width="100%" height="100%">
+	<s:VGroup width="50%" id="textBlock" horizontalAlign="left" paddingTop="70" >
 		<s:Spacer height="20"/>
 		<s:HGroup width="100%" verticalAlign="bottom">
 			<s:VGroup width="50%" horizontalAlign="left">
-				<s:Label id="questionNum" width="1000" text="Question X" fontSize="60" fontWeight="normal" color="#ffffff" />
+				<s:Label id="questionNum" width="100%" text="Question X" fontSize="52" fontWeight="normal" color="#ffffff" />
 			</s:VGroup>
 			<s:VGroup width="50%" height="100" horizontalAlign="right">
 				
@@ -378,7 +387,7 @@
 			</s:VGroup>
 		</s:HGroup>
 		<s:Spacer height="20"/>
-		<s:Label lineHeight="110%" color="#ffffff" width="1000" fontSize="45" fontWeight="normal" id="questionText" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
+		<s:Label lineHeight="110%" color="#ffffff" width="1000" fontSize="52" fontWeight="bold" id="questionText" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
 		<s:Spacer height="50"/>
 		<components:QuizBox id="quizBox" />
 		<s:Spacer height="10"/>
@@ -387,6 +396,6 @@
 				 fontSize="26.25" fontWeight="bold" kerning="on"
 				 / -->
 	</s:VGroup>
-	
+	</s:VGroup>
 	
 </s:BorderContainer>

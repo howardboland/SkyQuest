@@ -31,6 +31,17 @@ package com.alfo.utils
 			return p_string.substr(idx);
 		}
 		
+		public static function capitalise(s:String):String
+		{
+			var strArray:Array = s.split(' ');
+			var newArray:Array = new Array();
+			for each (var str:String in strArray)
+			newArray.push(str.charAt(0).toUpperCase()+str.slice(1));
+			
+			return newArray.join(' ');
+		}
+
+		
 		/**
 		 *	Returns everything after the last occurence of the provided character in p_string.
 		 *
@@ -192,7 +203,7 @@ package com.alfo.utils
 		 *	@tiptext
 		 */
 		public static function capitalize(p_string:String, ...args):String {
-			var str:String = trimLeft(p_string);
+			var str:String = trimLeft(p_string.toLowerCase());
 			trace('capl', args[0])
 			if (args[0] === true) { return str.replace(/^.|\b./g, _upperCase);}
 			else { return str.replace(/(^\w)/, _upperCase); }

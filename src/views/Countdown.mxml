@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
 				   xmlns:s="library://ns.adobe.com/flex/spark" 
-				   xmlns:mx="library://ns.adobe.com/flex/mx" backgroundAlpha="0" borderVisible="false" addedToStage="bordercontainer1_addedToStageHandler(event)">
+				   xmlns:mx="library://ns.adobe.com/flex/mx" backgroundAlpha="0" borderVisible="false" addedToStage="bordercontainer1_addedToStageHandler(event)" xmlns:local="*" xmlns:components="components.*">
 	
 	<fx:Script>
 		<![CDATA[
@@ -10,6 +10,12 @@
 			protected var totalSec:Number=3;
 			protected var counter:Number;
 			import events.NavEvent;
+			
+			import mx.events.FlexEvent;
+			import com.greensock.TweenLite;
+			import com.greensock.plugins.GlowFilterPlugin;
+			import com.greensock.plugins.TweenPlugin;
+			TweenPlugin.activate([GlowFilterPlugin]);
 			
 			protected function bordercontainer1_addedToStageHandler(event:Event):void
 			{
@@ -45,17 +51,31 @@
 				dispatchEvent(navigation);
 				
 			}
+			
+			protected function create(event:Event):void
+			{
+				TweenLite.to(countdownFrame, 2, {glowFilter:{color:0xFFFFFF, blurX:30, blurY:30, strength:2, alpha:0.5, knockout: true}});
+			}
 		]]>
 	</fx:Script>
 	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:VGroup horizontalAlign="center" verticalAlign="middle">
+	<s:VGroup  horizontalAlign="center" verticalAlign="middle" width="100%" height="100%">
+		<local:SkyTextBox width="{textBlock.width+100}" height="{textBlock.height+100}" />
+
+	</s:VGroup>
+	<s:VGroup   horizontalAlign="center" verticalAlign="middle"  width="100%" height="100%">
+
+		<local:SkyTextBoxGlow width="{textBlock.width+100}" height="{textBlock.height+100}" id="countdownFrame" creationComplete="create(event)" />
+	</s:VGroup>
+	<s:VGroup  horizontalAlign="center" verticalAlign="middle" width="100%" height="100%">
+		<s:VGroup id="textBlock" horizontalAlign="center" verticalAlign="middle" paddingTop="70" paddingLeft="70" paddingRight="70" >	
 		
-		
-		<s:Label text="Get ready to start" fontWeight="bold" fontSize="78" color="#ffffff" />
+		<s:Label text="GET READY TO START" textAlign="center" fontWeight="bold" fontSize="78" color="#ffffff" />
 		<s:Spacer height="20"/>
-		<s:Label text="99" id="countDownLabel" fontSize="448" fontWeight="bold" color="#ffffff"/>
+		<s:Label text="99" id="countDownLabel" textAlign="center" fontSize="448" fontWeight="bold" color="#ffffff"/>
+			</s:VGroup>
 	</s:VGroup>
 </s:BorderContainer>
