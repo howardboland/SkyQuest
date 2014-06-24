@@ -149,7 +149,7 @@
 					checkTimeOut();
 					conto.timo = conta;
 					var rimasto:Number=prefs.timeOut-conta;
-//					timeLeft.text="Time left: "+secondsToMinutesSecondsString(rimasto);
+					//					timeLeft.text="Time left: "+secondsToMinutesSecondsString(rimasto);
 					quizTimer.start();
 					pullQuestion();
 				} else {
@@ -300,15 +300,15 @@
 					quizTimer.stop();
 					conta = 0;
 					timeoutAnswer();
-//					var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"loser");
-//					dispatchEvent(navigation);
+					//					var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"loser");
+					//					dispatchEvent(navigation);
 				} else {
 					autoAnswer();
 				}
 				
 				conto.timo = conta;
 				var rimasto:Number=prefs.timeOut-conta;
-//				timeLeft.text="Time left: "+secondsToMinutesSecondsString(rimasto);
+				//				timeLeft.text="Time left: "+secondsToMinutesSecondsString(rimasto);
 			}
 			
 			
@@ -366,36 +366,36 @@
 	</fx:Declarations>
 	<s:VGroup  horizontalAlign="center" verticalAlign="middle" width="90%" height="90%">
 		<local:SkyTextBox width="{textBlock.width+100}" height="{textBlock.height+100}" />
-	
+		
 	</s:VGroup>
 	<s:VGroup horizontalAlign="center" verticalAlign="middle"  width="90%" height="90%">
 		
 		<local:SkyTextBoxGlow width="{textBlock.width+100}" height="{textBlock.height+100}" id="quizFrame"  creationComplete="create(event)" />
 	</s:VGroup>
-	<s:VGroup  horizontalAlign="center" verticalAlign="middle" width="100%" height="100%">
-	<s:VGroup width="50%" id="textBlock" horizontalAlign="left" paddingTop="70" >
-		<s:Spacer height="20"/>
-		<s:HGroup width="100%" verticalAlign="bottom">
-			<s:VGroup width="50%" horizontalAlign="left">
-				<s:Label id="questionNum" width="100%" text="Question X" fontSize="52" fontWeight="normal" color="#ffffff" />
-			</s:VGroup>
-			<s:VGroup width="50%" height="100" horizontalAlign="right">
-				
+	<s:VGroup  horizontalAlign="center" verticalAlign="middle" width="60%" height="100%">
+		<s:VGroup width="50%" id="textBlock" horizontalAlign="left" paddingTop="70" paddingLeft="100" paddingRight="80" >
+			<s:Spacer height="20"/>
+			<s:HGroup width="100%" verticalAlign="bottom">
+				<s:VGroup width="50%" horizontalAlign="left">
+					<s:Label id="questionNum" width="100%" text="Question X" fontSize="52" fontWeight="normal" color="#ffffff" />
+				</s:VGroup>
+				<s:VGroup width="50%" height="100" horizontalAlign="right">
+					
 					<local:Contatore id="conto" width="150" height="150" maintainProjectionCenter="true" explicitWidth="150" explicitHeight="150"  rotationX="-10" rotationY="60" rotationZ="20"   />	
-				
-				
-			</s:VGroup>
-		</s:HGroup>
-		<s:Spacer height="20"/>
-		<s:Label lineHeight="110%" color="#ffffff" width="1000" fontSize="52" fontWeight="bold" id="questionText" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
-		<s:Spacer height="50"/>
-		<components:QuizBox id="quizBox" />
-		<s:Spacer height="10"/>
-		<!--s:Label id="timeLeft" text="Time left: "
-				 color="#ffffff" 
-				 fontSize="26.25" fontWeight="bold" kerning="on"
-				 / -->
-	</s:VGroup>
+					
+					
+				</s:VGroup>
+			</s:HGroup>
+			<s:Spacer height="20"/>
+			<s:Label lineHeight="110%" color="#ffffff" width="1000" fontSize="52" fontWeight="bold" id="questionText" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
+			<s:Spacer height="50"/>
+			<components:QuizBox id="quizBox" />
+			<s:Spacer height="70"/>
+			<!--s:Label id="timeLeft" text="Time left: "
+			color="#ffffff" 
+			fontSize="26.25" fontWeight="bold" kerning="on"
+			/ -->
+		</s:VGroup>
 	</s:VGroup>
 	
 </s:BorderContainer>

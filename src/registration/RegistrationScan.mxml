@@ -501,17 +501,6 @@
 		
 		<local:SkyPanelWelcome visible="{ this.parentApplication.ApplicationType=='REGISTRATION' }" includeInLayout="{ this.parentApplication.ApplicationType=='REGISTRATION' }" />
 		<local:SkyPanelWelcomeQuiz visible="{ this.parentApplication.ApplicationType=='Quiz' }" includeInLayout="{ this.parentApplication.ApplicationType=='Quiz' }" />
-		<!-- s:Label id="welcomeLabel" textAlign="center" width="90%" styleName="registrationOne" text="WELCOME TO{'\n'}BARCLAYS PREMIER LEAGUE LIVE">
-			<s:filters>
-				<s:GlowFilter color="0x00AEEF" strength="15"/>
-			</s:filters>
-		</s:Label>
-		<s:Spacer height="50"/>
-		<s:Label id="pleaseScanLabel" textAlign="center" styleName="registrationTwo" text="PLEASE SCAN YOUR THUMB"/>
-		<s:Spacer height="30"/>
-		<s:Image source="@Embed('assets/images/fingerprintinstrunctions.png')" smooth="true" smoothingQuality="high" />
-		<s:Spacer height="30"/>
-		<s:Label id="allFingerprintsLabel" textAlign="center" styleName="registrationFour" text="You only have to register once to play any activity at Barlcays Premier{'\n'}League Live and all prints are deleted directly after the event."/-->
 	</s:VGroup>
 	
 	<s:VGroup horizontalAlign="center" verticalAlign="top" height="574" width="100%">

@@ -324,10 +324,8 @@
 					{
 						case "home":
 						{
-							trace("go home go");
-							stack.selectedIndex=0;
-							welcomeScreen.start();
-							
+							RegisterView.init();
+							stack.selectedChild=reg;
 							break;
 						}
 						case "countdown":
@@ -350,9 +348,9 @@
 						}
 						case "register":
 						{
+							// the home becomes register
 							trace("registrazzzz");
-							//TODO: HB - CONSOLIDATE HANDOVER APPLICATION
-							//registration.clearForm();
+							
 							RegisterView.init();
 							stack.selectedChild=reg;
 							break;
@@ -464,7 +462,10 @@
 			
 			protected function homebutton_clickHandler(event:MouseEvent):void
 			{
-				stack.selectedIndex=0;
+				if(quizScreen.quizTimer) {
+					quizScreen.quizTimer.stop();
+				}
+				stack.selectedIndex=3;
 				
 			}
 			protected function clearPopups(e:Event=null):void
@@ -595,6 +596,13 @@
 //				centerPopups();
 			}
 			
+			protected function home_creationCompleteHandler(event:FlexEvent):void
+			{
+				// takes to scan finger
+				stack.selectedIndex=3;
+				
+			}
+			
 		]]>
 	</fx:Script>
 	<fx:Style source="assets/css/Fonts.css" />
@@ -629,9 +637,9 @@
 				<s:SolidColor color="0x000000" alpha="0" />
 			</s:fill>
 		</s:Rect>
-		<s:HGroup width="100%" height="90" verticalAlign="middle">
-			<s:HGroup width="33%" horizontalAlign="left">
-				<s:Spacer width="10"/><local:SkyLogo click="homebutton_clickHandler(event)" useHandCursor="true" mouseEnabled="true"/>
+		<s:HGroup width="100%" height="90" verticalAlign="middle" >
+			<s:HGroup width="33%" horizontalAlign="left" paddingTop="70">
+				<s:Spacer width="10"/><local:SkyLogo click="homebutton_clickHandler(event)"  useHandCursor="true" mouseEnabled="true"/>
 			</s:HGroup>
 			<s:HGroup width="33%">
 				<!--s:Button label="admin" id="admin" click="admin_clickHandler(event)" alpha="0" /-->
@@ -663,7 +671,7 @@
 	<!--local:Contatore id="conto" x="200" y="100" z="0" rotationX="20" rotationY="30" rotationZ="0"  timo="5" timeLimit="10" /-->
 	
 		
-	<mx:ViewStack id="stack" height="100%" width="100%" creationPolicy="all"   >
+	<mx:ViewStack id="stack" height="100%"  width="100%" creationPolicy="all" creationComplete="home_creationCompleteHandler(event)"   >
 		
 		
 		
