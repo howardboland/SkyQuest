@@ -38,7 +38,7 @@
 			protected function submit(e:Event=null):void
 			{
 				tempo.cancel();
-				dispatchEvent( new QuizEvent(QuizEvent.QUIZ_SAVE ) );
+				
 				restart();
 			}
 			

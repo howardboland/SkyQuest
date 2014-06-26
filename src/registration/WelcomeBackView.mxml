@@ -12,6 +12,7 @@
 			
 			import mx.events.FlexEvent;
 			
+			import events.KioskError;
 			import events.ViewEvent;
 			
 			import model.Settings;
@@ -72,6 +73,8 @@
 			
 			protected function onLoadError(event : IOErrorEvent):void
 			{
+				this.parentApplication.dispatchEvent(new KioskError(KioskError.ERROR, "Please check connection", "ERROR"));
+
 				trace("WelcomeBackView :: onLoadError :: " + event.errorID);
 			}
 			

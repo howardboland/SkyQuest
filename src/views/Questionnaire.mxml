@@ -187,6 +187,7 @@
 					quizBox.removeEventListener(QuizEvent.WRONG_ANSWER,wrongAnswer);
 					
 					dispatchEvent( new QuizEvent(QuizEvent.QUIZ_COMPLETE, score ) );
+					dispatchEvent( new QuizEvent(QuizEvent.QUIZ_SAVE ) );
 					dispatchEvent( new NavEvent(NavEvent.NAVIGATION, "congrat" ) );
 				}
 			}

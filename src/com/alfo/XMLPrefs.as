@@ -46,8 +46,8 @@ package com.alfo
 				throw new Error ("We cannot create a new instance. Please use XMLPrefs.getInstance()");
 			} else {
 				stream = new FileStream();
-				prefsFile = File.applicationStorageDirectory;
-				prefsFile = prefsFile.resolvePath("assets/xml/preferences.xml");
+				prefsFile = File.documentsDirectory;
+				prefsFile = prefsFile.resolvePath("SkyTestQuiz/preferences.xml");
 				if (prefsFile.exists) {
 					trace("preference file exists");
 					stream.open(prefsFile, FileMode.READ);
