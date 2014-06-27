@@ -12,4 +12,5 @@
     <location_id>24</location_id>
     <urnLength>16</urnLength>
     <mode>standard</mode>
+    <standalone>true</standalone>
 </preferences>

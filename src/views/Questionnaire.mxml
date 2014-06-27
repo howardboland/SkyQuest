@@ -65,9 +65,14 @@
 				Console.log("RUN FIRST", this);
 				if (data==null)
 				{
+					if (prefs.standalone)
+					{
+						readLocalData();	
+					} else {
+						readRemoteData();	
+					}
 					
-					//readLocalData();
-					readRemoteData();
+					
 				} else {
 					startQuiz();
 				}
@@ -78,12 +83,19 @@
 			{
 				Console.log("path:"+File.applicationDirectory.nativePath, this);
 				// Need to be json - fix once questions are known
-				var file:File = File.applicationDirectory.resolvePath("assets/xml/questions.xml");
-				var fileStream:FileStream = new FileStream();
-				fileStream.open(file, FileMode.READ);
-				questionsXML = XML(fileStream.readUTFBytes(fileStream.bytesAvailable));
-				fileStream.close();
-				dispatchEvent( new Event("QUIZ_DATA_READY"));                   
+				var file:File = File.applicationDirectory.resolvePath("assets/json/questions.json");
+				if (file.exists)
+				{
+					var fileStream:FileStream = new FileStream();
+					fileStream.open(file, FileMode.READ);
+					
+					data = JSON.parse(fileStream.readUTFBytes(fileStream.bytesAvailable)) as Array;
+	//				data = JSON.parse( event.result as String ) as Array;
+					fileStream.close();
+					dispatchEvent( new Event("QUIZ_DATA_READY"));
+				} else {
+					Console.log("NO SUCH FILE", this);
+				}
 			}
 			
 			// READ DATA FROM SERVER

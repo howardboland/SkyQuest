@@ -31,8 +31,12 @@
 			{
 				
 				Console.log("click", this);
-				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"register"); /* not using instructions */
-				dispatchEvent(navigation);
+				if (prefs.standalone)
+				{
+					dispatchEvent(new NavEvent(NavEvent.NAVIGATION,"countdown"));
+				} else {
+					dispatchEvent(new NavEvent(NavEvent.NAVIGATION,"register"));
+				}
 			}
 			
 		]]>

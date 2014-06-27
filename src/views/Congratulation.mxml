@@ -27,7 +27,9 @@
 			public function start():void 
 			{
 				Console.log("start", this);	
-				tempo = new DelayedExecution(prefs.splashPause*10000,this,restart);
+				
+				submit_section.includeInLayout = submit_section.visible = !prefs.standalone;
+				tempo = new DelayedExecution(prefs.splashPause*1000, this, this.restart);
 			}
 			
 			protected function restart( e:Event=null ):void
@@ -76,7 +78,8 @@
 		</s:VGroup>
 		
 	</s:VGroup>
-	<s:VGroup  horizontalAlign="center" verticalAlign="middle" width="100%" height="100%">
+	
+	<s:VGroup id="submit_section" horizontalAlign="center" verticalAlign="middle" width="100%" height="100%">
 		<s:Spacer width="{textBlock.width+100}" height="{textBlock.height+250}" />
 		<s:Button label="SUBMIT" click="submit(event)"  skinClass="skins.buttons.SkyRightButton"/>
 	</s:VGroup>

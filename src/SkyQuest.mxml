@@ -347,8 +347,16 @@
 					{
 						case "home":
 						{
-							RegisterView.init();
-							stack.selectedChild=reg;
+							if (!prefs.standalone)
+							{
+								RegisterView.init();
+								stack.selectedChild=reg;
+							} else {
+
+								stack.selectedChild=home;
+
+								break;
+							}
 							break;
 						}
 						case "countdown":
@@ -490,6 +498,7 @@
 				}
 				stack.selectedIndex=3;
 				
+				
 			}
 			protected function clearPopups(e:Event=null):void
 			{
@@ -626,8 +635,8 @@
 			protected function home_creationCompleteHandler(event:FlexEvent):void
 			{
 				// takes to scan finger
-				this.stack.selectedIndex = 3;
-				
+//				this.stack.selectedIndex = 3;
+				this.navigate( new NavEvent( NavEvent.NAVIGATION, "home") );
 			}
 			
 			

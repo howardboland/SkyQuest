@@ -33,10 +33,12 @@ package com.alfo
 		public var location_id:String;
 		public var game_id:String;
 		public var urnLength:int;
+		public var standalone:Boolean = false;
 		public var isReady:Boolean = false;
 		private var prefsXML:XML;
 		private var stream:FileStream;
 		private var isConfig:Boolean = false;
+		
 		
 		public function XMLPrefs()
 		{
@@ -91,6 +93,7 @@ package com.alfo
 			location_id=prefsXML.location_id;
 			urnLength=int(prefsXML.urnLength);
 			ApplicationType = prefsXML.applicationtype;
+			standalone = prefsXML.standalone;
 			Console.log( prefsXML, this);
 			Console.log( "localURL : "+localURL, this); 
 			trace("timeout:"+timeOut);
@@ -116,6 +119,7 @@ package com.alfo
 				prefsXML.game_id 			= values.game_id;
 				prefsXML.location_id 		= values.location_id;
 				prefsXML.mode 				= values.mode;
+//				prefsXML.standalone 		= values.standalone;
 				setValues( prefsXML )
 				writeXMLData();
 				
