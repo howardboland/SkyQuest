@@ -24,22 +24,26 @@
 			
 			private var prefs:XMLPrefs = XMLPrefs.getInstance();
 			protected var tempo:DelayedExecution
-			public function start():void {
-				
+			public function start():void 
+			{
+				Console.log("start", this);	
 				tempo = new DelayedExecution(prefs.splashPause*10000,this,restart);
 			}
 			
-			protected function restart():void
+			protected function restart( e:Event=null ):void
 			{
 				Console.log("Restarting", this);
+				this.parentApplication.removeEventListener( QuizEvent.QUIZ_SAVED, restart );
 				var navigation:NavEvent=new NavEvent(NavEvent.NAVIGATION,"home");
 				dispatchEvent(navigation);
 			}
 			protected function submit(e:Event=null):void
 			{
 				tempo.cancel();
-				
-				restart();
+				this.parentApplication.removeEventListener( QuizEvent.QUIZ_SAVED, restart );
+				this.parentApplication.addEventListener( QuizEvent.QUIZ_SAVED, restart );
+				this.parentApplication.dispatchEvent( new QuizEvent(QuizEvent.QUIZ_SAVE) );
+				//restart();
 			}
 			
 			protected function create(event:Event):void

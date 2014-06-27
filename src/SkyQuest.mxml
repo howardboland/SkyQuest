@@ -156,6 +156,8 @@
 				ApplicationType = prefs.ApplicationType;
 				urn = prefs.urnLength;
 				saveScore.url = this.localURL+'/api/index.php/skytestlab/v1/score';
+//				saveScore.url = 'http://localhost/skyquiz/score.json';
+				
 				Console.log( "localURL: "+localURL, this )
 					//settings.localURL = localURL;
 			}
@@ -197,6 +199,7 @@
 				this.addEventListener( UserEvent.URN, setBarCode );
 				this.addEventListener( UserEvent.REGISTERED, setIsRegistered);
 				this.addEventListener( ViewEvent.NAVIGATE, viewChanged);
+				this.addEventListener( QuizEvent.QUIZ_SAVE, quizSave );
 //				registration.addEventListener(NavEvent.NAVIGATION,navigate);
 //				registration.addEventListener(NavEvent.SHOWTERMS,showTerms);
 				instructionsScreen.addEventListener(NavEvent.NAVIGATION,navigate);
@@ -282,10 +285,16 @@
 			}
 			protected function quizSave(e:QuizEvent):void { 
 //				Console.log("Quiz completed with score:"+e.score, this);
-//				currentScore = e.score;	
-				trace("********* save quiz");
+//				currentScore = e.score;
+				Console.log("Saving quiz", this);
+				
 				var scoreObject:Object = { urn: barcode, game_id: prefs.game_id, location_id: prefs.location_id, score: currentScore };
-				Console.log( scoreObject, this );
+				Console.log( saveScore.url, this);
+				for (var m:String in scoreObject)
+				{
+					Console.log( m+" = "+scoreObject[m], this );
+				}
+				
 				saveScore.send(scoreObject);
 			}
 			protected function quizComplete(e:QuizEvent):void { 
@@ -394,7 +403,7 @@
 						{
 							trace("winner!");
 							stack.selectedChild=congrat;
-							congratScreen.time.text= currentScore+"/"+prefs.totalQuestions;
+							congratScreen.time.text= (isNaN(currentScore) ? 0 : Number(currentScore))+"/"+prefs.totalQuestions;
 	//						secondsToMinutesSeconds(currentScore as Number);
 							congratScreen.start();
 							break;
@@ -536,8 +545,9 @@
 				return minutestring+secstring;
 			}
 			
-			protected function save(e:ResultEvent=null):void
+			protected function quiz_save_result(e:ResultEvent=null):void
 			{
+				
 				Console.log( e.result, this );
 				var result:Object = JSON.parse( e.result as String ) as Object;
 				Console.log( result, this);
@@ -551,11 +561,14 @@
 					PopUpManager.addPopUp(alertbox, this, true);
 					PopUpManager.centerPopUp(alertbox);
 
-				} 
+				} else {
+					Console.log("Quiz Saved!", this);
+					this.dispatchEvent( new QuizEvent( QuizEvent.QUIZ_SAVED ) );
+				}
 			}
-			protected function error(e:FaultEvent):void
+			protected function quiz_save_error(e:FaultEvent):void
 			{
-				trace("server error"+e.fault.message.toString());
+				Console.log("server error"+e.fault.message.toString(), this);
 				alertbox = new ErrorAlert();
 				alertbox.message = e.fault.message.toString();
 				alertbox.windowTitle = "Server Error";
@@ -613,7 +626,7 @@
 			protected function home_creationCompleteHandler(event:FlexEvent):void
 			{
 				// takes to scan finger
-				stack.selectedIndex=3;
+				this.stack.selectedIndex = 3;
 				
 			}
 			
@@ -685,7 +698,7 @@
 			
 		</s:Parallel>
 		
-		<s:HTTPService id="saveScore" fault="error(event)" method="POST" result="save(event)"
+		<s:HTTPService id="saveScore" fault="quiz_save_error(event)" method="POST" result="quiz_save_result(event)"
 					   resultFormat="text"
 					   url="{this.localURL+'/api/index.php/skytestlab/v1/score'}"/>
 	</fx:Declarations>
@@ -737,8 +750,6 @@
 	<mx:ViewStack id="stack" height="100%"  width="100%" creationPolicy="all" creationComplete="home_creationCompleteHandler(event)"   >
 		
 		
-		
-		
 		<s:NavigatorContent width="100%" height="100%"   id="home"  hideEffect="{hideFX}"  showEffect="{showFX}">
 			<s:VGroup width="100%" height="100%" verticalAlign="middle" id="groppo" horizontalAlign="center" >
 				<views:Welcome id="welcomeScreen" />
@@ -751,6 +762,7 @@
 				<views:Instructions id="instructionsScreen" />
 			</s:VGroup>
 		</s:NavigatorContent>
+		
 		<s:NavigatorContent width="100%" height="100%"   id="countdown"  hideEffect="{hideFX}"  showEffect="{showFX}">
 			<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" >
 				<views:Countdown id="countdownScreen" />

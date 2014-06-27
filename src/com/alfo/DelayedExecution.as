@@ -1,5 +1,7 @@
 package com.alfo
 {
+	import com.utils.Console;
+	
 	import flash.events.Event;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
@@ -46,6 +48,7 @@ package com.alfo
 		}
 		public function cancel(e:Event = null):void
 		{
+			Console.log("Cancel", this);
 			t.stop();
 			t.removeEventListener(TimerEvent.TIMER, exec);
 			
